@@ -28,3 +28,14 @@ test('the product visual identifies the digital mockup without implying sample e
   assert.match(html, /assets\/printful\/pet-parade-digital-mockup-v1\.jpg/);
   assert.match(html, /Digital preview — physical sample not yet inspected\./);
 });
+
+test('the storefront answers verified purchase objections in visible FAQ content and structured data', () => {
+  assert.match(html, /id="faq"/);
+  assert.match(html, /Is Pet Parade a tie-on or over-collar bandana\?/);
+  assert.match(html, /Are orders open now\?/);
+  assert.match(html, /How do I choose a size\?/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /"@type":"FAQPage"/);
+  assert.match(html, /tie-on-vs-over-collar-dog-bandana\.html/);
+  assert.match(html, /transparency\.html/);
+});

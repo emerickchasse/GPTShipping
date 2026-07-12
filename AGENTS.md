@@ -32,6 +32,8 @@ Campaign attribution is limited to the allowlisted `utm_source` label stored wit
 
 The organic library includes a tying guide with the `tie_guide` attribution label plus a tie-on-versus-over-collar construction comparison. Bing returned no usable volume for the researched phrases, so these pages are intent-coverage experiments rather than demand claims.
 
+The homepage FAQ must keep its visible answers and FAQPage structured data aligned. It may answer only verified product, sizing, launch-status, and safety facts; structured markup is not evidence of a search rich result or traffic.
+
 Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, and `transparency.html` were unknown to Google and have confirmed priority-crawl requests after live 200/self-canonical checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
 
 Bing Webmaster Tools now lists the exact PawSwipe GitHub Pages property separately from unrelated account properties, but Bing currently returns `User is unauthorized to access the site`; ownership is not verified. Do not copy metrics from any other property or claim Bing indexing until the PawSwipe property itself provides evidence.
