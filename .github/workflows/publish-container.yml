@@ -10,6 +10,7 @@ on:
       - 4a385d1729a145679725f7df42a21d91.txt
       - app.js
       - assets/**
+      - bandana-size-guide.html
       - care-guide.html
       - transparency.html
       - guide.js
