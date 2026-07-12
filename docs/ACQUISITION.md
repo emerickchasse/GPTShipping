@@ -11,7 +11,8 @@ Last reviewed: 2026-07-12
 - Organic size guide: not indexed at first inspection; indexing request accepted into the priority crawl queue
 - Sitemap submitted: `https://emerickchasse.github.io/GPTShipping/sitemap.xml`
 - Current sitemap status: **Couldn't fetch** / 0 discovered pages, despite a direct HTTP 200 response with `application/xml` and valid sitemap markup. Recheck in Search Console after processing; do not call the sitemap successful until Google reports success.
-- Fallback prepared: `sitemap.txt`, using Google's documented plain-text format of one fully-qualified URL per UTF-8 line. Its Search Console state must be recorded separately from the XML sitemap.
+- Text fallback submitted: `sitemap.txt`, using Google's documented plain-text format of one fully-qualified URL per UTF-8 line. Search Console also reports **Couldn't fetch**, type unknown, and 0 discovered pages.
+- Direct QA for both formats passes, including requests using a Googlebot user agent: XML is HTTP 200 `application/xml` (441 bytes); text is HTTP 200 `text/plain; charset=utf-8` (235 bytes); robots is HTTP 200 and advertises both. Because two valid formats fail identically, stop repeated resubmission and recheck after Search Console finishes processing the new property.
 
 ## Other discovery
 
