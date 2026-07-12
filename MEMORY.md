@@ -21,6 +21,7 @@ Launch an English-language international dropshipping store and record verified 
 - Webhook QA passed with local non-production placeholder configuration: a correctly signed non-payment Stripe event returned 200 without any external call; an invalid signature returned 400. Syntax checks and skill validation passed. This does not verify a live payment, supplier fulfilment, or revenue.
 - Blocked again on 2026-07-12 after the resumed three-cycle audit: the local environment still has no commerce credentials and no external commerce account, supplier evidence, deploy target, support identity, or legal/fulfilment data has become available. The technical checkout, readiness, webhook, and revenue-verification paths cannot turn this into a sale without those external facts and accounts.
 - 2026-07-12: a GitHub account is authenticated. Add a least-privilege GitHub Pages workflow that publishes only the static pre-launch preview; it must never be mistaken for the HTTPS server that handles real checkout and webhooks.
+- GitHub Pages deployment attempt: the build succeeded, but the protected `github-pages` environment allows only branch `main`; the repository began on `master`. Align the local branch and workflow trigger to `main` instead of weakening the environment policy.
 
 ## Verified revenue ledger
 

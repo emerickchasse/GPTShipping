@@ -2,7 +2,7 @@ name: Deploy pre-launch preview
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
