@@ -15,6 +15,7 @@ Launch an English-language international dropshipping store and record verified 
 - Project-skill lesson: keep `.codex/skills/dropshipping-launch/SKILL.md` ASCII-only because the local skill validator currently reads it using a legacy Windows encoding.
 - 2026-07-12: no local commerce/deployment credentials or existing Chrome merchant account were available. A server-side Stripe Checkout integration, a protected configuration template, a success page, and a refund-aware revenue verifier are now being added; live checkout remains disabled by configuration.
 - Supplier research on 2026-07-12: CJdropshipping SKU `CJGY191933001AZ` appeared relevant at USD 8.26 but is disqualified for launch evidence because the public page reported inventory 0 and no shipping method/delivery estimate. Spocket pages show potential reusable lint-remover candidates, but their supplier, destination-specific shipping, returns, and actual availability still need authenticated verification. No supplier has been approved.
+- Blocked 2026-07-12 after three consecutive goal work cycles on the same external dependency: no verified supplier account, payment merchant account, deployment account, protected credentials, support identity, or legal/fulfilment data is available. The Chrome session has no commerce account open. The app intentionally refuses checkout without these inputs. Resume only with externally verified business and fulfilment state; do not change the revenue ledger until paid Stripe evidence exists.
 
 ## Verified revenue ledger
 
