@@ -1,0 +1,12 @@
+.git
+.github
+.codex
+.env
+.env.*
+node_modules
+docs
+AGENTS.md
+DESIGN.md
+MEMORY.md
+README.md
+scripts
