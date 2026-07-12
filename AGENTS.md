@@ -20,6 +20,8 @@ Before taking payment, configure a real payment provider, a verified product sup
 
 The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. Supplier publication alone is not checkout readiness: keep checkout closed until the scoped Orders token, auto-confirm billing, tax, sample, support, size selection, and Stripe live-mode gates are verified.
 
+The protected Render environment now has a single-store Printful Orders token expiring 2028-07-11 plus the verified S/M/L references. Never copy the token into the repository or logs. `PRINTFUL_AUTO_CONFIRM` must remain false until merchant billing and the complete paid-order path are verified.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, amount, currency, and payment date in `MEMORY.md`. Sum only paid, non-refunded orders. The target is met at USD 100.00 or more.
