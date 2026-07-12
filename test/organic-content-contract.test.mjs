@@ -12,7 +12,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
   readFile(new URL('../Dockerfile', import.meta.url), 'utf8')
 ]);
 
-const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html'];
+const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html'];
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
   const relativeUrl = 'measure-pet-for-bandana.html';
@@ -46,6 +46,22 @@ test('the dog-bandana tying guide is published through every discovery surface',
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
   assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
+});
+
+test('the tie-on versus over-collar guide is published through every discovery surface', async () => {
+  const relativeUrl = 'tie-on-vs-over-collar-dog-bandana.html';
+  const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+  const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+
+  assert.match(page, /Tie-on vs\. over-collar dog bandanas/i);
+  assert.match(page, /Pet Parade is a tie-on square/i);
+  assert.match(page, /does not replace a collar/i);
+  assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
+  assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
+  assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
+  assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(server, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
 });
 
 test('every indexable public page declares its exact canonical URL', async () => {

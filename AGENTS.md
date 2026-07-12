@@ -30,7 +30,7 @@ GitHub Pages must talk to Render only through the exact configured `PUBLIC_STORE
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.
 
-The organic library now includes a tying guide with the `tie_guide` attribution label. Bing returned no usable volume for the researched phrases, so the page is an intent-coverage experiment rather than a demand claim.
+The organic library includes a tying guide with the `tie_guide` attribution label plus a tie-on-versus-over-collar construction comparison. Bing returned no usable volume for the researched phrases, so these pages are intent-coverage experiments rather than demand claims.
 
 Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, and `transparency.html` were unknown to Google and have confirmed priority-crawl requests after live 200/self-canonical checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
 
