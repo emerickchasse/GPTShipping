@@ -82,9 +82,18 @@
               <li>Single-sided print and tear-away care label</li>
               <li>Made on demand in sizes S, M, and L</li>
             </ul>
-            <p class="quantity-label">Planned sizes</p><div class="size-row" aria-label="Planned sizes small, medium, and large"><span>S</span><span>M</span><span>L</span></div>
+            <div class="size-choice">
+              <label class="quantity-label" for="pet-size">Choose a size</label>
+              <select id="pet-size" aria-describedby="size-help" required>
+                <option value="">Select S, M, or L</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </select>
+              <a class="text-link" href="bandana-size-guide.html">Compare measurements</a>
+            </div>
             <button class="button button-primary" id="add-to-cart" type="button">View launch status <span aria-hidden="true">→</span></button>
-            <p class="fine-print">Small is intended for small pets and will not fit an adult. Final sizing, retail price, eligible destinations, delivery timing, care, and returns will be published before checkout opens.</p>
+            <p class="fine-print" id="size-help">S is 17 3/8 in (44 cm), M is 21 1/4 in (54 cm), and L is 25 1/4 in (64 cm), measured square before folding and tying. Small is intended for small pets and will not fit an adult. Retail price, eligible destinations, delivery timing, care, and returns will be published before checkout opens.</p>
           </div>
         </article>
       </section>
@@ -122,7 +131,7 @@
     <aside id="cart" class="cart" aria-label="Shopping cart" aria-hidden="true">
       <div class="cart-header"><h2>Your cart</h2><button id="close-cart" type="button" aria-label="Close cart">×</button></div>
       <div id="cart-empty"><p>Pet Parade is still in launch validation.</p></div>
-      <div id="cart-filled" hidden><p><strong>PawSwipe Pet Parade Bandana</strong><br />Sizes S–L planned</p><div class="launch-status"><strong>Checkout remains closed.</strong><br />USD base cost and standard US shipping are verified. We are validating the sample, destination taxes, eligible markets, policies, and support before accepting an order.</div><button id="checkout" class="button button-primary" type="button" disabled>Checkout not open</button><p id="checkout-message" class="fine-print" role="status" aria-live="polite">No payment or personal information is collected from this preview.</p></div>
+      <div id="cart-filled" hidden><p><strong>PawSwipe Pet Parade Bandana</strong><br />Selected size: <strong id="selected-size"></strong></p><div class="launch-status"><strong>Checkout remains closed.</strong><br />USD base cost and standard US shipping are verified. We are validating the sample, destination taxes, eligible markets, policies, and support before accepting an order.</div><button id="checkout" class="button button-primary" type="button" disabled>Checkout not open</button><p id="checkout-message" class="fine-print" role="status" aria-live="polite">No payment or personal information is collected from this preview.</p></div>
     </aside>
     <div id="overlay" class="overlay" hidden></div>
     <script src="app.js"></script>
