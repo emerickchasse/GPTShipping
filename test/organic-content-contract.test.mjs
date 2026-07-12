@@ -120,3 +120,11 @@ test('every product return from a decision guide preserves its distinct attribut
     assert.match(page, new RegExp(`href="index\\.html\\?utm_source=${source}#shop"`), relativeUrl);
   }
 });
+
+test('the storefront publishes a local favicon without a root-domain fallback', async () => {
+  const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(storefront, /<link rel="icon" href="favicon\.svg" type="image\/svg\+xml" \/>/);
+  assert.match(pagesWorkflow, /\bfavicon\.svg\b/);
+  assert.match(server, /'favicon\.svg'/);
+  assert.match(dockerfile, /\bfavicon\.svg\b/);
+});

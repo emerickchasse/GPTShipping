@@ -36,6 +36,8 @@ The organic library includes a tying guide with the `tie_guide` attribution labe
 
 The homepage must expose the four product-decision guides (size, reference measurement, tying, and construction) in visible content that remains available when mobile navigation is hidden. Publication and sitemap presence are not substitutes for a visitor-reachable path from the offer.
 
+Treat the public Lighthouse report as external diagnostic evidence, not a traffic signal. Keep the closed cart inert as well as `aria-hidden`, maintain WCAG contrast for small card labels, and publish the project favicon through Pages, Render, and Docker allowlists.
+
 The homepage FAQ must keep its visible answers and FAQPage structured data aligned. It may answer only verified product, sizing, launch-status, and safety facts; structured markup is not evidence of a search rich result or traffic.
 
 Every indexable page must expose an exact canonical Open Graph URL, a factual title/description, the deployed Pet Parade mockup, and a large-image card declaration. Preview metadata improves link presentation but does not prove a post, impression, click, or sale.

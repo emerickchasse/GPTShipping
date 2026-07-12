@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PawSwipe">
+  <rect width="64" height="64" rx="16" fill="#1d5b49"/>
+  <circle cx="21" cy="22" r="7" fill="#f5bd77"/>
+  <circle cx="43" cy="22" r="7" fill="#f5bd77"/>
+  <circle cx="15" cy="36" r="6" fill="#f5bd77"/>
+  <circle cx="49" cy="36" r="6" fill="#f5bd77"/>
+  <path d="M32 29c-10 0-17 8-17 16 0 7 7 9 17 4 10 5 17 3 17-4 0-8-7-16-17-16Z" fill="#f5bd77"/>
+</svg>

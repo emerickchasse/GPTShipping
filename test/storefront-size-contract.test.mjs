@@ -39,3 +39,8 @@ test('the storefront answers verified purchase objections in visible FAQ content
   assert.match(html, /tie-on-vs-over-collar-dog-bandana\.html/);
   assert.match(html, /transparency\.html/);
 });
+
+test('the closed cart removes its controls from keyboard focus', () => {
+  assert.match(html, /<aside id="cart"[^>]+aria-hidden="true"[^>]+inert/);
+  assert.match(script, /cart\.inert = !open/);
+});

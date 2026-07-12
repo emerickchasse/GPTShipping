@@ -46,6 +46,7 @@ async function refreshCheckoutReadiness() {
 function setCartOpen(open) {
   cart.classList.toggle('open', open);
   cart.setAttribute('aria-hidden', String(!open));
+  cart.inert = !open;
   cartButton.setAttribute('aria-expanded', String(open));
   overlay.hidden = !open;
   if (open) document.querySelector('#close-cart').focus();

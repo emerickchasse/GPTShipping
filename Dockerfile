@@ -9,7 +9,7 @@ ENV NODE_ENV=production \
 WORKDIR /app
 
 COPY --chown=node:node package.json ./
-COPY --chown=node:node server.mjs commerce-policy.mjs printful-fulfillment.mjs app.js guide.js styles.css pivot.css index.html care-guide.html bandana-size-guide.html measure-pet-for-bandana.html how-to-tie-dog-bandana.html tie-on-vs-over-collar-dog-bandana.html transparency.html thank-you.html robots.txt sitemap.xml sitemap.txt 4a385d1729a145679725f7df42a21d91.txt ./
+COPY --chown=node:node server.mjs commerce-policy.mjs printful-fulfillment.mjs app.js guide.js styles.css pivot.css index.html care-guide.html bandana-size-guide.html measure-pet-for-bandana.html how-to-tie-dog-bandana.html tie-on-vs-over-collar-dog-bandana.html transparency.html thank-you.html favicon.svg robots.txt sitemap.xml sitemap.txt 4a385d1729a145679725f7df42a21d91.txt ./
 COPY --chown=node:node assets ./assets
 
 USER node
