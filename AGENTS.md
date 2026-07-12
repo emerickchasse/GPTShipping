@@ -26,6 +26,8 @@ Server enforcement must match the readiness surface: `/api/checkout` returns 503
 
 The private support gate is approved. A public Google Form provides anonymous access without exposing the connected Gmail mailbox, collects only the disclosed support fields, requires privacy confirmation, sends owner notifications, routes into `PawSwipe Support`, and passed a complete test submission and acknowledgement loop. Never publish the mailbox or routing alias. Follow `docs/SUPPORT_OPERATIONS.md` and keep the form, notifications, one-US-business-day review target, policy disclosure, and testable reply path intact.
 
+The existing Stripe account is confirmed by 2021–2026 Gmail metadata and Google sign-in, but dashboard access still stops at SMS MFA to the configured phone ending in 3905 with no alternative factor. Follow `docs/PAYMENT_OPERATIONS.md`; account existence is not activation or revenue, and no agent may handle the code or use recovery to bypass the owner.
+
 The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. The storefront now requires and preserves an S/M/L selection through the cart and checkout payload. Supplier publication alone is not checkout readiness: keep checkout closed until auto-confirm billing, tax, sample, support, and Stripe live-mode gates are verified.
 
 The storefront product card uses `assets/printful/pet-parade-digital-mockup-v1.jpg`, generated from the exact approved pattern. It is a digital preview only and must retain the visible uninspected-sample disclosure; it is not physical quality evidence.
