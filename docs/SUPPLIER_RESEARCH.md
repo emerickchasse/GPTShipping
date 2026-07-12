@@ -24,6 +24,7 @@ The preferred pivot candidate is Printful product code **655**, the All-Over Pri
 
 - The free plan has no monthly fee; fulfilment is charged after an order.
 - Product code 655 is made on demand in sizes S, M, and L. Printful warns that S is unsuitable for a grown adult and requires accurate sizing disclosure.
+- Printful's live size-guide dialog lists equal length and width for each square bandana: S **17 3/8 in / 44 cm**, M **21 1/4 in / 54 cm**, and L **25 1/4 in / 64 cm**. It repeats that S is for small pets and will not fit an adult.
 - Public regional listing evidence reports production in Mexico or Latvia and region-dependent polyester composition.
 - Printful estimates 2-5 business days for production. Shipping time depends on destination and is not guaranteed.
 - Printful excludes restricted destinations including Russia, Belarus, Cuba, Iran, Syria, and North Korea, plus several listed regions. Enabled storefront markets must be a verified subset, not “worldwide.”

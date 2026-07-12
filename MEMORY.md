@@ -52,6 +52,7 @@ Launch an English-language international dropshipping store and record verified 
 - 2026-07-12 customer-policy pass: the official API confirms S/M/L availability in the US and EU but provides no finished dimensions. Do not invent a size table or enable selection. Add a public launch-transparency page that states the verified sizing limit, non-guaranteed shipping rule, supplier defect policy, absence of final customer returns/support, and zero first-party tracking/forms/payment on the preview.
 - Public transparency QA passed on 2026-07-12 for commit `9f2b493`: Pages run `29188208021`, validation run `29188208011`, and GHCR run `29188208042` succeeded. The deployed page returned HTTP 200 with six policy sections, the explicit no-orders statement, no placeholder copy, and links from the homepage and care guide. Desktop and 375px local browser checks found no overflow; no forms are present. Revenue remains USD 0.00.
 - IndexNow accepted the expanded three-URL submission (homepage, care guide, and launch transparency) with HTTP 200 on 2026-07-12. This is discovery evidence only.
+- 2026-07-12 size-guide validation: Printful's authenticated live dialog reports equal length/width for the square bandana: S 17 3/8 in / 44 cm, M 21 1/4 in / 54 cm, and L 25 1/4 in / 64 cm. The imperial-to-metric pairs are internally consistent. Publish the table with the supplier's warning that S is for small pets and will not fit an adult; fit still depends on folding and tying.
 
 ## Verified revenue ledger
 
