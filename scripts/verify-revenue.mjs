@@ -1,4 +1,5 @@
 import { normalizeAttributionSource } from '../commerce-policy.mjs';
+import { netRevenueCents } from '../revenue-accounting.mjs';
 
 const secretKey = process.env.STRIPE_SECRET_KEY;
 if (!secretKey) {
@@ -25,7 +26,8 @@ do {
     paidOrders.push({
       id: session.id,
       created: new Date(session.created * 1000).toISOString(),
-      amountCents: Math.max(0, session.amount_total - refunded),
+      amountCents: netRevenueCents(session, refunded),
+      collectedTaxCents: session.total_details?.amount_tax || 0,
       refundedCents: refunded,
       attributionSource: normalizeAttributionSource(session.metadata?.attribution_source)
     });

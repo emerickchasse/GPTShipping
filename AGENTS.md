@@ -32,4 +32,4 @@ The browser checkout endpoint requires the exact GitHub Pages Origin or the API'
 
 ## Success evidence
 
-Store a redacted record of paid order IDs, amount, currency, and payment date in `MEMORY.md`. Sum only paid, non-refunded orders. The target is met at USD 100.00 or more.
+Store a redacted record of paid order IDs, tax-exclusive amount, currency, and payment date in `MEMORY.md`. Gross revenue includes customer-paid product and shipping but excludes collected sales tax; subtract refunds conservatively. The target is met at USD 100.00 or more.
