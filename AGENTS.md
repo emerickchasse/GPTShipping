@@ -28,6 +28,8 @@ The protected Render environment now has a single-store Printful Orders token ex
 
 The protected pilot-market configuration is US-only with a USD 24.99 product price and USD 4.49 customer shipping, totaling USD 29.48 before tax. Against the USD 14.64 supplier subtotal, the pre-fee contribution is USD 14.84 (50.3%); four non-refunded orders total USD 117.92. These values are configured behind the disabled checkout gate, not public launch claims. Readiness still requires the Stripe secret and signed webhook plus the independent tax, billing, sample, and support approvals.
 
+The homepage is the sole target for the measured `pet bandana` category (DataForSEO US English: 1,000 monthly searches; transactional probability 0.476 on 2026-07-12). Keep the category wording paired with the factual cat-and-dog print and explicit closed-order status; do not turn a category estimate into an international-demand claim.
+
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.

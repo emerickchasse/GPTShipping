@@ -24,6 +24,13 @@ test('the storefront requires one verified size and carries it into cart and che
   assert.match(script, /productPrice\.textContent/);
 });
 
+test('the storefront names the measured transactional pet-bandana category', () => {
+  assert.match(html, /<title>Pet bandana with cat-and-dog print/);
+  assert.match(html, /<h1>A pet bandana for the whole parade\.<\/h1>/);
+  assert.match(html, /"@type":"WebSite"[^<]+"description":"A pre-launch pet bandana/);
+  assert.match(html, /Orders are not open yet/);
+});
+
 test('the product visual identifies the digital mockup without implying sample evidence', () => {
   assert.match(html, /assets\/printful\/pet-parade-digital-mockup-v1\.jpg/);
   assert.match(html, /Digital preview — physical sample not yet inspected\./);
