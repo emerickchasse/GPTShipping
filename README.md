@@ -1,6 +1,6 @@
-# PawSwipe storefront prototype
+# PawSwipe Pet Parade storefront
 
-An English-language, responsive storefront for the PawSwipe pet-hair-remover concept.
+An English-language, responsive storefront preparing the original PawSwipe Pet Parade made-to-order bandana for a verified launch.
 
 ## Run locally
 
@@ -25,3 +25,5 @@ Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickc
 ## Container service
 
 For a real HTTPS checkout host, see [docs/CONTAINER_DEPLOYMENT.md](docs/CONTAINER_DEPLOYMENT.md). The GitHub Pages preview does not run the container or accept payments.
+
+The repository includes a `render.yaml` Blueprint for a free, non-production HTTPS validation service. It deliberately keeps checkout disabled and does not include commerce secrets. Render's free service can sleep after 15 minutes idle and is suitable for launch-readiness validation, not production checkout traffic.

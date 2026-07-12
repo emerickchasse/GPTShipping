@@ -14,3 +14,9 @@ The GitHub workflow publishes the immutable production image as `ghcr.io/emerick
 For production, use an HTTPS platform that injects the protected environment values from `.env.example`, terminates TLS, and routes the Stripe webhook to `/api/stripe-webhook`. Do not publish `.env`, supplier credentials, webhook secrets, order data, or Stripe keys in an image, image registry, GitHub Pages, or GitHub Actions logs.
 
 Before exposing the service publicly, confirm that `GET /api/checkout-readiness` reports `ready: true` with real configuration and complete the buyer-path and fulfilment tests.
+
+## Render validation Blueprint
+
+`render.yaml` defines a free Docker web service linked to `main`, with `/api/checkout-readiness` as its health path. The Blueprint sets only non-secret disabled-state values. Apply it from Render's Blueprint flow and confirm the assigned `onrender.com` URL before changing `PUBLIC_BASE_URL`.
+
+The free instance is a validation environment: Render may spin it down after 15 minutes without traffic and local files are ephemeral. Never enable live checkout there without first reassessing availability, persistence, latency, secret handling, and webhook reliability for production.

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: pawswipe-checkout
+    runtime: docker
+    repo: https://github.com/emerickchasse/GPTShipping
+    branch: main
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/checkout-readiness
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: LIVE_CHECKOUT_ENABLED
+        value: "false"
+      - key: PUBLIC_BASE_URL
+        value: https://pawswipe-checkout.onrender.com
+      - key: STRIPE_AUTOMATIC_TAX_ENABLED
+        value: "false"
