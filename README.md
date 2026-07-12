@@ -22,6 +22,8 @@ The GitHub Pages workflow publishes a static pre-launch preview only. It cannot 
 
 Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickchasse.github.io/GPTShipping/)
 
+Search discovery and indexing evidence is tracked separately in [docs/ACQUISITION.md](docs/ACQUISITION.md); submitted URLs are never reported as indexed until Google confirms them.
+
 ## Container service
 
 For a real HTTPS checkout host, see [docs/CONTAINER_DEPLOYMENT.md](docs/CONTAINER_DEPLOYMENT.md). The GitHub Pages preview does not run the container or accept payments.

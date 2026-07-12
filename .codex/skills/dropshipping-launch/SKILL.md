@@ -22,6 +22,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 5. Treat each market as closed until its shipping, taxes/import fees, consumer-return rights, and product-safety obligations are verified. "International" is a product goal, not permission to enable every country.
 6. Track only paid, non-refunded order revenue in `MEMORY.md`; calculate in USD. Do not mark the goal complete below USD 100.00.
 7. Run a proportionate site check, inspect the diff, update memory, and commit before ending work.
+7a. For organic acquisition, keep Search Console verification tokens deployed, record property and sitemap states exactly, and distinguish submitted, fetched, discovered, indexed, impression, click, and sale evidence. An accepted request is not an indexed page.
 
 ## Recovery rule
 
