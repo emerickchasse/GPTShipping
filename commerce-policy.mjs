@@ -12,7 +12,8 @@ const attributionSources = new Set([
   'email',
   'care_guide',
   'size_guide',
-  'measure_guide'
+  'measure_guide',
+  'tie_guide'
 ]);
 
 export function normalizeAttributionSource(value) {

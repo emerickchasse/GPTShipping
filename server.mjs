@@ -8,7 +8,7 @@ import { submitPrintfulOrder } from './printful-fulfillment.mjs';
 const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
 const maxBodySize = 8 * 1024;
-const publicFiles = new Set(['index.html', 'care-guide.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'transparency.html', 'thank-you.html', 'app.js', 'guide.js', 'styles.css', 'pivot.css', 'robots.txt', 'sitemap.xml', 'sitemap.txt', '4a385d1729a145679725f7df42a21d91.txt', 'assets/pawswipe-social.png', 'assets/printful/paw-pattern-v2.png']);
+const publicFiles = new Set(['index.html', 'care-guide.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'transparency.html', 'thank-you.html', 'app.js', 'guide.js', 'styles.css', 'pivot.css', 'robots.txt', 'sitemap.xml', 'sitemap.txt', '4a385d1729a145679725f7df42a21d91.txt', 'assets/pawswipe-social.png', 'assets/printful/paw-pattern-v2.png', 'assets/printful/pet-parade-digital-mockup-v1.jpg']);
 const checkoutRequiredVariables = [
   'STRIPE_CHECKOUT_MODE',
   'STRIPE_SECRET_KEY',
@@ -31,6 +31,7 @@ const checkoutRequiredVariables = [
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
+  '.jpg': 'image/jpeg',
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.png': 'image/png',

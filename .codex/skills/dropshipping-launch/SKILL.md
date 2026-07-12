@@ -40,6 +40,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7f. Treat Search Console reports as separate evidence surfaces. A sitemap fetch failure or zero discovered-page count does not override a successful URL Inspection result, and URL-level indexing does not prove impressions, clicks, or sales. Record each signal with its scope and timestamp.
 7g. Before requesting URL-level indexing, require a live HTTP 200 and an exact self-referencing canonical. Keep one executable contract covering every indexable public page so a publication allowlist cannot silently omit canonical metadata.
 7h. Keep webmaster properties isolated by exact site URL. Never attribute another property's clicks, impressions, recommendations, or index state to this storefront. Adding a property is not ownership verification; record unauthorized or pending verification exactly, and do not grant cross-provider account scopes without specific authorization.
+7i. A keyword tool's ranked-result set can identify intent but not demand when it reports insufficient volume. Record the missing volume, publish only if the topic adds distinct customer value, and never translate rankings into an impression or traffic claim.
 
 ## Recovery rule
 
