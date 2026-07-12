@@ -56,6 +56,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7ia. When current keyword data does show volume and intent, keep location, language, date, and provider attached to the observation. Prefer strengthening one relevant canonical URL over creating a second page for the same phrase; volume is market evidence, not ranking, impression, click, or revenue evidence.
 7j. In PowerShell publication probes, never use `$home` as a response variable because names are case-insensitive and `$HOME` is reserved. Use `$homepageResponse`, fail the probe on command errors, and do not record zero/false fields produced after a failed fetch.
 7k. When a public Lighthouse audit identifies a concrete node, fix the observed cause and rerun the same external audit after deployment. A drawer hidden with `aria-hidden` must also be inert while closed; ship referenced favicon assets through every explicit publication allowlist. Record scores as lab diagnostics, never visits or conversions.
+7l. When Search Console aggregate reports are still processing and valid sitemap formats retain the same fetch failure, do not invent a data-driven content change or resubmit the sitemaps. Inspect the single strongest already-measured commercial URL instead; request indexing only after its live test proves access and indexability, and record the priority-queue result separately from indexation or traffic.
 
 ## Recovery rule
 
