@@ -28,6 +28,9 @@ IndexNow accepted the current nine-URL list with HTTP 200. This proves API recei
 - XML sitemap submitted: `https://emerickchasse.github.io/GPTShipping/sitemap.xml`
 - Current Bing sitemap state: **Processing**, one known sitemap, zero errors, zero warnings, and zero URLs discovered immediately after submission. Submission is not crawl or indexation evidence.
 - Direct URL Submission accepted all nine current public URLs at 19:46 EDT on July 12, 2026; the dashboard shows nine submitted today and 91 quota remaining. This is queue receipt only, not indexing, ranking, impressions, clicks, or revenue.
+- Bing Site Scan could not start because the verified property showed a zero-page scan quota. URL Inspection was used as the narrower evidence surface instead; no scan completion is claimed.
+- Homepage URL Inspection: **Indexed successfully**, `URL can appear on Bing`, no SEO/GEO issues found, and one markup type detected on July 12, 2026. This proves homepage index status only, not ranking, impressions, clicks, or orders.
+- Tie-on comparison URL Inspection: **Discovered but not crawled** since July 12, 2026, so it cannot yet appear on Bing. A separate priority request returned `Indexing requested`; this does not prove a crawl or indexation.
 - No Bing Search Performance or AI Performance metrics are attributed until the exact verified property reports them.
 
 The size guide exposes direct Pinterest, X, and email share links without loading third-party SDKs or pixels. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
