@@ -23,3 +23,8 @@ test('the storefront requires one verified size and carries it into cart and che
   assert.match(script, /if \(checkoutReady\)/);
   assert.match(script, /productPrice\.textContent/);
 });
+
+test('the product visual identifies the digital mockup without implying sample evidence', () => {
+  assert.match(html, /assets\/printful\/pet-parade-digital-mockup-v1\.jpg/);
+  assert.match(html, /Digital preview — physical sample not yet inspected\./);
+});
