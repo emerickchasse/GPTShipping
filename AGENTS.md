@@ -12,6 +12,7 @@ Build and operate an English-language international dropshipping storefront. The
 - Keep the live price, fulfilment cost, shipping regions, tax obligations, refund policy, and payment-provider status verified; never invent them.
 - Every completed work session must end with a scoped git commit, after inspecting the diff and running proportionate checks.
 - Keep reusable project process knowledge in `.codex/skills/`; revise it after a real mistake or newly discovered constraint.
+- Every server-side module imported at runtime must be copied into the production image. Run the Docker runtime contract, build the image, and start it before publishing server changes.
 
 ## Launch gate
 
