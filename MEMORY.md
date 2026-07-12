@@ -51,6 +51,7 @@ Launch an English-language international dropshipping store and record verified 
 - Public US-economics copy QA passed on 2026-07-12 for commit `c31c32d`: validation run `29188088329`, GHCR run `29188088347`, and Pages run `29188088374` succeeded. The deployed HTML states that base cost and standard US shipping are verified, includes the adult sizing warning, keeps checkout disabled, and contains no obsolete landed-cost claim. Revenue remains unverified at USD 0.00.
 - 2026-07-12 customer-policy pass: the official API confirms S/M/L availability in the US and EU but provides no finished dimensions. Do not invent a size table or enable selection. Add a public launch-transparency page that states the verified sizing limit, non-guaranteed shipping rule, supplier defect policy, absence of final customer returns/support, and zero first-party tracking/forms/payment on the preview.
 - Public transparency QA passed on 2026-07-12 for commit `9f2b493`: Pages run `29188208021`, validation run `29188208011`, and GHCR run `29188208042` succeeded. The deployed page returned HTTP 200 with six policy sections, the explicit no-orders statement, no placeholder copy, and links from the homepage and care guide. Desktop and 375px local browser checks found no overflow; no forms are present. Revenue remains USD 0.00.
+- IndexNow accepted the expanded three-URL submission (homepage, care guide, and launch transparency) with HTTP 200 on 2026-07-12. This is discovery evidence only.
 
 ## Verified revenue ledger
 
