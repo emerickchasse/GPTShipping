@@ -1,7 +1,7 @@
 ---
 version: "alpha"
 name: PawSwipe
-description: "A warm, practical pet-care storefront that makes everyday clean-up feel effortless."
+description: "A warm, practical pet-person storefront introducing an original made-to-order bandana without launch theatre."
 colors:
   primary: "#1D5B49"
   on-primary: "#FFFFFF"
@@ -83,4 +83,4 @@ Buttons require visible keyboard focus, hover and disabled states. Cart interact
 
 ## Open Questions
 
-Product imagery, exact offer, regions, delivery window, support contact, supplier quality evidence, and legal policy wording must be verified before launch.
+Sample quality, exact USD offer, regions, delivery window, support contact, care guidance, and legal policy wording must be verified before launch.

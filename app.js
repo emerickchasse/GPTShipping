@@ -1,5 +1,4 @@
-const price = 24;
-let cartQuantity = 0;
+let launchStatusViewed = false;
 
 const cart = document.querySelector('#cart');
 const overlay = document.querySelector('#overlay');
@@ -17,15 +16,13 @@ function setCartOpen(open) {
 }
 
 function renderCart() {
-  count.textContent = cartQuantity;
-  empty.hidden = cartQuantity > 0;
-  filled.hidden = cartQuantity === 0;
-  document.querySelector('#cart-quantity').textContent = cartQuantity;
-  document.querySelector('#cart-total').textContent = `$${(cartQuantity * price).toFixed(2)} USD`;
+  count.textContent = launchStatusViewed ? '1' : '0';
+  empty.hidden = launchStatusViewed;
+  filled.hidden = !launchStatusViewed;
 }
 
 document.querySelector('#add-to-cart').addEventListener('click', () => {
-  cartQuantity += Number(document.querySelector('#quantity').value);
+  launchStatusViewed = true;
   renderCart();
   setCartOpen(true);
 });
@@ -33,28 +30,6 @@ document.querySelector('#add-to-cart').addEventListener('click', () => {
 cartButton.addEventListener('click', () => setCartOpen(true));
 document.querySelector('#close-cart').addEventListener('click', () => setCartOpen(false));
 overlay.addEventListener('click', () => setCartOpen(false));
-
-document.querySelector('#checkout').addEventListener('click', async (event) => {
-  const checkout = event.currentTarget;
-  const message = document.querySelector('#checkout-message');
-  checkout.disabled = true;
-  checkout.textContent = 'Opening secure checkout…';
-  message.textContent = 'Checking live checkout availability…';
-  try {
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ quantity: cartQuantity })
-    });
-    const payload = await response.json().catch(() => ({ error: 'This preview does not accept payments.' }));
-    if (!response.ok || !payload.checkoutUrl) throw new Error(payload.error || 'Checkout is unavailable.');
-    window.location.assign(payload.checkoutUrl);
-  } catch (error) {
-    message.textContent = error.message;
-    checkout.disabled = false;
-    checkout.textContent = 'Continue to secure checkout';
-  }
-});
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 renderCart();

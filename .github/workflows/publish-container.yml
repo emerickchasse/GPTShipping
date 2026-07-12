@@ -14,6 +14,7 @@ on:
       - guide.js
       - index.html
       - package.json
+      - pivot.css
       - robots.txt
       - server.mjs
       - sitemap.xml
