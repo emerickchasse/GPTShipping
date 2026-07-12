@@ -28,6 +28,14 @@ test('the measurement guide is linked and discoverable in both sitemaps', () => 
   assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
 });
 
+test('the indexed size guide targets the measured commercial size-chart intent', () => {
+  assert.match(sizeGuide, /<title>Dog bandana size chart: S, M, or L\?/);
+  assert.match(sizeGuide, /<h1>Dog bandana size chart: S, M, or L\?<\/h1>/);
+  assert.match(sizeGuide, /"headline":"Dog bandana size chart: S, M, or L\?"/);
+  assert.match(sizeGuide, /Bandana labels are not universal/);
+  assert.match(sizeGuide, /Small pets; not adults/);
+});
+
 test('the digital product mockup is served by the container runtime', () => {
   const asset = 'assets/printful/pet-parade-digital-mockup-v1.jpg';
   assert.match(server, new RegExp(`['"]${asset.replaceAll('.', '\\.')}['"]`));

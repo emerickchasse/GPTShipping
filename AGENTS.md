@@ -38,6 +38,8 @@ The organic library includes a tying guide with the `tie_guide` attribution labe
 
 DataForSEO's 2026-07-12 US English snapshot reports `tie on dog bandana` at 720 monthly searches with transactional intent probability 0.771. Use the single comparison URL for that intent; do not create a competing landing page or present US keyword volume as international traffic.
 
+The same snapshot reports `dog bandana size chart` at 720 monthly searches with commercial intent probability 0.656. Keep `bandana-size-guide.html` as the sole target and preserve its verified S/M/L table, non-universal-label warning, and small-pet limitation.
+
 The homepage must expose the four product-decision guides (size, reference measurement, tying, and construction) in visible content that remains available when mobile navigation is hidden. Publication and sitemap presence are not substitutes for a visitor-reachable path from the offer.
 
 Treat the public Lighthouse report as external diagnostic evidence, not a traffic signal. Keep the closed cart inert as well as `aria-hidden`, maintain WCAG contrast for small card labels, and publish the project favicon through Pages, Render, and Docker allowlists.
