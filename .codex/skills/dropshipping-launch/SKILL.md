@@ -24,6 +24,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7. Run a proportionate site check, inspect the diff, update memory, and commit before ending work.
 7a. For organic acquisition, keep Search Console verification tokens deployed, record property and sitemap states exactly, and distinguish submitted, fetched, discovered, indexed, impression, click, and sale evidence. An accepted request is not an indexed page.
 7b. If both official XML and text sitemap formats return HTTP 200 to normal and Googlebot user agents but Search Console reports identical fetch failures, preserve both artifacts, stop repeated submissions, and recheck after property processing. Do not churn formats or call the incident fixed.
+7c. Do not invent age, identity, or profile facts to create a social account. When authenticated publishing is unavailable, expose privacy-safe share-intent links without third-party SDKs. A share composer is capability evidence; only a visible published post or referral data proves distribution.
 
 ## Recovery rule
 

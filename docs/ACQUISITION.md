@@ -18,6 +18,8 @@ Last reviewed: 2026-07-12
 
 IndexNow accepted the current four-URL list with HTTP 200. This proves API receipt only. It does not prove crawl, indexation, impressions, clicks, or revenue.
 
+The size guide exposes direct Pinterest, X, and email share links without loading third-party SDKs or pixels. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
+
 ## Evidence rules
 
 - Count a page as indexed only when Search Console reports it indexed or a live Google result confirms it.
