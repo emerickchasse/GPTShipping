@@ -32,6 +32,7 @@ Launch an English-language international dropshipping store and record verified 
 - Supplier availability check on 2026-07-12: Spocket also reached its login form with no authenticated session. No supplier credential was entered and no account was created; stock, destination shipping, and fulfilment economics therefore remain unverified.
 - Container host availability check on 2026-07-12: Render showed its sign-in screen with no authenticated session. No hosting account, deployment, or configuration was created. This is the third repeated missing external prerequisite on the current resumed audit: payment, supplier, and HTTPS container-host accounts are all unavailable.
 - 2026-07-12: keep the goal active by improving organic pre-launch acquisition. Add a public English care guide, social/share metadata, sitemap, robots directives and an original editorial social image. Product availability remains explicitly pre-launch; this is audience-building work, not revenue evidence.
+- Public QA passed on 2026-07-12: `https://emerickchasse.github.io/GPTShipping/care-guide.html` renders the guide, editorial image, internal navigation, and explicit pre-launch note. The Pages, CI, and GHCR workflows all passed for commit `d9e4b1a`.
 
 ## Verified revenue ledger
 
