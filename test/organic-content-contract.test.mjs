@@ -45,6 +45,15 @@ test('the digital product mockup is served by the container runtime', () => {
   assert.match(dockerfile, /COPY --chown=node:node assets \.\/assets/);
 });
 
+test('Bing ownership proof ships through Pages and the container', async () => {
+  const verification = await readFile(new URL('../BingSiteAuth.xml', import.meta.url), 'utf8');
+  assert.match(verification, /<users>[\s\S]*<user>[A-F0-9]{32}<\/user>[\s\S]*<\/users>/);
+  assert.match(pagesWorkflow, /\bBingSiteAuth\.xml\b/);
+  assert.match(server, /'BingSiteAuth\.xml'/);
+  assert.match(server, /'\.xml': 'application\/xml; charset=utf-8'/);
+  assert.match(dockerfile, /\bBingSiteAuth\.xml\b/);
+});
+
 test('the dog-bandana tying guide is published through every discovery surface', async () => {
   const relativeUrl = 'how-to-tie-dog-bandana.html';
   const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;

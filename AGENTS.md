@@ -74,7 +74,7 @@ Google URL Inspection currently confirms the homepage and `bandana-size-guide.ht
 
 `cat-bandana-guide.html` passed Google's live URL test and entered the priority crawl queue on 2026-07-12, but it was not indexed at inspection time. Pinterest, X, and Reddit were simultaneously signed out; never create identities or claim social distribution from those surfaces.
 
-Bing Webmaster Tools now lists the exact PawSwipe GitHub Pages property separately from unrelated account properties, but Bing currently returns `User is unauthorized to access the site`; ownership is not verified. Do not copy metrics from any other property or claim Bing indexing until the PawSwipe property itself provides evidence.
+Bing Webmaster Tools lists the exact PawSwipe GitHub Pages property separately from unrelated account properties. Its property-specific `BingSiteAuth.xml` is now tracked through Pages, Render, and Docker publication contracts. Ownership is not proven until both live-host probes and Bing's Verify result succeed; do not copy metrics from any other property or claim Bing indexing early.
 
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 

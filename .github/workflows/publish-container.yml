@@ -8,6 +8,7 @@ on:
       - .dockerignore
       - Dockerfile
       - 4a385d1729a145679725f7df42a21d91.txt
+      - BingSiteAuth.xml
       - app.js
       - assets/**
       - bandana-size-guide.html
