@@ -39,6 +39,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7e. Attribute future orders without tracking visitors. Accept only a short allowlisted `utm_source`, normalize unknown or hostile input to `direct` again on the server, store only that label in Stripe metadata, and include it in the verified revenue report. Never persist full URLs, referrers, user identifiers, or browsing history for campaign attribution.
 7f. Treat Search Console reports as separate evidence surfaces. A sitemap fetch failure or zero discovered-page count does not override a successful URL Inspection result, and URL-level indexing does not prove impressions, clicks, or sales. Record each signal with its scope and timestamp.
 7g. Before requesting URL-level indexing, require a live HTTP 200 and an exact self-referencing canonical. Keep one executable contract covering every indexable public page so a publication allowlist cannot silently omit canonical metadata.
+7h. Keep webmaster properties isolated by exact site URL. Never attribute another property's clicks, impressions, recommendations, or index state to this storefront. Adding a property is not ownership verification; record unauthorized or pending verification exactly, and do not grant cross-provider account scopes without specific authorization.
 
 ## Recovery rule
 

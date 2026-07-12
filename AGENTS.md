@@ -32,6 +32,8 @@ Campaign attribution is limited to the allowlisted `utm_source` label stored wit
 
 Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, and `transparency.html` were unknown to Google and have confirmed priority-crawl requests after live 200/self-canonical checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
 
+Bing Webmaster Tools now lists the exact PawSwipe GitHub Pages property separately from unrelated account properties, but Bing currently returns `User is unauthorized to access the site`; ownership is not verified. Do not copy metrics from any other property or claim Bing indexing until the PawSwipe property itself provides evidence.
+
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
 ## Success evidence
