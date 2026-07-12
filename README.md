@@ -19,3 +19,5 @@ This is intentionally a pre-launch prototype. The cart works locally and the ser
 ## Public preview
 
 The GitHub Pages workflow publishes a static pre-launch preview only. It cannot collect payments or customer email addresses; use an HTTPS host running `server.mjs` for the real checkout after the launch gate has been met.
+
+Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickchasse.github.io/GPTShipping/)

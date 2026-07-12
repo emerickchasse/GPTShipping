@@ -22,6 +22,7 @@ Launch an English-language international dropshipping store and record verified 
 - Blocked again on 2026-07-12 after the resumed three-cycle audit: the local environment still has no commerce credentials and no external commerce account, supplier evidence, deploy target, support identity, or legal/fulfilment data has become available. The technical checkout, readiness, webhook, and revenue-verification paths cannot turn this into a sale without those external facts and accounts.
 - 2026-07-12: a GitHub account is authenticated. Add a least-privilege GitHub Pages workflow that publishes only the static pre-launch preview; it must never be mistaken for the HTTPS server that handles real checkout and webhooks.
 - GitHub Pages deployment attempt: the build succeeded, but the protected `github-pages` environment allows only branch `main`; the repository began on `master`. Align the local branch and workflow trigger to `main` instead of weakening the environment policy.
+- GitHub Pages deployment succeeded from `main` on 2026-07-12. The public pre-launch preview is `https://emerickchasse.github.io/GPTShipping/`; Chrome QA confirmed it renders and reports "This preview does not accept payments." after checkout is selected. It is not a live commerce deployment and contributes no revenue.
 
 ## Verified revenue ledger
 
