@@ -22,7 +22,7 @@ The current Printful manual/API store is `18458606` and the Pet Parade sync prod
 
 The protected Render environment now has a single-store Printful Orders token expiring 2028-07-11 plus the verified S/M/L references. Never copy the token into the repository or logs. `PRINTFUL_AUTO_CONFIRM` must remain false until merchant billing and the complete paid-order path are verified.
 
-The protected pilot-market configuration is US-only with internal working values USD 24.99 unit price and USD 4.49 standard shipping. These values are configured behind the disabled checkout gate, not public launch claims. Readiness still requires the Stripe secret and signed webhook plus the independent tax, billing, sample, and support approvals.
+The protected pilot-market configuration is US-only with a USD 24.99 product price and USD 4.49 customer shipping, totaling USD 29.48 before tax. Against the USD 14.64 supplier subtotal, the pre-fee contribution is USD 14.84 (50.3%); four non-refunded orders total USD 117.92. These values are configured behind the disabled checkout gate, not public launch claims. Readiness still requires the Stripe secret and signed webhook plus the independent tax, billing, sample, and support approvals.
 
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
