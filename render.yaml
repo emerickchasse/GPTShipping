@@ -37,4 +37,4 @@ services:
       - key: PAWSWIPE_CUSTOMER_POLICIES_APPROVED
         value: "false"
       - key: PAWSWIPE_PRIVATE_SUPPORT_APPROVED
-        value: "false"
+        value: "true"

@@ -6,7 +6,7 @@ Last reviewed: 2026-07-12
 
 The connected Gmail mailbox has a private `PawSwipe Support` label. A self-addressed plus-routing test reached the inbox and was labeled successfully on July 12, 2026. The exact mailbox and routing address are private operating data and must not appear in source, logs, public pages, or customer-facing screenshots.
 
-This is internal routing evidence only. `PAWSWIPE_PRIVATE_SUPPORT_APPROVED` remains `false` because customers do not yet have a privacy-safe public entry point and no response-time or end-to-end case-handling test has been completed.
+The public Google Form is accessible without authentication, does not expose the personal mailbox, and collects only category, reply email, optional PawSwipe order reference, message, and privacy confirmation. A no-customer-data test response produced an owner notification, entered the private queue, and received an acknowledgement at the test requester address. Email notifications are enabled and the initial-review target is one US business day. `PAWSWIPE_PRIVATE_SUPPORT_APPROVED` is therefore `true` as of July 12, 2026.
 
 ## Intake rules
 
@@ -47,7 +47,7 @@ Subject: `Choose how to handle your PawSwipe shipping delay`
 
 ## Approval evidence required
 
-Set `PAWSWIPE_PRIVATE_SUPPORT_APPROVED=true` only after all of these are directly verified:
+The approval was granted only after all of these were directly verified:
 
 - a public, privacy-safe support entry point that does not expose a personal address;
 - receipt into the connected private queue;
@@ -55,4 +55,3 @@ Set `PAWSWIPE_PRIVATE_SUPPORT_APPROVED=true` only after all of these are directl
 - a complete reply test from intake through receipt by a test requester;
 - safe order lookup and escalation paths for payment, fulfilment, defects, transit loss, cancellation, and privacy requests;
 - customer policies updated with the real entry point and response expectations.
-

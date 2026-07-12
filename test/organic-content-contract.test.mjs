@@ -14,6 +14,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
 
 const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'customer-policies.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
 const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
+const supportFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScMEoMJRpmnazzQjWGQABXdtaUhWpuh5AkWX_d8kHjVblNDTA/viewform';
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
   const relativeUrl = 'measure-pet-for-bandana.html';
@@ -153,6 +154,18 @@ test('public pages never expose the connected personal support mailbox', async (
   for (const relativeUrl of publicPages) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
     assert.doesNotMatch(page, /chasse\.emerick|@gmail\.com/i, relativeUrl);
+  }
+});
+
+test('private support uses the verified form without exposing the mailbox', async () => {
+  const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
+  const policies = await readFile(new URL('../customer-policies.html', import.meta.url), 'utf8');
+
+  for (const [name, page] of [['transparency', transparency], ['policies', policies]]) {
+    assert.match(page, new RegExp(`href="${supportFormUrl.replaceAll('.', '\\.')}"`), name);
+    assert.match(page, /target="_blank" rel="noopener noreferrer"/, name);
+    assert.match(page, /card number|card details/i, name);
+    assert.doesNotMatch(page, /@gmail\.com|chasse\.emerick/i, name);
   }
 });
 
