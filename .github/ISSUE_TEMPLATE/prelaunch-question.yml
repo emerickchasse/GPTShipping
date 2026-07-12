@@ -1,0 +1,38 @@
+name: PawSwipe pre-launch question
+description: Ask a public question about Pet Parade product facts or launch status.
+title: "[Pre-launch question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping PawSwipe prepare a careful launch. This issue is public.
+
+        Do not include your email, phone number, address, payment information, order details, or any other personal information. Orders are not open, and PawSwipe support will never ask for payment through a GitHub issue.
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Product construction
+        - Sizing
+        - Shipping or market availability
+        - Returns or launch policy
+        - Accessibility or website issue
+        - Other pre-launch question
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Public question
+      description: Keep this limited to non-personal product or launch information.
+      placeholder: What would you like PawSwipe to clarify before launch?
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I understand this is public and have not included personal, payment, or order information.
+          required: true
