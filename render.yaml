@@ -30,3 +30,11 @@ services:
         value: 6a53ef4031cc81
       - key: PRINTFUL_AUTO_CONFIRM
         value: "false"
+      - key: PAWSWIPE_SAMPLE_APPROVED
+        value: "false"
+      - key: PAWSWIPE_SUPPLIER_BILLING_APPROVED
+        value: "false"
+      - key: PAWSWIPE_CUSTOMER_POLICIES_APPROVED
+        value: "false"
+      - key: PAWSWIPE_PRIVATE_SUPPORT_APPROVED
+        value: "false"

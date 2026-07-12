@@ -18,6 +18,8 @@ Build and operate an English-language international dropshipping storefront. The
 
 Before taking payment, configure a real payment provider, a verified product supplier, truthful shipping/returns pages, support contact, privacy/cookie notices where required, analytics consent handling, and a deployed HTTPS domain. Confirm the checkout from the buyer's perspective.
 
+Four human approvals are executable readiness gates and default false: `PAWSWIPE_SAMPLE_APPROVED`, `PAWSWIPE_SUPPLIER_BILLING_APPROVED`, `PAWSWIPE_CUSTOMER_POLICIES_APPROVED`, and `PAWSWIPE_PRIVATE_SUPPORT_APPROVED`. Never set one true from documentation or configuration alone; each requires current real-world evidence for its named gate.
+
 The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. The storefront now requires and preserves an S/M/L selection through the cart and checkout payload. Supplier publication alone is not checkout readiness: keep checkout closed until auto-confirm billing, tax, sample, support, and Stripe live-mode gates are verified.
 
 The storefront product card uses `assets/printful/pet-parade-digital-mockup-v1.jpg`, generated from the exact approved pattern. It is a digital preview only and must retain the visible uninspected-sample disclosure; it is not physical quality evidence.

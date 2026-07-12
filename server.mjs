@@ -26,7 +26,11 @@ const checkoutRequiredVariables = [
   'PRINTFUL_VARIANT_S',
   'PRINTFUL_VARIANT_M',
   'PRINTFUL_VARIANT_L',
-  'PRINTFUL_AUTO_CONFIRM'
+  'PRINTFUL_AUTO_CONFIRM',
+  'PAWSWIPE_SAMPLE_APPROVED',
+  'PAWSWIPE_SUPPLIER_BILLING_APPROVED',
+  'PAWSWIPE_CUSTOMER_POLICIES_APPROVED',
+  'PAWSWIPE_PRIVATE_SUPPORT_APPROVED'
 ];
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -123,12 +127,19 @@ function checkoutReadiness() {
     process.env.PRINTFUL_VARIANT_L
   );
   const printfulAutoConfirm = process.env.PRINTFUL_AUTO_CONFIRM === 'true';
+  const launchApprovals = {
+    sample: process.env.PAWSWIPE_SAMPLE_APPROVED === 'true',
+    supplierBilling: process.env.PAWSWIPE_SUPPLIER_BILLING_APPROVED === 'true',
+    customerPolicies: process.env.PAWSWIPE_CUSTOMER_POLICIES_APPROVED === 'true',
+    privateSupport: process.env.PAWSWIPE_PRIVATE_SUPPORT_APPROVED === 'true'
+  };
+  const launchApprovalsComplete = Object.values(launchApprovals).every(Boolean);
   try {
     httpsConfigured = new URL(process.env.PUBLIC_BASE_URL).protocol === 'https:';
   } catch {
     httpsConfigured = false;
   }
-  const ready = checkoutEnabled && stripeTaxEnabled && httpsConfigured && printfulConfigured && printfulAutoConfirm && missing.length === 0;
+  const ready = checkoutEnabled && stripeTaxEnabled && httpsConfigured && printfulConfigured && printfulAutoConfirm && launchApprovalsComplete && missing.length === 0;
   return {
     ready,
     checkoutEnabled,
@@ -136,6 +147,7 @@ function checkoutReadiness() {
     httpsConfigured,
     printfulConfigured,
     printfulAutoConfirm,
+    launchApprovals,
     checkoutMode: process.env.STRIPE_CHECKOUT_MODE || null,
     missingConfigurationCount: missing.length,
     unitAmountCents: ready ? Number(process.env.PAWSWIPE_UNIT_AMOUNT_CENTS) : null,
