@@ -37,12 +37,16 @@ The preferred pivot candidate is Printful product code **655**, the All-Over Pri
 - The official legacy Catalog API maps the current bandana page to internal product `630`. On 2026-07-12, variants `16031`, `16032`, and `16033` (S/M/L) each reported `in_stock: true` and a fixed North American base price of **USD 10.15**. Printful's current shipping table places bandanas in all-over print clothing and textiles, with **USD 4.49** standard US shipping for one item and **USD 2.00** for each additional item. The one-item supplier subtotal is therefore **USD 14.64 before destination tax**.
 - A working retail hypothesis is **USD 24.99 with US standard shipping included**. That leaves USD 10.35 (41.4%) before destination tax, payment fees, refunds, support, and marketing. It is an internal validation number, not an approved public price. Four sales would total USD 99.96 and would not meet the mission; five non-refunded sales would total USD 124.95.
 - A store-scoped private token with only File Library write access was created to import the public asset URL, then revoked immediately. A post-revocation API request returned HTTP 401. No token was logged, committed, or retained.
+- Printful manual/API store **PawSwipe Fulfillment** was created without a billing method or paid plan. Its store ID is `18458606`.
+- Template `104922382` was published supplier-side as sync product `445876313`. The authenticated product record shows S/M/L external variant references `6a53ef4031cc29`, `6a53ef4031cc68`, and `6a53ef4031cc81`, respectively, each mapped to the All-Over Print Bandana. No order or sample was submitted.
+- The Printful account is configured in CAD, so the supplier-side retail reference was saved as **C$34.00** for all variants (C$19.50 displayed estimated revenue before tax and shipping). This is not the customer-facing USD price and must not be copied into Stripe or revenue reporting. The internal checkout hypothesis remains USD 24.99 until live USD pricing is configured and verified.
 
 ## Next validation gate
 
 1. Obtain a destination-ZIP checkout tax quote and recheck the USD base/shipping immediately before launch.
 2. Order and inspect a sample before publishing performance or quality claims.
-3. Configure authenticated order fulfilment only after payment, support, tax, and customer-policy gates are also satisfied.
+3. Create a least-scope Products/Orders API credential for store `18458606`, verify numeric sync-variant IDs or a documented external-variant ordering path, then revoke any temporary discovery credential.
+4. Configure authenticated order fulfilment only after payment, support, tax, and customer-policy gates are also satisfied.
 
 ## Primary sources
 
