@@ -33,6 +33,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7b. If both official XML and text sitemap formats return HTTP 200 to normal and Googlebot user agents but Search Console reports identical fetch failures, preserve both artifacts, stop repeated submissions, and recheck after property processing. Do not churn formats or call the incident fixed.
 7c. Do not invent age, identity, or profile facts to create a social account. When authenticated publishing is unavailable, expose privacy-safe share-intent links without third-party SDKs. A share composer is capability evidence; only a visible published post or referral data proves distribution.
 7d. When adding a public page, update every explicit publication allowlist in the same change: Pages artifact assembly, runtime image/static server, both sitemap formats, and discovery submission. A green deployment that omitted the file is a failure; probe the exact public URL before claiming publication.
+7e. Attribute future orders without tracking visitors. Accept only a short allowlisted `utm_source`, normalize unknown or hostile input to `direct` again on the server, store only that label in Stripe metadata, and include it in the verified revenue report. Never persist full URLs, referrers, user identifiers, or browsing history for campaign attribution.
 
 ## Recovery rule
 

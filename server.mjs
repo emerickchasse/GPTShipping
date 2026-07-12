@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { extname, resolve } from 'node:path';
-import { normalizeCheckoutMode, shouldFulfillStripeSession } from './commerce-policy.mjs';
+import { normalizeAttributionSource, normalizeCheckoutMode, shouldFulfillStripeSession } from './commerce-policy.mjs';
 import { submitPrintfulOrder } from './printful-fulfillment.mjs';
 
 const root = resolve('.');
@@ -183,7 +183,7 @@ async function stripeRequest(path, options, secretKey) {
   return payload;
 }
 
-async function createCheckoutSession(quantity, size) {
+async function createCheckoutSession(quantity, size, attributionSource) {
   const config = liveCheckoutConfig();
   if (!Number.isSafeInteger(config.shippingAmount) || config.shippingAmount < 0) {
     throw new Error('PAWSWIPE_SHIPPING_RATE_CENTS must be a non-negative integer.');
@@ -207,6 +207,7 @@ async function createCheckoutSession(quantity, size) {
     'metadata[store]': 'pawswipe',
     'metadata[sku]': `${config.sku}-${size.toLowerCase()}`,
     'metadata[size]': size,
+    'metadata[attribution_source]': normalizeAttributionSource(attributionSource),
     success_url: `${config.baseUrl}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${config.baseUrl}/#shop`
   });
@@ -328,7 +329,7 @@ createServer(async (request, response) => {
       if (quantity > 3) throw new Error('Quantity cannot exceed 3 per checkout.');
       const size = typeof body.size === 'string' ? body.size.trim().toUpperCase() : '';
       if (!['S', 'M', 'L'].includes(size)) throw new Error('Size must be S, M, or L.');
-      const checkoutUrl = await createCheckoutSession(quantity, size);
+      const checkoutUrl = await createCheckoutSession(quantity, size, body.source);
       sendJson(response, 200, { checkoutUrl });
     } catch (error) {
       const isUnavailable = error.message === 'Checkout is not live yet.';

@@ -3,6 +3,24 @@ export function normalizeCheckoutMode(value) {
   throw new Error('STRIPE_CHECKOUT_MODE must be exactly "test" or "live".');
 }
 
+const attributionSources = new Set([
+  'direct',
+  'google',
+  'github',
+  'pinterest',
+  'x',
+  'email',
+  'care_guide',
+  'size_guide',
+  'measure_guide'
+]);
+
+export function normalizeAttributionSource(value) {
+  if (typeof value !== 'string') return 'direct';
+  const normalized = value.trim().toLowerCase();
+  return attributionSources.has(normalized) ? normalized : 'direct';
+}
+
 export function shouldFulfillStripeSession(session, checkoutMode) {
   const expectedLivemode = normalizeCheckoutMode(checkoutMode) === 'live';
   return session?.livemode === expectedLivemode

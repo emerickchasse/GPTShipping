@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { normalizeCheckoutMode, shouldFulfillStripeSession } from '../commerce-policy.mjs';
+import * as commercePolicy from '../commerce-policy.mjs';
 
 const paidSession = (livemode) => ({
   livemode,
@@ -26,4 +27,13 @@ test('live mode accepts only paid PawSwipe live sessions', () => {
   assert.equal(shouldFulfillStripeSession(paidSession(true), 'live'), true);
   assert.equal(shouldFulfillStripeSession(paidSession(false), 'live'), false);
   assert.equal(shouldFulfillStripeSession({ ...paidSession(true), metadata: { store: 'other' } }, 'live'), false);
+});
+
+test('normalizes attribution to a small privacy-safe allowlist', () => {
+  assert.equal(typeof commercePolicy.normalizeAttributionSource, 'function');
+  assert.equal(commercePolicy.normalizeAttributionSource('google'), 'google');
+  assert.equal(commercePolicy.normalizeAttributionSource(' SIZE_GUIDE '), 'size_guide');
+  assert.equal(commercePolicy.normalizeAttributionSource('https://tracker.example/user/42'), 'direct');
+  assert.equal(commercePolicy.normalizeAttributionSource('unknown-campaign'), 'direct');
+  assert.equal(commercePolicy.normalizeAttributionSource(null), 'direct');
 });

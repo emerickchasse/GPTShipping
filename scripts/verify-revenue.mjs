@@ -1,3 +1,5 @@
+import { normalizeAttributionSource } from '../commerce-policy.mjs';
+
 const secretKey = process.env.STRIPE_SECRET_KEY;
 if (!secretKey) {
   console.error('STRIPE_SECRET_KEY is required. Its value must stay out of source control and shell output.');
@@ -24,7 +26,8 @@ do {
       id: session.id,
       created: new Date(session.created * 1000).toISOString(),
       amountCents: Math.max(0, session.amount_total - refunded),
-      refundedCents: refunded
+      refundedCents: refunded,
+      attributionSource: normalizeAttributionSource(session.metadata?.attribution_source)
     });
   }
   cursor = page.has_more ? `&starting_after=${page.data.at(-1).id}` : '';

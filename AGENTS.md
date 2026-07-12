@@ -26,6 +26,8 @@ The protected pilot-market configuration is US-only with internal working values
 
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
+Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, amount, currency, and payment date in `MEMORY.md`. Sum only paid, non-refunded orders. The target is met at USD 100.00 or more.

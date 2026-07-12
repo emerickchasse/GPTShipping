@@ -5,6 +5,7 @@ let checkoutReady = false;
 const checkoutApiBase = window.location.hostname === 'emerickchasse.github.io'
   ? 'https://pawswipe-checkout.onrender.com'
   : '';
+const attributionSource = new URLSearchParams(window.location.search).get('utm_source') || 'direct';
 
 const cart = document.querySelector('#cart');
 const overlay = document.querySelector('#overlay');
@@ -80,7 +81,7 @@ checkoutButton.addEventListener('click', async () => {
     const response = await fetch(`${checkoutApiBase}/api/checkout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ quantity: 1, size: selectedSize })
+      body: JSON.stringify({ quantity: 1, size: selectedSize, source: attributionSource })
     });
     const result = await response.json();
     if (!response.ok || !result.checkoutUrl) throw new Error(result.error || 'Checkout is unavailable.');

@@ -15,7 +15,7 @@ test('the storefront requires one verified size and carries it into cart and che
   );
   assert.match(html, /id="selected-size"/);
   assert.match(script, /selectedSize\s*=\s*sizeSelect\.value/);
-  assert.match(script, /JSON\.stringify\(\{\s*quantity:\s*1,\s*size:\s*selectedSize\s*\}\)/);
+  assert.match(script, /JSON\.stringify\(\{\s*quantity:\s*1,\s*size:\s*selectedSize,\s*source:\s*attributionSource\s*\}\)/);
   assert.match(script, /https:\/\/pawswipe-checkout\.onrender\.com/);
   assert.match(script, /fetch\(`\$\{checkoutApiBase\}\/api\/checkout-readiness`\)/);
   assert.match(script, /checkoutButton\.disabled\s*=\s*!readiness\.ready/);
