@@ -12,10 +12,13 @@ on:
       - assets/**
       - bandana-size-guide.html
       - care-guide.html
+      - cat-bandana-guide.html
       - commerce-policy.mjs
       - transparency.html
       - guide.js
+      - how-to-tie-dog-bandana.html
       - index.html
+      - measure-pet-for-bandana.html
       - package.json
       - pivot.css
       - robots.txt
@@ -25,6 +28,7 @@ on:
       - sitemap.txt
       - styles.css
       - thank-you.html
+      - tie-on-vs-over-collar-dog-bandana.html
   workflow_dispatch:
 
 permissions:

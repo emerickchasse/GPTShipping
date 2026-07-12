@@ -12,7 +12,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
   readFile(new URL('../Dockerfile', import.meta.url), 'utf8')
 ]);
 
-const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html'];
+const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
 const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
@@ -77,6 +77,25 @@ test('the tie-on versus over-collar guide is published through every discovery s
   assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
 });
 
+test('the cat bandana guide is factual and published through every discovery surface', async () => {
+  const relativeUrl = 'cat-bandana-guide.html';
+  const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+  const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+
+  assert.match(page, /<title>Cat bandana guide:/);
+  assert.match(page, /<h1>Cat bandana guide:/);
+  assert.match(page, /44 cm/);
+  assert.match(page, /not a collar or restraint/i);
+  assert.match(page, /supervis/i);
+  assert.match(page, /href="index\.html\?utm_source=cat_guide#shop"/);
+  assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
+  assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
+  assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
+  assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(server, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
+});
+
 test('every indexable public page declares its exact canonical URL', async () => {
   for (const relativeUrl of publicPages) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
@@ -109,7 +128,8 @@ test('the storefront exposes the decision-guide library without relying on deskt
     'bandana-size-guide.html',
     'measure-pet-for-bandana.html',
     'how-to-tie-dog-bandana.html',
-    'tie-on-vs-over-collar-dog-bandana.html'
+    'tie-on-vs-over-collar-dog-bandana.html',
+    'cat-bandana-guide.html'
   ];
 
   assert.match(storefront, /<section[^>]+id="guides"/);
@@ -123,7 +143,8 @@ test('every product return from a decision guide preserves its distinct attribut
     ['bandana-size-guide.html', 'size_guide'],
     ['measure-pet-for-bandana.html', 'measure_guide'],
     ['how-to-tie-dog-bandana.html', 'tie_guide'],
-    ['tie-on-vs-over-collar-dog-bandana.html', 'comparison_guide']
+    ['tie-on-vs-over-collar-dog-bandana.html', 'comparison_guide'],
+    ['cat-bandana-guide.html', 'cat_guide']
   ]);
 
   for (const [relativeUrl, source] of guideSources) {

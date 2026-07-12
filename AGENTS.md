@@ -32,6 +32,8 @@ The protected pilot-market configuration is US-only with a USD 24.99 product pri
 
 The homepage is the sole target for the measured `pet bandana` category (DataForSEO US English: 1,000 monthly searches; transactional probability 0.476 on 2026-07-12). Keep the category wording paired with the factual cat-and-dog print and explicit closed-order status; do not turn a category estimate into an international-demand claim.
 
+Use `cat-bandana-guide.html` for the measured `cat bandana` intent (DataForSEO US English: 1,900 monthly searches on 2026-07-12) without converting it into a second product page. Keep its advice limited to the verified square dimensions, comparison against an already tolerated accessory, supervision, and the fact that S is not a cat-specific fit guarantee. Preserve `cat_guide` attribution on every product return.
+
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.
