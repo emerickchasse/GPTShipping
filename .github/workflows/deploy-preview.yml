@@ -26,7 +26,8 @@ jobs:
       - name: Assemble static preview
         run: |
           mkdir -p _site
-          cp index.html thank-you.html app.js styles.css _site/
+          cp index.html care-guide.html thank-you.html app.js styles.css robots.txt sitemap.xml _site/
+          cp -R assets _site/assets
           touch _site/.nojekyll
       - name: Upload preview artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3

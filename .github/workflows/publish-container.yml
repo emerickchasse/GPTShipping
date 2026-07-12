@@ -8,9 +8,13 @@ on:
       - .dockerignore
       - Dockerfile
       - app.js
+      - assets/**
+      - care-guide.html
       - index.html
       - package.json
+      - robots.txt
       - server.mjs
+      - sitemap.xml
       - styles.css
       - thank-you.html
   workflow_dispatch:

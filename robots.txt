@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://emerickchasse.github.io/GPTShipping/sitemap.xml

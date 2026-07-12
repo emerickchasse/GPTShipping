@@ -6,7 +6,7 @@ import { extname, resolve } from 'node:path';
 const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
 const maxBodySize = 8 * 1024;
-const publicFiles = new Set(['index.html', 'thank-you.html', 'app.js', 'styles.css']);
+const publicFiles = new Set(['index.html', 'care-guide.html', 'thank-you.html', 'app.js', 'styles.css', 'robots.txt', 'sitemap.xml', 'assets/pawswipe-social.png']);
 const checkoutRequiredVariables = [
   'STRIPE_SECRET_KEY',
   'PUBLIC_BASE_URL',
@@ -25,6 +25,9 @@ const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
   '.svg': 'image/svg+xml'
 };
 
