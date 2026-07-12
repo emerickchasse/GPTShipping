@@ -11,6 +11,7 @@ on:
       - app.js
       - assets/**
       - care-guide.html
+      - transparency.html
       - guide.js
       - index.html
       - package.json
