@@ -10,6 +10,8 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript] = awai
   readFile(new URL('../scripts/submit-indexnow.mjs', import.meta.url), 'utf8')
 ]);
 
+const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html'];
+
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
   const relativeUrl = 'measure-pet-for-bandana.html';
   const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
@@ -19,4 +21,15 @@ test('the measurement guide is linked and discoverable in both sitemaps', () => 
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
   assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
+});
+
+test('every indexable public page declares its exact canonical URL', async () => {
+  for (const relativeUrl of publicPages) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    const canonicalUrl = relativeUrl === 'index.html'
+      ? 'https://emerickchasse.github.io/GPTShipping/'
+      : `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+
+    assert.match(page, new RegExp(`<link rel="canonical" href="${canonicalUrl.replaceAll('.', '\\.')}"`), relativeUrl);
+  }
 });

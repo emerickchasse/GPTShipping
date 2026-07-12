@@ -28,7 +28,7 @@ GitHub Pages must talk to Render only through the exact configured `PUBLIC_STORE
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.
 
-Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, sitemap status, impressions, clicks, and sales as separate evidence.
+Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html` and `measure-pet-for-bandana.html` were unknown to Google and have confirmed priority-crawl requests. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
 
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
