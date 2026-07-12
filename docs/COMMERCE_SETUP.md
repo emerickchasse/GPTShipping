@@ -15,9 +15,11 @@ The storefront has no live waitlist or checkout until configuration is complete.
 3. Use only the supplier-verified product copy, SKU, price and shipping amount in the protected host environment. Do not commit them.
 4. Deploy the server on an HTTPS host and set `PUBLIC_BASE_URL` to its final origin.
 5. Configure Stripe Tax accurately. This server refuses live checkout if `STRIPE_AUTOMATIC_TAX_ENABLED` is not true.
-6. Add an authenticated, idempotent fulfilment webhook before accepting payments. A payment success page is not fulfilment proof.
-7. Publish accurate shipping, returns, privacy, support, import-fee and product-safety pages for every enabled market.
-8. Perform a real customer-path test, then enable the checkout.
+6. Configure Stripe to deliver `checkout.session.completed` and `checkout.session.async_payment_succeeded` events to `POST /api/stripe-webhook`. Set `STRIPE_WEBHOOK_SECRET` from that endpoint.
+7. Configure an HTTPS fulfilment endpoint plus `FULFILLMENT_WEBHOOK_BEARER_TOKEN`. The endpoint must accept the paid-order payload, authenticate the bearer token, and make the `Idempotency-Key` (the Checkout Session ID) durable so retries never create duplicate supplier orders.
+8. The server retrieves the paid session directly from Stripe before forwarding fulfilment data. It returns a non-2xx response on failure so Stripe retries the event.
+9. Publish accurate shipping, returns, privacy, support, import-fee and product-safety pages for every enabled market.
+10. Perform a real customer-path test, then enable the checkout.
 
 ## Verify the goal
 
