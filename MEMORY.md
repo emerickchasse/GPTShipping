@@ -34,6 +34,7 @@ Launch an English-language international dropshipping store and record verified 
 - 2026-07-12: keep the goal active by improving organic pre-launch acquisition. Add a public English care guide, social/share metadata, sitemap, robots directives and an original editorial social image. Product availability remains explicitly pre-launch; this is audience-building work, not revenue evidence.
 - Public QA passed on 2026-07-12: `https://emerickchasse.github.io/GPTShipping/care-guide.html` renders the guide, editorial image, internal navigation, and explicit pre-launch note. The Pages, CI, and GHCR workflows all passed for commit `d9e4b1a`.
 - 2026-07-12: add a privacy-respecting visitor share flow to the care guide, plus reusable English pre-launch community copy. This enables organic sharing without collecting email addresses or implying that checkout is open.
+- Public sharing QA passed on 2026-07-12 after the GitHub Pages update propagated: the public care guide exposes the share buttons and shows an accessible fallback message when native sharing/clipboard access is unavailable. All CI, Pages and GHCR workflows passed for `cb365fe`.
 
 ## Verified revenue ledger
 
