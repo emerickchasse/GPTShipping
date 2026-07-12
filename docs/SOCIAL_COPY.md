@@ -8,6 +8,14 @@ Use only while PawSwipe remains pre-launch. Do not imply an available product, p
 
 Link: `https://emerickchasse.github.io/GPTShipping/care-guide.html`
 
+## Cat bandana guide
+
+> Cat bandana labels are not universal. Compare a square your cat already tolerates, account for the fold and knot, and keep every wear supervised. Our measured guide explains what the numbers can—and cannot—tell you.
+
+Link: `https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html`
+
+Suggested caption: A cat bandana is an accessory, not a collar or restraint. Start with the measured square and a familiar reference before choosing.
+
 ## Three short captions
 
 1. A favourite sofa, a sleepy dog, and one less tiny task. Our guide is for the pet-loving home.
