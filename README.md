@@ -15,3 +15,7 @@ Then open `http://localhost:8080`. Copy `.env.example` to a non-committed enviro
 ## Launch status
 
 This is intentionally a pre-launch prototype. The cart works locally and the server can create a Stripe-hosted Checkout Session only after every required protected environment setting is verified. See [docs/COMMERCE_SETUP.md](docs/COMMERCE_SETUP.md) and [MEMORY.md](MEMORY.md) for the live launch gate and verified revenue ledger. Do not enable payment until supplier, fulfilment, customer support, legal policies, and payment-provider configuration have been verified.
+
+## Public preview
+
+The GitHub Pages workflow publishes a static pre-launch preview only. It cannot collect payments or customer email addresses; use an HTTPS host running `server.mjs` for the real checkout after the launch gate has been met.

@@ -46,7 +46,7 @@ document.querySelector('#checkout').addEventListener('click', async (event) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ quantity: cartQuantity })
     });
-    const payload = await response.json();
+    const payload = await response.json().catch(() => ({ error: 'This preview does not accept payments.' }));
     if (!response.ok || !payload.checkoutUrl) throw new Error(payload.error || 'Checkout is unavailable.');
     window.location.assign(payload.checkoutUrl);
   } catch (error) {
