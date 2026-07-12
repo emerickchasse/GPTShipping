@@ -13,6 +13,7 @@ const checkoutRequiredVariables = [
   'STRIPE_CHECKOUT_MODE',
   'STRIPE_SECRET_KEY',
   'PUBLIC_BASE_URL',
+  'PUBLIC_STOREFRONT_ORIGIN',
   'PAWSWIPE_PRODUCT_NAME',
   'PAWSWIPE_PRODUCT_DESCRIPTION',
   'PAWSWIPE_SKU',
@@ -45,6 +46,18 @@ function sendJson(response, status, payload) {
     'X-Content-Type-Options': 'nosniff'
   });
   response.end(JSON.stringify(payload));
+}
+
+function applyStorefrontCors(request, response) {
+  const allowedOrigin = process.env.PUBLIC_STOREFRONT_ORIGIN;
+  if (allowedOrigin && request.headers.origin === allowedOrigin) {
+    response.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    response.setHeader('Vary', 'Origin');
+    return true;
+  }
+  return false;
 }
 
 function readBuffer(request, limit = maxBodySize) {
@@ -98,15 +111,18 @@ function checkoutReadiness() {
   } catch {
     httpsConfigured = false;
   }
+  const ready = checkoutEnabled && stripeTaxEnabled && httpsConfigured && printfulConfigured && printfulAutoConfirm && missing.length === 0;
   return {
-    ready: checkoutEnabled && stripeTaxEnabled && httpsConfigured && printfulConfigured && printfulAutoConfirm && missing.length === 0,
+    ready,
     checkoutEnabled,
     stripeTaxEnabled,
     httpsConfigured,
     printfulConfigured,
     printfulAutoConfirm,
     checkoutMode: process.env.STRIPE_CHECKOUT_MODE || null,
-    missingConfigurationCount: missing.length
+    missingConfigurationCount: missing.length,
+    unitAmountCents: ready ? Number(process.env.PAWSWIPE_UNIT_AMOUNT_CENTS) : null,
+    shippingAmountCents: ready ? Number(process.env.PAWSWIPE_SHIPPING_RATE_CENTS) : null
   };
 }
 
@@ -276,6 +292,12 @@ async function serveStatic(request, response, pathname) {
 
 createServer(async (request, response) => {
   const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
+  const storefrontOriginAllowed = applyStorefrontCors(request, response);
+  if (request.method === 'OPTIONS' && url.pathname.startsWith('/api/') && storefrontOriginAllowed) {
+    response.writeHead(204);
+    response.end();
+    return;
+  }
   if (request.method === 'GET' && url.pathname === '/api/checkout-readiness') {
     sendJson(response, 200, checkoutReadiness());
     return;

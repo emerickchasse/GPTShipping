@@ -24,6 +24,8 @@ The protected Render environment now has a single-store Printful Orders token ex
 
 The protected pilot-market configuration is US-only with internal working values USD 24.99 unit price and USD 4.49 standard shipping. These values are configured behind the disabled checkout gate, not public launch claims. Readiness still requires the Stripe secret and signed webhook plus the independent tax, billing, sample, and support approvals.
 
+GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, amount, currency, and payment date in `MEMORY.md`. Sum only paid, non-refunded orders. The target is met at USD 100.00 or more.

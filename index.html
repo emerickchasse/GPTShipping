@@ -75,7 +75,7 @@
         <article class="product-card">
           <div class="product-visual" aria-hidden="true"><div class="pattern-product"></div></div>
           <div class="product-info">
-            <div class="product-heading"><div><p class="eyebrow">PawSwipe Pet Parade</p><h3>All-over print bandana</h3></div><p class="price">Price pending <span>USD market verification</span></p></div>
+            <div class="product-heading"><div><p class="eyebrow">PawSwipe Pet Parade</p><h3>All-over print bandana</h3></div><p class="price" id="product-price">Price pending <span>USD market verification</span></p></div>
             <p>A lightweight bandana featuring PawSwipe’s original parade of curled cats, playful dogs, paw prints, and warm colour.</p>
             <ul class="check-list">
               <li>All-over synthetic print with double-folded edges</li>
@@ -131,7 +131,7 @@
     <aside id="cart" class="cart" aria-label="Shopping cart" aria-hidden="true">
       <div class="cart-header"><h2>Your cart</h2><button id="close-cart" type="button" aria-label="Close cart">×</button></div>
       <div id="cart-empty"><p>Pet Parade is still in launch validation.</p></div>
-      <div id="cart-filled" hidden><p><strong>PawSwipe Pet Parade Bandana</strong><br />Selected size: <strong id="selected-size"></strong></p><div class="launch-status"><strong>Checkout remains closed.</strong><br />USD base cost and standard US shipping are verified. We are validating the sample, destination taxes, eligible markets, policies, and support before accepting an order.</div><button id="checkout" class="button button-primary" type="button" disabled>Checkout not open</button><p id="checkout-message" class="fine-print" role="status" aria-live="polite">No payment or personal information is collected from this preview.</p></div>
+      <div id="cart-filled" hidden><p><strong>PawSwipe Pet Parade Bandana</strong><br />Selected size: <strong id="selected-size"></strong></p><div class="launch-status"><strong id="checkout-status-title">Checkout remains closed.</strong><br /><span id="checkout-status-detail">USD base cost and standard US shipping are verified. We are validating the sample, destination taxes, eligible markets, policies, and support before accepting an order.</span></div><button id="checkout" class="button button-primary" type="button" disabled>Checkout not open</button><p id="checkout-message" class="fine-print" role="status" aria-live="polite">No payment or personal information is collected from this preview.</p></div>
     </aside>
     <div id="overlay" class="overlay" hidden></div>
     <script src="app.js"></script>
