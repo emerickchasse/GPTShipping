@@ -16,6 +16,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 4ac. Do not assume a supplier's public product code equals its API catalog ID. Resolve the internal ID from current page data, verify every selected variant through the official catalog API, and pair it with the supplier's named shipping category before calculating landed cost.
 4ad. A size label is not a size guide. If the supplier API exposes S/M/L but no finished measurements, inspect the supplier's live size-guide UI and recross inches against centimetres before publishing. Keep selection closed if the table cannot be verified in both units.
 4b. Before enabling checkout, configure signed payment webhooks and an authenticated fulfilment endpoint that persists the Checkout Session ID as its idempotency key. Never use a thank-you page as proof of payment or fulfilment.
+4c. Treat an HTTPS deployment, HTTP 200, and a healthy host probe as infrastructure evidence only. Record the host/service/deploy IDs and inspect the protected readiness JSON; checkout remains closed unless `ready` and `checkoutEnabled` are both true with real settings.
 5. Treat each market as closed until its shipping, taxes/import fees, consumer-return rights, and product-safety obligations are verified. "International" is a product goal, not permission to enable every country.
 6. Track only paid, non-refunded order revenue in `MEMORY.md`; calculate in USD. Do not mark the goal complete below USD 100.00.
 7. Run a proportionate site check, inspect the diff, update memory, and commit before ending work.

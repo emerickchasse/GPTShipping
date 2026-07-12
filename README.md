@@ -27,3 +27,5 @@ Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickc
 For a real HTTPS checkout host, see [docs/CONTAINER_DEPLOYMENT.md](docs/CONTAINER_DEPLOYMENT.md). The GitHub Pages preview does not run the container or accept payments.
 
 The repository includes a `render.yaml` Blueprint for a free, non-production HTTPS validation service. It deliberately keeps checkout disabled and does not include commerce secrets. Render's free service can sleep after 15 minutes idle and is suitable for launch-readiness validation, not production checkout traffic.
+
+Current validation service: [https://pawswipe-checkout.onrender.com](https://pawswipe-checkout.onrender.com). Its `/api/checkout-readiness` response must report `ready: true` before it can be considered commerce-ready; a rendered page or HTTP 200 is not enough.

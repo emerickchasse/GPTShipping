@@ -20,3 +20,5 @@ Before exposing the service publicly, confirm that `GET /api/checkout-readiness`
 `render.yaml` defines a free Docker web service linked to `main`, with `/api/checkout-readiness` as its health path. The Blueprint sets only non-secret disabled-state values. Apply it from Render's Blueprint flow and confirm the assigned `onrender.com` URL before changing `PUBLIC_BASE_URL`.
 
 The free instance is a validation environment: Render may spin it down after 15 minutes without traffic and local files are ephemeral. Never enable live checkout there without first reassessing availability, persistence, latency, secret handling, and webhook reliability for production.
+
+The applied Blueprint is `pawswipe` (`exs-d99md3gk1i2s73ecl5lg`) and created service `pawswipe-checkout` (`srv-d99md86cjfls738fdp70`) at `https://pawswipe-checkout.onrender.com`. The first deploy of `a402ee9` went live on 2026-07-12. Its initial readiness response was intentionally closed: `ready: false`, `checkoutEnabled: false`, HTTPS configured, and 10 protected settings missing.
