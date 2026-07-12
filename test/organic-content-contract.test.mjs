@@ -12,7 +12,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
   readFile(new URL('../Dockerfile', import.meta.url), 'utf8')
 ]);
 
-const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'customer-policies.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
 const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
@@ -88,6 +88,33 @@ test('the cat bandana guide is factual and published through every discovery sur
   assert.match(page, /not a collar or restraint/i);
   assert.match(page, /supervis/i);
   assert.match(page, /href="index\.html\?utm_source=cat_guide#shop"/);
+  assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
+  assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
+  assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
+  assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(server, new RegExp(`['"]${relativeUrl}['"]`));
+  assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
+});
+
+test('customer policies are public, sourced, and remain explicitly pre-launch', async () => {
+  const relativeUrl = 'customer-policies.html';
+  const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+  const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+  const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
+
+  assert.match(page, /Shipping policy/);
+  assert.match(page, /Refund and replacement policy/);
+  assert.match(page, /Privacy notice/);
+  assert.match(page, /orders are not open/i);
+  assert.match(page, /consent to the delay/i);
+  assert.match(page, /full refund/i);
+  assert.match(page, /within 30 days of delivery/i);
+  assert.match(page, /within 30 days of the estimated delivery date/i);
+  assert.match(page, /help\.printful\.com/);
+  assert.match(page, /ftc\.gov/);
+  assert.match(storefront, new RegExp(`href="${relativeUrl}"`));
+  assert.match(transparency, new RegExp(`href="${relativeUrl}"`));
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));

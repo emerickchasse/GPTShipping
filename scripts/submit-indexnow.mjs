@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 const site = new URL('https://emerickchasse.github.io/GPTShipping/');
 const key = '4a385d1729a145679725f7df42a21d91';
 const keyLocation = new URL(`${key}.txt`, site);
-const urls = [site, new URL('care-guide.html', site), new URL('transparency.html', site), new URL('bandana-size-guide.html', site), new URL('measure-pet-for-bandana.html', site), new URL('how-to-tie-dog-bandana.html', site), new URL('tie-on-vs-over-collar-dog-bandana.html', site), new URL('cat-bandana-guide.html', site)];
+const urls = [site, new URL('care-guide.html', site), new URL('transparency.html', site), new URL('customer-policies.html', site), new URL('bandana-size-guide.html', site), new URL('measure-pet-for-bandana.html', site), new URL('how-to-tie-dog-bandana.html', site), new URL('tie-on-vs-over-collar-dog-bandana.html', site), new URL('cat-bandana-guide.html', site)];
 
 const keyFile = (await readFile(new URL(`../${key}.txt`, import.meta.url), 'utf8')).trim();
 if (keyFile !== key) throw new Error('IndexNow key file does not match the configured key.');
