@@ -19,11 +19,10 @@ Stripe's current Checkout Sessions API supports a displayable `shipping_options.
 
 ## Remedy drill still required
 
-Private support intake and acknowledgement are proven. Customer-policy approval remains false until a non-chargeable test proves the operator can correlate a safe test reference to both the payment and fulfillment records, choose the applicable defect/loss/delay path, and record a refund or replacement decision without exposing customer or payment data.
+Private support intake and acknowledgement are proven. The synthetic `npm run drill:remedy` path now proves hashed reference correlation, privacy-safe output, and deterministic defect/loss/delay/cancellation routing. Customer-policy approval remains false until a non-chargeable provider-backed test proves the operator can retrieve matching Stripe and Printful test records, visibly confirm the Stripe delivery range, and record a simulated refund/replacement decision without exposing customer or payment data.
 
 ## Official sources
 
 - [Stripe Checkout Session creation parameters](https://docs.stripe.com/api/checkout/sessions/create)
 - [Printful: how estimated delivery time is calculated](https://help.printful.com/hc/en-us/articles/360014066779-How-is-the-estimated-delivery-time-calculated)
 - [FTC Mail, Internet, or Telephone Order Merchandise Rule guide](https://www.ftc.gov/business-guidance/resources/business-guide-ftcs-mail-internet-or-telephone-order-merchandise-rule)
-

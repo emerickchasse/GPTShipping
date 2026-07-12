@@ -13,7 +13,7 @@ function positiveInteger(value, label) {
   return number;
 }
 
-function printfulExternalOrderId(stripeSessionId) {
+export function printfulExternalOrderId(stripeSessionId) {
   const digest = createHash('sha256').update(requiredText(stripeSessionId, 'Order ID')).digest('hex').slice(0, 24);
   return `ps_${digest}`;
 }

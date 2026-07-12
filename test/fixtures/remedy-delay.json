@@ -1,0 +1,23 @@
+{
+  "stripeSession": {
+    "id": "cs_test_pawswipe_cli_drill",
+    "payment_status": "paid",
+    "customer_details": {
+      "email": "must-not-appear@example.com",
+      "phone": "+15555550123"
+    }
+  },
+  "printfulOrder": {
+    "external_id": "ps_1c1045d513455deb3b78bec1",
+    "status": "pending",
+    "recipient": {
+      "name": "Private Test Person",
+      "address1": "123 Never Log Street"
+    }
+  },
+  "issue": {
+    "kind": "delay",
+    "promisedShipAt": "2026-07-10",
+    "reviewedAt": "2026-07-12"
+  }
+}

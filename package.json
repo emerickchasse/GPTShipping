@@ -7,10 +7,11 @@
     "start": "node server.mjs",
     "dev": "node --watch server.mjs",
     "test": "node --test",
-    "check": "node --check server.mjs && node --check commerce-policy.mjs && node --check printful-fulfillment.mjs && node --check revenue-accounting.mjs && node --check app.js && node --check guide.js && node --check scripts/verify-revenue.mjs && node --check scripts/verify-deployment.mjs && node --check scripts/submit-indexnow.mjs",
+    "check": "node --check server.mjs && node --check commerce-policy.mjs && node --check printful-fulfillment.mjs && node --check order-remedy.mjs && node --check revenue-accounting.mjs && node --check app.js && node --check guide.js && node --check scripts/verify-revenue.mjs && node --check scripts/verify-deployment.mjs && node --check scripts/submit-indexnow.mjs && node --check scripts/drill-order-remedy.mjs",
     "verify:revenue": "node scripts/verify-revenue.mjs",
     "revenue:verify": "node scripts/verify-revenue.mjs",
     "verify:deployment": "node scripts/verify-deployment.mjs",
-    "submit:indexnow": "node scripts/submit-indexnow.mjs"
+    "submit:indexnow": "node scripts/submit-indexnow.mjs",
+    "drill:remedy": "node scripts/drill-order-remedy.mjs"
   }
 }
