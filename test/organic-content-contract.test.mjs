@@ -114,6 +114,11 @@ test('customer policies are public, sourced, and remain explicitly pre-launch', 
   assert.match(page, /within 30 days of the estimated delivery date/i);
   assert.match(page, /help\.printful\.com/);
   assert.match(page, /ftc\.gov/);
+  assert.match(page, /six years from the end of the last tax year/i);
+  assert.match(page, /24 months after the last activity/i);
+  assert.match(page, /Stripe Checkout/);
+  assert.match(page, /Printful receives the name, email, phone, shipping address/i);
+  assert.match(page, /does not sell this data/i);
   assert.match(storefront, new RegExp(`href="${relativeUrl}"`));
   assert.match(transparency, new RegExp(`href="${relativeUrl}"`));
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
@@ -122,6 +127,26 @@ test('customer policies are public, sourced, and remain explicitly pre-launch', 
   assert.match(indexNowScript, new RegExp(`['"]${relativeUrl}['"]`));
   assert.match(server, new RegExp(`['"]${relativeUrl}['"]`));
   assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
+});
+
+test('the privacy data map matches the checkout and fulfillment fields', async () => {
+  const map = await readFile(new URL('../docs/PRIVACY_DATA_MAP.md', import.meta.url), 'utf8');
+  const fulfillment = await readFile(new URL('../printful-fulfillment.mjs', import.meta.url), 'utf8');
+
+  for (const field of ['billing address', 'shipping address', 'phone number', 'email/customer details', 'store', 'SKU', 'size', 'allowlisted attribution source']) {
+    assert.match(map, new RegExp(field, 'i'), field);
+  }
+  for (const field of ['name', 'email', 'phone', 'line 1', 'line 2', 'city', 'state', 'country', 'postal code', 'quantity', 'retail unit price']) {
+    assert.match(map, new RegExp(field, 'i'), field);
+  }
+  assert.match(server, /billing_address_collection: 'required'/);
+  assert.match(server, /phone_number_collection\[enabled\]/);
+  assert.match(server, /metadata\[attribution_source\]/);
+  assert.match(fulfillment, /name: requiredText/);
+  assert.match(fulfillment, /email: requiredText/);
+  assert.match(fulfillment, /phone: requiredText/);
+  assert.match(map, /six years from the end of the last tax year/i);
+  assert.match(map, /Render Hobby runtime logs are available for 7 days/i);
 });
 
 test('every indexable public page declares its exact canonical URL', async () => {
