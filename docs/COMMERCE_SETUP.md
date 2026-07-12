@@ -6,6 +6,8 @@
 
 `STRIPE_CHECKOUT_MODE` must be explicitly `test` or `live`. Webhook fulfilment accepts only sessions whose Stripe `livemode` flag matches that setting. Test sessions can exercise sandbox fulfilment, but `verify:revenue` continues to count live paid sessions only.
 
+Browser checkout requests must carry either the exact `PUBLIC_STOREFRONT_ORIGIN` or the API service's own origin. Foreign, missing, or malformed origins receive HTTP 403 before the request body is parsed or Stripe is called. This is separate from the signed Stripe webhook, which does not depend on browser Origin headers.
+
 After deployment, `GET /api/checkout-readiness` exposes only booleans and a missing-setting count. It never returns a secret, product value, country list, or business identifier. Use it to confirm that the host has received the expected environment configuration before the final buyer-path test.
 
 The storefront has no live waitlist or checkout until configuration is complete. That is intentional: it must not claim to accept money or retain an email when it cannot do so.

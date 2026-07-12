@@ -60,6 +60,17 @@ function applyStorefrontCors(request, response) {
   return false;
 }
 
+function hasTrustedCheckoutOrigin(request) {
+  const origin = request.headers.origin;
+  if (!origin) return false;
+  if (origin === process.env.PUBLIC_STOREFRONT_ORIGIN) return true;
+  try {
+    return new URL(origin).host === request.headers.host;
+  } catch {
+    return false;
+  }
+}
+
 function readBuffer(request, limit = maxBodySize) {
   return new Promise((resolveBody, reject) => {
     let size = 0;
@@ -323,6 +334,10 @@ createServer(async (request, response) => {
     return;
   }
   if (request.method === 'POST' && url.pathname === '/api/checkout') {
+    if (!hasTrustedCheckoutOrigin(request)) {
+      sendJson(response, 403, { error: 'Checkout origin is not allowed.' });
+      return;
+    }
     try {
       const body = await readJson(request);
       const quantity = asPositiveInteger(body.quantity, 'quantity');

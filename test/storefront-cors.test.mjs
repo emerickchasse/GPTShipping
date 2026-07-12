@@ -35,4 +35,26 @@ test('the checkout API allows only the configured storefront origin', async (t) 
   assert.equal(preflight.status, 204);
   assert.equal(preflight.headers.get('access-control-allow-methods'), 'GET, POST, OPTIONS');
   assert.equal(preflight.headers.get('access-control-allow-headers'), 'Content-Type');
+
+  const orderBody = JSON.stringify({ quantity: 1, size: 'M', source: 'direct' });
+  const foreignCheckout = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
+    method: 'POST',
+    headers: { Origin: 'https://attacker.example', 'Content-Type': 'application/json' },
+    body: orderBody
+  });
+  assert.equal(foreignCheckout.status, 403);
+
+  const missingOriginCheckout = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: orderBody
+  });
+  assert.equal(missingOriginCheckout.status, 403);
+
+  const sameOriginCheckout = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
+    method: 'POST',
+    headers: { Origin: `http://127.0.0.1:${port}`, 'Content-Type': 'application/json' },
+    body: orderBody
+  });
+  assert.equal(sameOriginCheckout.status, 503);
 });
