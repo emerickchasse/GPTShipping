@@ -40,6 +40,11 @@ const mimeTypes = {
   '.svg': 'image/svg+xml'
 };
 
+function liveCommit() {
+  const commit = process.env.RENDER_GIT_COMMIT?.trim().toLowerCase() || '';
+  return /^[0-9a-f]{40}$/.test(commit) ? commit : null;
+}
+
 function sendJson(response, status, payload) {
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -313,6 +318,10 @@ createServer(async (request, response) => {
   }
   if (request.method === 'GET' && url.pathname === '/api/checkout-readiness') {
     sendJson(response, 200, checkoutReadiness());
+    return;
+  }
+  if (request.method === 'GET' && url.pathname === '/api/version') {
+    sendJson(response, 200, { commit: liveCommit() });
     return;
   }
   if (request.method === 'POST' && url.pathname === '/api/stripe-webhook') {

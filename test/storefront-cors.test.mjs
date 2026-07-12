@@ -8,7 +8,7 @@ test('the checkout API allows only the configured storefront origin', async (t) 
   const storefrontOrigin = 'https://emerickchasse.github.io';
   const server = spawn(process.execPath, ['server.mjs'], {
     cwd: new URL('..', import.meta.url),
-    env: { ...process.env, PORT: String(port), PUBLIC_STOREFRONT_ORIGIN: storefrontOrigin },
+    env: { ...process.env, PORT: String(port), PUBLIC_STOREFRONT_ORIGIN: storefrontOrigin, RENDER_GIT_COMMIT: 'a'.repeat(40) },
     stdio: ['ignore', 'pipe', 'pipe']
   });
   t.after(() => server.kill());
@@ -23,6 +23,10 @@ test('the checkout API allows only the configured storefront origin', async (t) 
     headers: { Origin: 'https://attacker.example' }
   });
   assert.equal(denied.headers.get('access-control-allow-origin'), null);
+
+  const versionResponse = await fetch(`http://127.0.0.1:${port}/api/version`);
+  assert.equal(versionResponse.status, 200);
+  assert.deepEqual(await versionResponse.json(), { commit: 'a'.repeat(40) });
 
   const preflight = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
     method: 'OPTIONS',

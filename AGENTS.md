@@ -52,6 +52,8 @@ The browser checkout endpoint requires the exact GitHub Pages Origin or the API'
 
 Render service `srv-d99md86cjfls738fdp70` uses on-commit deployment as the current fallback. Keep `render.yaml` aligned to `autoDeployTrigger: commit`. The deploy-hook experiment was removed after newly regenerated hooks returned HTTP 404; do not restore it without first proving a fresh hook directly and never expose hook values through full-page accessibility snapshots.
 
+Render exposes its official `RENDER_GIT_COMMIT` through `/api/version` only after strict full-SHA validation. Compare the live value with the intended commit using `npm run verify:deployment -- <full-sha>`; readiness and HTTP 200 do not prove code freshness.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, tax-exclusive amount, currency, and payment date in `MEMORY.md`. Gross revenue includes customer-paid product and shipping but excludes collected sales tax; subtract refunds conservatively. The target is met at USD 100.00 or more.
