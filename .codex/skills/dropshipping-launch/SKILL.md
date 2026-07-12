@@ -11,6 +11,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 3a. Never expose placeholder contact details, policy links, or support channels on a public preview. Remove them until a real monitored channel exists.
 4. Before enabling payment, verify supplier unit cost, quality evidence, shipping regions, delivery window, tracking, return route, taxes, support address, privacy/cookie requirements, and payment-provider terms.
 4a. Do not treat a public catalogue price, rating, or listing copy as supplier approval. Check live inventory and destination-specific shipping after authentication; reject a candidate with no calculable shipping or no available stock.
+4aa. After two marketplace candidates fail because fulfilment facts are hidden or unavailable, compare a transparent made-to-order supplier before doing more storefront work. Prefer a documented, sampleable product over preserving an unverified product concept.
 4b. Before enabling checkout, configure signed payment webhooks and an authenticated fulfilment endpoint that persists the Checkout Session ID as its idempotency key. Never use a thank-you page as proof of payment or fulfilment.
 5. Treat each market as closed until its shipping, taxes/import fees, consumer-return rights, and product-safety obligations are verified. "International" is a product goal, not permission to enable every country.
 6. Track only paid, non-refunded order revenue in `MEMORY.md`; calculate in USD. Do not mark the goal complete below USD 100.00.
