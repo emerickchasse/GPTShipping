@@ -13,6 +13,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
 ]);
 
 const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html'];
+const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
   const relativeUrl = 'measure-pet-for-bandana.html';
@@ -72,5 +73,20 @@ test('every indexable public page declares its exact canonical URL', async () =>
       : `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
 
     assert.match(page, new RegExp(`<link rel="canonical" href="${canonicalUrl.replaceAll('.', '\\.')}"`), relativeUrl);
+  }
+});
+
+test('every indexable public page has a complete, canonical social preview', async () => {
+  for (const relativeUrl of publicPages) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    const canonicalUrl = relativeUrl === 'index.html'
+      ? 'https://emerickchasse.github.io/GPTShipping/'
+      : `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+
+    assert.match(page, /<meta property="og:title" content="[^"]+" \/>/, relativeUrl);
+    assert.match(page, /<meta property="og:description" content="[^"]+" \/>/, relativeUrl);
+    assert.match(page, new RegExp(`<meta property="og:url" content="${canonicalUrl.replaceAll('.', '\\.')}`), relativeUrl);
+    assert.match(page, new RegExp(`<meta property="og:image" content="${socialImageUrl.replaceAll('.', '\\.')}`), relativeUrl);
+    assert.match(page, /<meta name="twitter:card" content="summary_large_image" \/>/, relativeUrl);
   }
 });

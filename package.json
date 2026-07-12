@@ -9,6 +9,7 @@
     "test": "node --test",
     "check": "node --check server.mjs && node --check commerce-policy.mjs && node --check printful-fulfillment.mjs && node --check revenue-accounting.mjs && node --check app.js && node --check guide.js && node --check scripts/verify-revenue.mjs && node --check scripts/submit-indexnow.mjs",
     "verify:revenue": "node scripts/verify-revenue.mjs",
+    "revenue:verify": "node scripts/verify-revenue.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs"
   }
 }
