@@ -37,6 +37,7 @@ Launch an English-language international dropshipping store and record verified 
 - Public sharing QA passed on 2026-07-12 after the GitHub Pages update propagated: the public care guide exposes the share buttons and shows an accessible fallback message when native sharing/clipboard access is unavailable. All CI, Pages and GHCR workflows passed for `cb365fe`.
 - 2026-07-12: add manual IndexNow discovery support for the public homepage and care guide. The public key must be deployed and verified before submission; an accepted API response proves receipt only, not crawling, ranking, or indexing.
 - IndexNow deployment and submission QA passed on 2026-07-12: the public key URL returned the exact key with HTTP 200, all three GitHub workflows passed for commit `7c8e226`, and `npm run submit:indexnow` submitted the homepage and care guide to the global endpoint. IndexNow returned HTTP 202 (received; key validation pending). This is discovery evidence only and contributes no revenue.
+- 2026-07-12 conversion audit found a placeholder `hello@example.com` contact link and a passive waitlist message. Remove the fake contact route and replace the dead-end section with a real, no-signup path to the public care guide. Never publish placeholder support coordinates on a customer-facing preview.
 
 ## Verified revenue ledger
 
