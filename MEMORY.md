@@ -1,0 +1,21 @@
+# Project Memory — GPTShipping
+
+## Current objective
+
+Launch an English-language international dropshipping store and record verified gross revenue of at least **USD 100.00**. This is not achieved yet.
+
+## 2026-07-12 — baseline
+
+- Repository began empty.
+- Product direction selected for the initial storefront: **PawSwipe**, a reusable pet-hair remover for clothing and furniture. It avoids battery/shipping hazards and medical claims, but supplier quality, fulfilment regions, price, and availability remain unverified.
+- The initial site is a conversion-focused storefront prototype, not a live checkout. No supplier, payment processor, domain, or deployment has been configured. No revenue exists.
+- Launch gate: obtain verified supplier economics and policies; configure payment provider; replace placeholder checkout; deploy HTTPS; test checkout; add legally accurate policies and support details; track paid orders.
+- Local storefront QA passed in Chrome at `http://127.0.0.1:8080`: desktop layout rendered, a selected quantity of two updated the cart to `$48.00 USD`, and the cart disclosed that checkout is not live. JavaScript syntax check and skill validation passed.
+
+## Verified revenue ledger
+
+| Paid date | Order ID | USD gross | Refund status | Evidence |
+| --- | --- | ---: | --- | --- |
+| _None_ | — | 0.00 | — | No payments integration configured |
+
+**Verified gross revenue: USD 0.00 / 100.00.**

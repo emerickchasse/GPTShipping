@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PawSwipe is a reusable pet-hair remover for the moments your clothes and furniture need a quick reset." />
+    <title>PawSwipe — Reset the fur, keep the cuddle</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="announcement">A reusable clean-up tool for the pet-loving home.</div>
+    <header class="site-header shell">
+      <a class="brand" href="#top" aria-label="PawSwipe home"><span aria-hidden="true">✦</span> PawSwipe</a>
+      <nav aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#details">Details</a>
+      </nav>
+      <button class="cart-button" type="button" aria-controls="cart" aria-expanded="false">
+        Cart <span id="cart-count" aria-live="polite">0</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow">A cleaner reset, on repeat</p>
+          <h1>More room for the cuddle. Less fur everywhere else.</h1>
+          <p class="lede">PawSwipe is a reusable pet-hair remover made for the quick clean-ups that keep daily life feeling put together.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#shop">Meet PawSwipe <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#how-it-works">See how it works</a>
+          </div>
+          <ul class="trust-list" aria-label="Product highlights">
+            <li>Reusable</li><li>Made for daily touch-ups</li><li>For clothes &amp; furniture</li>
+          </ul>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a PawSwipe pet-hair remover" role="img">
+          <div class="sun"></div>
+          <div class="fur fur-one"></div><div class="fur fur-two"></div><div class="fur fur-three"></div>
+          <div class="product"><span>Paw<br />Swipe</span><i></i><b></b></div>
+          <div class="paw" aria-hidden="true">● ●<br /> ● ●</div>
+          <p>Everyday clean-up,<br />made simple.</p>
+        </div>
+      </section>
+
+      <section class="benefit-strip" aria-label="What PawSwipe is for">
+        <div class="shell benefits">
+          <p><span aria-hidden="true">01</span> The before-guests-come-over reset</p>
+          <p><span aria-hidden="true">02</span> The black-shirt-in-a-hurry reset</p>
+          <p><span aria-hidden="true">03</span> The couch-needs-saving reset</p>
+        </div>
+      </section>
+
+      <section id="shop" class="product-section shell">
+        <div class="section-intro">
+          <p class="eyebrow">The everyday essential</p>
+          <h2>One simple tool. A little more breathing room.</h2>
+        </div>
+        <article class="product-card">
+          <div class="product-visual" aria-hidden="true"><div class="mini-product"><span>Paw<br />Swipe</span></div></div>
+          <div class="product-info">
+            <div class="product-heading"><div><p class="eyebrow">PawSwipe Original</p><h3>Reusable pet-hair remover</h3></div><p class="price">$24 <span>USD</span></p></div>
+            <p>Keep it close for the small, satisfying reset: a favourite sweater, a car seat, or the sofa before company arrives.</p>
+            <ul class="check-list">
+              <li>Designed for pet hair, lint, and everyday mess</li>
+              <li>Reusable by design</li>
+              <li>Compact enough to keep within reach</li>
+            </ul>
+            <label class="quantity-label" for="quantity">Quantity</label>
+            <div class="purchase-row">
+              <select id="quantity" aria-label="Choose quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+              <button class="button button-primary" id="add-to-cart" type="button">Add to cart <span aria-hidden="true">→</span></button>
+            </div>
+            <p class="fine-print">Final shipping availability, delivery timing, and return terms will be shown at checkout once live.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="how-it-works" class="how-section">
+        <div class="shell">
+          <p class="eyebrow">The ritual</p>
+          <h2>Make a small reset feel easy.</h2>
+          <div class="steps">
+            <article><span>1</span><h3>Keep it nearby</h3><p>Place PawSwipe where the fur tends to gather: by the door, the sofa, or your wardrobe.</p></article>
+            <article><span>2</span><h3>Refresh the surface</h3><p>Use it as part of your everyday tidy-up routine.</p></article>
+            <article><span>3</span><h3>Get back to life</h3><p>Spend less time thinking about stray hair and more time enjoying your pet.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="details" class="details shell">
+        <div><p class="eyebrow">Built for real homes</p><h2>Useful, not overcomplicated.</h2></div>
+        <div class="detail-grid">
+          <article><h3>Thoughtful by default</h3><p>A no-fuss tool for the tiny messes that pile up during a busy week.</p></article>
+          <article><h3>Easy to reach for</h3><p>Simple enough that it earns a spot in your everyday routine, not the back of a cupboard.</p></article>
+          <article><h3>Honest before launch</h3><p>We will publish verified materials, care instructions, fulfilment regions, and policies before accepting orders.</p></article>
+        </div>
+      </section>
+
+      <section class="signup">
+        <div class="shell signup-inner"><div><p class="eyebrow">Stay in the loop</p><h2>Get launch notes, not inbox clutter.</h2></div>
+          <form id="email-form" novalidate><label class="sr-only" for="email">Email address</label><input id="email" name="email" type="email" placeholder="Your email address" autocomplete="email" required /><button class="button button-dark" type="submit">Keep me posted</button><p id="form-message" role="status" aria-live="polite"></p></form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell"><a class="brand" href="#top"><span aria-hidden="true">✦</span> PawSwipe</a><p>© <span id="year"></span> PawSwipe. Product availability and policies pending launch verification.</p><a href="mailto:hello@example.com">Contact</a></footer>
+
+    <aside id="cart" class="cart" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-header"><h2>Your cart</h2><button id="close-cart" type="button" aria-label="Close cart">×</button></div>
+      <div id="cart-empty"><p>Your cart is waiting for its first reset.</p></div>
+      <div id="cart-filled" hidden><p><strong>PawSwipe Original</strong><br /><span id="cart-quantity"></span> × $24 USD</p><p class="cart-total">Subtotal <strong id="cart-total"></strong></p><button id="checkout" class="button button-primary" type="button">Checkout</button><p class="fine-print">Checkout is not live yet. No payment is collected from this prototype.</p></div>
+    </aside>
+    <div id="overlay" class="overlay" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>

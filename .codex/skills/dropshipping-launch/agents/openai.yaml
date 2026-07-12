@@ -1,0 +1,4 @@
+interface:
+  display_name: "GPTShipping Launch"
+  short_description: "Operate the GPTShipping launch safely"
+  default_prompt: "Use $dropshipping-launch to improve and verify the GPTShipping store."
