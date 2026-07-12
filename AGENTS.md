@@ -24,6 +24,8 @@ Server enforcement must match the readiness surface: `/api/checkout` returns 503
 
 `customer-policies.html` is the public US-pilot operating draft. Keep the merchant's obligations separate from Printful reimbursement: supported defect and loss claims describe PawSwipe remedies, FTC shipping-delay rights remain intact, and supplier limitations never waive applicable customer rights. Publication is not policy approval; keep the gate false until private support, checkout disclosures, retention details, and the end-to-end remedy process are verified.
 
+The connected Gmail mailbox has a private `PawSwipe Support` label and a successful internal plus-routing test. Never publish the mailbox or routing alias. Follow `docs/SUPPORT_OPERATIONS.md`; internal delivery is not customer-accessible support, so keep `PAWSWIPE_PRIVATE_SUPPORT_APPROVED=false` until every listed external intake, monitoring, reply, lookup, and escalation proof passes.
+
 The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. The storefront now requires and preserves an S/M/L selection through the cart and checkout payload. Supplier publication alone is not checkout readiness: keep checkout closed until auto-confirm billing, tax, sample, support, and Stripe live-mode gates are verified.
 
 The storefront product card uses `assets/printful/pet-parade-digital-mockup-v1.jpg`, generated from the exact approved pattern. It is a digital preview only and must retain the visible uninspected-sample disclosure; it is not physical quality evidence.

@@ -149,6 +149,13 @@ test('every indexable public page has a complete, canonical social preview', asy
   }
 });
 
+test('public pages never expose the connected personal support mailbox', async () => {
+  for (const relativeUrl of publicPages) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    assert.doesNotMatch(page, /chasse\.emerick|@gmail\.com/i, relativeUrl);
+  }
+});
+
 test('the storefront exposes the decision-guide library without relying on desktop navigation', async () => {
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const decisionGuides = [
