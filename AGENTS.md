@@ -34,6 +34,8 @@ The private support gate is approved. A public Google Form provides anonymous ac
 
 The optional pre-launch list follows `docs/LAUNCH_NOTIFICATIONS.md`. It collects only a validated email and required consent for one launch email, with no newsletter, promotion, profiling, advertising audience, or tracking pixel. Delete addresses within 30 days after sending, earlier on verified request, or by 2027-07-12 if launch has not occurred and consent was not renewed. Never store subscriber addresses or counts in the repository or memory.
 
+Every decision guide must offer that same consent-limited launch notice near its product return. Keep the closed-order disclosure adjacent, link directly to the verified form, and do not substitute a newsletter, promotion list, embedded tracker, or implied checkout. This gives pre-launch organic visitors one safe conversion path while payments remain closed.
+
 The existing Stripe account is confirmed by 2021–2026 Gmail metadata and Google sign-in, but dashboard access still stops at SMS MFA to the configured phone ending in 3905 with no alternative factor. Follow `docs/PAYMENT_OPERATIONS.md`; account existence is not activation or revenue, and no agent may handle the code or use recovery to bypass the owner.
 
 The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. The storefront now requires and preserves an S/M/L selection through the cart and checkout payload. Supplier publication alone is not checkout readiness: keep checkout closed until auto-confirm billing, tax, sample, support, and Stripe live-mode gates are verified.

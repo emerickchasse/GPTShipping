@@ -224,6 +224,23 @@ test('launch notification is explicit, limited, and linked without exposing the 
   for (const page of [storefront, transparency, policies]) assert.doesNotMatch(page, /@gmail\.com|chasse\.emerick/i);
 });
 
+test('every decision guide offers the consent-limited launch notice', async () => {
+  const decisionGuides = [
+    'bandana-size-guide.html',
+    'measure-pet-for-bandana.html',
+    'how-to-tie-dog-bandana.html',
+    'tie-on-vs-over-collar-dog-bandana.html',
+    'cat-bandana-guide.html'
+  ];
+
+  for (const relativeUrl of decisionGuides) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    assert.ok(page.includes(`href="${launchFormUrl}"`), relativeUrl);
+    assert.match(page, /Get one launch email/);
+    assert.match(page, /No newsletter or promotions/);
+  }
+});
+
 test('the storefront exposes the decision-guide library without relying on desktop navigation', async () => {
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const decisionGuides = [

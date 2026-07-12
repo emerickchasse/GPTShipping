@@ -7,6 +7,7 @@ Last reviewed: 2026-07-12
 - Verified URL-prefix property: `https://emerickchasse.github.io/GPTShipping/`
 - Verification method: permanent homepage `google-site-verification` meta tag
 - Search performance report: rechecked at 19:20 EDT on 2026-07-12; Google still reports that data is processing and may take about one day. The query/page tables contain no data, so there are no attributable impressions or clicks yet.
+- Search performance report: rechecked again later on 2026-07-12; the property reported an update three hours earlier but still displayed `Processing data, please check again in a day or so`, with disabled query/page tabs and no rows. No keyword or page optimization is attributed to this unavailable aggregate data.
 - Aggregate page-indexing report: still processing with no usable reason or page counts.
 - Homepage: indexed according to URL Inspection on 2026-07-12
 - Organic size guide: indexed according to URL Inspection on 2026-07-12
@@ -34,6 +35,8 @@ IndexNow accepted the current nine-URL list with HTTP 200. This proves API recei
 - No Bing Search Performance or AI Performance metrics are attributed until the exact verified property reports them.
 
 The size guide exposes direct Pinterest, X, and email share links without loading third-party SDKs or pixels. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
+
+All five commercial decision guides now expose the verified one-message launch-notification form next to the explicit closed-order disclosure. This is a consent-bounded pre-launch conversion path only; a rendered link does not prove a subscriber, email delivery, order, or revenue.
 
 ## Evidence rules
 
