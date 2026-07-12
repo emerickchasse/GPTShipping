@@ -17,7 +17,7 @@ Build and operate an English-language international dropshipping storefront. The
 
 Before taking payment, configure a real payment provider, a verified product supplier, truthful shipping/returns pages, support contact, privacy/cookie notices where required, analytics consent handling, and a deployed HTTPS domain. Confirm the checkout from the buyer's perspective.
 
-The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Supplier publication alone is not checkout readiness: keep checkout closed until numeric sync-variant ordering, authenticated fulfilment, billing, tax, sample, support, and Stripe live-mode gates are verified.
+The current Printful manual/API store is `18458606` and the Pet Parade sync product is `445876313`. Verified external variant references are sufficient for the Orders API. Supplier publication alone is not checkout readiness: keep checkout closed until the scoped Orders token, auto-confirm billing, tax, sample, support, size selection, and Stripe live-mode gates are verified.
 
 ## Success evidence
 

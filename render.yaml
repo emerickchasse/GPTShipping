@@ -18,3 +18,13 @@ services:
         value: https://pawswipe-checkout.onrender.com
       - key: STRIPE_AUTOMATIC_TAX_ENABLED
         value: "false"
+      - key: PRINTFUL_STORE_ID
+        value: "18458606"
+      - key: PRINTFUL_VARIANT_S
+        value: 6a53ef4031cc29
+      - key: PRINTFUL_VARIANT_M
+        value: 6a53ef4031cc68
+      - key: PRINTFUL_VARIANT_L
+        value: 6a53ef4031cc81
+      - key: PRINTFUL_AUTO_CONFIRM
+        value: "false"

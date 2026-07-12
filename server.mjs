@@ -3,6 +3,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { extname, resolve } from 'node:path';
 import { normalizeCheckoutMode, shouldFulfillStripeSession } from './commerce-policy.mjs';
+import { submitPrintfulOrder } from './printful-fulfillment.mjs';
 
 const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
@@ -19,8 +20,12 @@ const checkoutRequiredVariables = [
   'PAWSWIPE_SHIPPING_RATE_CENTS',
   'PAWSWIPE_ALLOWED_COUNTRIES',
   'STRIPE_WEBHOOK_SECRET',
-  'FULFILLMENT_WEBHOOK_URL',
-  'FULFILLMENT_WEBHOOK_BEARER_TOKEN'
+  'PRINTFUL_API_TOKEN',
+  'PRINTFUL_STORE_ID',
+  'PRINTFUL_VARIANT_S',
+  'PRINTFUL_VARIANT_M',
+  'PRINTFUL_VARIANT_L',
+  'PRINTFUL_AUTO_CONFIRM'
 ];
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -80,23 +85,26 @@ function checkoutReadiness() {
   const checkoutEnabled = process.env.LIVE_CHECKOUT_ENABLED === 'true';
   const stripeTaxEnabled = process.env.STRIPE_AUTOMATIC_TAX_ENABLED === 'true';
   let httpsConfigured = false;
-  let fulfillmentUrlConfigured = false;
+  const printfulConfigured = Boolean(
+    process.env.PRINTFUL_API_TOKEN &&
+    process.env.PRINTFUL_STORE_ID &&
+    process.env.PRINTFUL_VARIANT_S &&
+    process.env.PRINTFUL_VARIANT_M &&
+    process.env.PRINTFUL_VARIANT_L
+  );
+  const printfulAutoConfirm = process.env.PRINTFUL_AUTO_CONFIRM === 'true';
   try {
     httpsConfigured = new URL(process.env.PUBLIC_BASE_URL).protocol === 'https:';
   } catch {
     httpsConfigured = false;
   }
-  try {
-    fulfillmentUrlConfigured = new URL(process.env.FULFILLMENT_WEBHOOK_URL).protocol === 'https:';
-  } catch {
-    fulfillmentUrlConfigured = false;
-  }
   return {
-    ready: checkoutEnabled && stripeTaxEnabled && httpsConfigured && fulfillmentUrlConfigured && missing.length === 0,
+    ready: checkoutEnabled && stripeTaxEnabled && httpsConfigured && printfulConfigured && printfulAutoConfirm && missing.length === 0,
     checkoutEnabled,
     stripeTaxEnabled,
     httpsConfigured,
-    fulfillmentUrlConfigured,
+    printfulConfigured,
+    printfulAutoConfirm,
     checkoutMode: process.env.STRIPE_CHECKOUT_MODE || null,
     missingConfigurationCount: missing.length
   };
@@ -115,9 +123,6 @@ function liveCheckoutConfig() {
 
   const baseUrl = new URL(process.env.PUBLIC_BASE_URL);
   if (baseUrl.protocol !== 'https:') throw new Error('PUBLIC_BASE_URL must use HTTPS for live checkout.');
-  const fulfillmentUrl = new URL(process.env.FULFILLMENT_WEBHOOK_URL);
-  if (fulfillmentUrl.protocol !== 'https:') throw new Error('FULFILLMENT_WEBHOOK_URL must use HTTPS for live checkout.');
-
   const allowedCountries = process.env.PAWSWIPE_ALLOWED_COUNTRIES
     .split(',')
     .map((country) => country.trim().toUpperCase())
@@ -136,8 +141,16 @@ function liveCheckoutConfig() {
     shippingAmount: Number(process.env.PAWSWIPE_SHIPPING_RATE_CENTS),
     allowedCountries,
     webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
-    fulfillmentUrl: fulfillmentUrl.href,
-    fulfillmentBearerToken: process.env.FULFILLMENT_WEBHOOK_BEARER_TOKEN
+    printful: {
+      token: process.env.PRINTFUL_API_TOKEN,
+      storeId: process.env.PRINTFUL_STORE_ID,
+      autoConfirm: process.env.PRINTFUL_AUTO_CONFIRM === 'true',
+      externalVariants: {
+        S: process.env.PRINTFUL_VARIANT_S,
+        M: process.env.PRINTFUL_VARIANT_M,
+        L: process.env.PRINTFUL_VARIANT_L
+      }
+    }
   };
 }
 
@@ -154,7 +167,7 @@ async function stripeRequest(path, options, secretKey) {
   return payload;
 }
 
-async function createCheckoutSession(quantity) {
+async function createCheckoutSession(quantity, size) {
   const config = liveCheckoutConfig();
   if (!Number.isSafeInteger(config.shippingAmount) || config.shippingAmount < 0) {
     throw new Error('PAWSWIPE_SHIPPING_RATE_CENTS must be a non-negative integer.');
@@ -165,6 +178,7 @@ async function createCheckoutSession(quantity) {
     submit_type: 'pay',
     'automatic_tax[enabled]': 'true',
     billing_address_collection: 'required',
+    'phone_number_collection[enabled]': 'true',
     'shipping_address_collection[allowed_countries][0]': config.allowedCountries[0],
     'line_items[0][price_data][currency]': 'usd',
     'line_items[0][price_data][product_data][name]': config.productName,
@@ -175,7 +189,8 @@ async function createCheckoutSession(quantity) {
     'shipping_options[0][shipping_rate_data][fixed_amount][amount]': String(config.shippingAmount),
     'shipping_options[0][shipping_rate_data][fixed_amount][currency]': 'usd',
     'metadata[store]': 'pawswipe',
-    'metadata[sku]': config.sku,
+    'metadata[sku]': `${config.sku}-${size.toLowerCase()}`,
+    'metadata[size]': size,
     success_url: `${config.baseUrl}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${config.baseUrl}/#shop`
   });
@@ -218,24 +233,20 @@ async function forwardPaidOrder(event) {
   const session = await stripeRequest(`/v1/checkout/sessions/${sessionId}?expand[]=line_items`, { method: 'GET', headers: {} }, config.secretKey);
   if (!shouldFulfillStripeSession(session, config.checkoutMode)) return;
 
-  const fulfillmentResponse = await fetch(config.fulfillmentUrl, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${config.fulfillmentBearerToken}`,
-      'Content-Type': 'application/json',
-      'Idempotency-Key': session.id
-    },
-    body: JSON.stringify({
-      orderId: session.id,
-      sku: session.metadata.sku,
-      currency: session.currency,
-      amountTotal: session.amount_total,
-      customer: session.customer_details,
-      shipping: session.shipping_details,
-      lineItems: session.line_items?.data?.map((item) => ({ description: item.description, quantity: item.quantity })) || []
-    })
-  });
-  if (!fulfillmentResponse.ok) throw new Error('Fulfilment provider rejected the paid order.');
+  const lineItems = session.line_items?.data || [];
+  const quantity = lineItems.reduce((total, item) => total + Number(item.quantity || 0), 0);
+  const productSubtotal = lineItems.reduce((total, item) => total + Number(item.amount_subtotal ?? item.amount_total ?? 0), 0);
+  await submitPrintfulOrder({
+    orderId: session.id,
+    sku: session.metadata.sku,
+    size: session.metadata.size,
+    quantity,
+    currency: session.currency,
+    amountTotal: session.amount_total,
+    retailUnitAmount: Math.round(productSubtotal / quantity),
+    customer: session.customer_details,
+    shipping: session.collected_information?.shipping_details || session.shipping_details
+  }, config.printful);
 }
 
 async function serveStatic(request, response, pathname) {
@@ -293,7 +304,9 @@ createServer(async (request, response) => {
       const body = await readJson(request);
       const quantity = asPositiveInteger(body.quantity, 'quantity');
       if (quantity > 3) throw new Error('Quantity cannot exceed 3 per checkout.');
-      const checkoutUrl = await createCheckoutSession(quantity);
+      const size = typeof body.size === 'string' ? body.size.trim().toUpperCase() : '';
+      if (!['S', 'M', 'L'].includes(size)) throw new Error('Size must be S, M, or L.');
+      const checkoutUrl = await createCheckoutSession(quantity, size);
       sendJson(response, 200, { checkoutUrl });
     } catch (error) {
       const isUnavailable = error.message === 'Checkout is not live yet.';
