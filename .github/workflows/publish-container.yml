@@ -10,6 +10,7 @@ on:
       - app.js
       - assets/**
       - care-guide.html
+      - guide.js
       - index.html
       - package.json
       - robots.txt
