@@ -90,3 +90,18 @@ test('every indexable public page has a complete, canonical social preview', asy
     assert.match(page, /<meta name="twitter:card" content="summary_large_image" \/>/, relativeUrl);
   }
 });
+
+test('the storefront exposes the decision-guide library without relying on desktop navigation', async () => {
+  const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const decisionGuides = [
+    'bandana-size-guide.html',
+    'measure-pet-for-bandana.html',
+    'how-to-tie-dog-bandana.html',
+    'tie-on-vs-over-collar-dog-bandana.html'
+  ];
+
+  assert.match(storefront, /<section[^>]+id="guides"/);
+  for (const guide of decisionGuides) {
+    assert.match(storefront, new RegExp(`href="${guide.replaceAll('.', '\\.')}"`), guide);
+  }
+});
