@@ -128,3 +128,9 @@ test('the storefront publishes a local favicon without a root-domain fallback', 
   assert.match(server, /'favicon\.svg'/);
   assert.match(dockerfile, /\bfavicon\.svg\b/);
 });
+
+test('the homepage hero reuses the product mockup instead of the multi-megabyte pattern', async () => {
+  const pivotStyles = await readFile(new URL('../pivot.css', import.meta.url), 'utf8');
+  assert.match(pivotStyles, /\.bandana-shape[^}]+pet-parade-digital-mockup-v1\.jpg/);
+  assert.doesNotMatch(pivotStyles, /\.bandana-shape[^}]+paw-pattern-v2\.png/);
+});
