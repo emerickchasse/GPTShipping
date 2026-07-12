@@ -19,6 +19,7 @@ Launch an English-language international dropshipping store and record verified 
 - Resumed 2026-07-12: add a non-sensitive checkout-readiness endpoint so a future deployment can prove that its environment is complete without exposing any secret or supplier/customer data.
 - Resumed 2026-07-12: add a signed Stripe webhook that retrieves the authoritative paid session and forwards it to an authenticated supplier fulfilment endpoint using the Checkout Session ID as an idempotency key. Checkout readiness now requires webhook and fulfilment configuration too.
 - Webhook QA passed with local non-production placeholder configuration: a correctly signed non-payment Stripe event returned 200 without any external call; an invalid signature returned 400. Syntax checks and skill validation passed. This does not verify a live payment, supplier fulfilment, or revenue.
+- Blocked again on 2026-07-12 after the resumed three-cycle audit: the local environment still has no commerce credentials and no external commerce account, supplier evidence, deploy target, support identity, or legal/fulfilment data has become available. The technical checkout, readiness, webhook, and revenue-verification paths cannot turn this into a sale without those external facts and accounts.
 
 ## Verified revenue ledger
 
