@@ -38,6 +38,8 @@ Bing Webmaster Tools now lists the exact PawSwipe GitHub Pages property separate
 
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
+Render service `srv-d99md86cjfls738fdp70` uses on-commit deployment. Keep `render.yaml` aligned to `autoDeployTrigger: commit`; do not use a specific-commit Dashboard deploy unless intentionally accepting that Render can disable later automatic deploys.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, tax-exclusive amount, currency, and payment date in `MEMORY.md`. Gross revenue includes customer-paid product and shipping but excludes collected sales tax; subtract refunds conservatively. The target is met at USD 100.00 or more.
