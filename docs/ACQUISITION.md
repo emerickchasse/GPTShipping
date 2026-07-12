@@ -11,6 +11,7 @@ Last reviewed: 2026-07-12
 - Organic size guide: not indexed at first inspection; indexing request accepted into the priority crawl queue
 - Sitemap submitted: `https://emerickchasse.github.io/GPTShipping/sitemap.xml`
 - Current sitemap status: **Couldn't fetch** / 0 discovered pages, despite a direct HTTP 200 response with `application/xml` and valid sitemap markup. Recheck in Search Console after processing; do not call the sitemap successful until Google reports success.
+- Fallback prepared: `sitemap.txt`, using Google's documented plain-text format of one fully-qualified URL per UTF-8 line. Its Search Console state must be recorded separately from the XML sitemap.
 
 ## Other discovery
 
