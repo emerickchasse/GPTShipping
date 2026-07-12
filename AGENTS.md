@@ -38,7 +38,7 @@ Bing Webmaster Tools now lists the exact PawSwipe GitHub Pages property separate
 
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
-Render service `srv-d99md86cjfls738fdp70` uses on-commit deployment. Keep `render.yaml` aligned to `autoDeployTrigger: commit`; do not use a specific-commit Dashboard deploy unless intentionally accepting that Render can disable later automatic deploys.
+Render service `srv-d99md86cjfls738fdp70` has native auto-deploy off because its Git webhook did not react even after recovery. Keep `render.yaml` aligned to `autoDeployTrigger: off` and deploy only through `.github/workflows/deploy-render.yml` after validation succeeds, using protected secret `RENDER_DEPLOY_HOOK_URL`. Never print, copy into source, or expose the hook value.
 
 ## Success evidence
 
