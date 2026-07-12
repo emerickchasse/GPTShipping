@@ -4,6 +4,8 @@
 
 `server.mjs` creates a Stripe-hosted Checkout Session only when the environment is complete and `LIVE_CHECKOUT_ENABLED=true`. The secret key remains server-side. Checkout collects billing and shipping addresses, calculates tax through Stripe Tax, records a store/SKU marker in Stripe metadata, and redirects to `thank-you.html` after payment.
 
+After deployment, `GET /api/checkout-readiness` exposes only booleans and a missing-setting count. It never returns a secret, product value, country list, or business identifier. Use it to confirm that the host has received the expected environment configuration before the final buyer-path test.
+
 The storefront has no live waitlist or checkout until configuration is complete. That is intentional: it must not claim to accept money or retain an email when it cannot do so.
 
 ## Required, verified configuration

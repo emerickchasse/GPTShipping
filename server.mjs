@@ -6,6 +6,16 @@ const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
 const maxBodySize = 8 * 1024;
 const publicFiles = new Set(['index.html', 'thank-you.html', 'app.js', 'styles.css']);
+const checkoutRequiredVariables = [
+  'STRIPE_SECRET_KEY',
+  'PUBLIC_BASE_URL',
+  'PAWSWIPE_PRODUCT_NAME',
+  'PAWSWIPE_PRODUCT_DESCRIPTION',
+  'PAWSWIPE_SKU',
+  'PAWSWIPE_UNIT_AMOUNT_CENTS',
+  'PAWSWIPE_SHIPPING_RATE_CENTS',
+  'PAWSWIPE_ALLOWED_COUNTRIES'
+];
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
@@ -53,23 +63,32 @@ function asPositiveInteger(value, name) {
   return number;
 }
 
+function checkoutReadiness() {
+  const missing = checkoutRequiredVariables.filter((key) => !process.env[key]);
+  const checkoutEnabled = process.env.LIVE_CHECKOUT_ENABLED === 'true';
+  const stripeTaxEnabled = process.env.STRIPE_AUTOMATIC_TAX_ENABLED === 'true';
+  let httpsConfigured = false;
+  try {
+    httpsConfigured = new URL(process.env.PUBLIC_BASE_URL).protocol === 'https:';
+  } catch {
+    httpsConfigured = false;
+  }
+  return {
+    ready: checkoutEnabled && stripeTaxEnabled && httpsConfigured && missing.length === 0,
+    checkoutEnabled,
+    stripeTaxEnabled,
+    httpsConfigured,
+    missingConfigurationCount: missing.length
+  };
+}
+
 function liveCheckoutConfig() {
   if (process.env.LIVE_CHECKOUT_ENABLED !== 'true') {
     throw new Error('Checkout is not live yet.');
   }
 
-  const required = [
-    'STRIPE_SECRET_KEY',
-    'PUBLIC_BASE_URL',
-    'PAWSWIPE_PRODUCT_NAME',
-    'PAWSWIPE_PRODUCT_DESCRIPTION',
-    'PAWSWIPE_SKU',
-    'PAWSWIPE_UNIT_AMOUNT_CENTS',
-    'PAWSWIPE_SHIPPING_RATE_CENTS',
-    'PAWSWIPE_ALLOWED_COUNTRIES'
-  ];
-  const missing = required.filter((key) => !process.env[key]);
-  if (missing.length) throw new Error(`Checkout configuration is incomplete: ${missing.join(', ')}.`);
+  const missing = checkoutRequiredVariables.filter((key) => !process.env[key]);
+  if (missing.length) throw new Error('Checkout configuration is incomplete.');
   if (process.env.STRIPE_AUTOMATIC_TAX_ENABLED !== 'true') {
     throw new Error('Stripe Tax must be enabled before live checkout.');
   }
@@ -167,6 +186,10 @@ async function serveStatic(request, response, pathname) {
 
 createServer(async (request, response) => {
   const url = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
+  if (request.method === 'GET' && url.pathname === '/api/checkout-readiness') {
+    sendJson(response, 200, checkoutReadiness());
+    return;
+  }
   if (request.method === 'POST' && url.pathname === '/api/checkout') {
     try {
       const body = await readJson(request);
