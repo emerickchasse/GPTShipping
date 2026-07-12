@@ -28,5 +28,7 @@ jobs:
           node-version: 24.16.0
       - name: Check Node syntax
         run: npm run check
+      - name: Test Stripe mode isolation
+        run: npm test
       - name: Check Dockerfile with BuildKit
         run: docker buildx build --check .

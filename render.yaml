@@ -12,6 +12,8 @@ services:
     envVars:
       - key: LIVE_CHECKOUT_ENABLED
         value: "false"
+      - key: STRIPE_CHECKOUT_MODE
+        value: live
       - key: PUBLIC_BASE_URL
         value: https://pawswipe-checkout.onrender.com
       - key: STRIPE_AUTOMATIC_TAX_ENABLED

@@ -2,12 +2,14 @@ import { createServer } from 'node:http';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { extname, resolve } from 'node:path';
+import { normalizeCheckoutMode, shouldFulfillStripeSession } from './commerce-policy.mjs';
 
 const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
 const maxBodySize = 8 * 1024;
 const publicFiles = new Set(['index.html', 'care-guide.html', 'bandana-size-guide.html', 'transparency.html', 'thank-you.html', 'app.js', 'guide.js', 'styles.css', 'pivot.css', 'robots.txt', 'sitemap.xml', '4a385d1729a145679725f7df42a21d91.txt', 'assets/pawswipe-social.png', 'assets/printful/paw-pattern-v2.png']);
 const checkoutRequiredVariables = [
+  'STRIPE_CHECKOUT_MODE',
   'STRIPE_SECRET_KEY',
   'PUBLIC_BASE_URL',
   'PAWSWIPE_PRODUCT_NAME',
@@ -95,6 +97,7 @@ function checkoutReadiness() {
     stripeTaxEnabled,
     httpsConfigured,
     fulfillmentUrlConfigured,
+    checkoutMode: process.env.STRIPE_CHECKOUT_MODE || null,
     missingConfigurationCount: missing.length
   };
 }
@@ -120,10 +123,12 @@ function liveCheckoutConfig() {
     .map((country) => country.trim().toUpperCase())
     .filter((country) => /^[A-Z]{2}$/.test(country));
   if (!allowedCountries.length) throw new Error('PAWSWIPE_ALLOWED_COUNTRIES must contain ISO two-letter codes.');
+  const checkoutMode = normalizeCheckoutMode(process.env.STRIPE_CHECKOUT_MODE);
 
   return {
     baseUrl: baseUrl.origin,
     secretKey: process.env.STRIPE_SECRET_KEY,
+    checkoutMode,
     productName: process.env.PAWSWIPE_PRODUCT_NAME,
     productDescription: process.env.PAWSWIPE_PRODUCT_DESCRIPTION,
     sku: process.env.PAWSWIPE_SKU,
@@ -211,7 +216,7 @@ async function forwardPaidOrder(event) {
   const sessionId = event.data?.object?.id;
   if (!sessionId) throw new Error('Stripe webhook did not include a Checkout Session ID.');
   const session = await stripeRequest(`/v1/checkout/sessions/${sessionId}?expand[]=line_items`, { method: 'GET', headers: {} }, config.secretKey);
-  if (!session.livemode || session.payment_status !== 'paid' || session.metadata?.store !== 'pawswipe') return;
+  if (!shouldFulfillStripeSession(session, config.checkoutMode)) return;
 
   const fulfillmentResponse = await fetch(config.fulfillmentUrl, {
     method: 'POST',

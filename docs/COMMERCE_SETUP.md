@@ -4,6 +4,8 @@
 
 `server.mjs` creates a Stripe-hosted Checkout Session only when the environment is complete and `LIVE_CHECKOUT_ENABLED=true`. The secret key remains server-side. Checkout collects billing and shipping addresses, calculates tax through Stripe Tax, records a store/SKU marker in Stripe metadata, and redirects to `thank-you.html` after payment.
 
+`STRIPE_CHECKOUT_MODE` must be explicitly `test` or `live`. Webhook fulfilment accepts only sessions whose Stripe `livemode` flag matches that setting. Test sessions can exercise sandbox fulfilment, but `verify:revenue` continues to count live paid sessions only.
+
 After deployment, `GET /api/checkout-readiness` exposes only booleans and a missing-setting count. It never returns a secret, product value, country list, or business identifier. Use it to confirm that the host has received the expected environment configuration before the final buyer-path test.
 
 The storefront has no live waitlist or checkout until configuration is complete. That is intentional: it must not claim to accept money or retain an email when it cannot do so.
@@ -11,6 +13,7 @@ The storefront has no live waitlist or checkout until configuration is complete.
 ## Required, verified configuration
 
 1. Create and verify a legitimate Stripe business account and tax registrations applicable to the enabled markets.
+   A non-activated Stripe account can be used for Sandbox work; never copy test keys into a live-mode host or count sandbox payments as revenue.
 2. Verify the supplier's exact product, landed unit cost, quality, stock, destination countries, transit times, tracking, return address, and fulfilment route.
 3. Use only the supplier-verified product copy, SKU, price and shipping amount in the protected host environment. Do not commit them.
 4. Deploy the server on an HTTPS host and set `PUBLIC_BASE_URL` to its final origin.

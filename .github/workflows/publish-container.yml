@@ -12,6 +12,7 @@ on:
       - assets/**
       - bandana-size-guide.html
       - care-guide.html
+      - commerce-policy.mjs
       - transparency.html
       - guide.js
       - index.html
