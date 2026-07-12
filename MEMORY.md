@@ -27,6 +27,7 @@ Launch an English-language international dropshipping store and record verified 
 - Container QA passed on 2026-07-12: `docker buildx build --check` reported no warnings, the `pawswipe:local` image built successfully, and a container ran as `node` with the protected readiness endpoint reporting 11 missing live-commerce settings. No credentials or payment data were used.
 - 2026-07-12: add a GitHub Actions workflow that publishes a Linux/amd64 checkout container to GitHub Container Registry with an immutable commit-SHA tag and `latest` alias. It receives only package-write permission and no commerce secrets.
 - GHCR publication passed on 2026-07-12: `ghcr.io/emerickchasse/gptshipping:2c5ab4d003a6113a0e754bb3031831cb9b5d94aa` pulled publicly with digest `sha256:35040ce619c21a7e6b2e15bcacbdbb3d19b8db1c236461712410320631b2b9f3` and served the protected readiness endpoint in a local container. This is deployable infrastructure, not sales evidence.
+- 2026-07-12: no GitHub Actions secrets or variables exist for this repository. Add a read-only CI workflow that checks Node syntax and Dockerfile BuildKit rules before preview or container publications.
 
 ## Verified revenue ledger
 
