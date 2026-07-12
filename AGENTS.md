@@ -22,6 +22,8 @@ The current Printful manual/API store is `18458606` and the Pet Parade sync prod
 
 The protected Render environment now has a single-store Printful Orders token expiring 2028-07-11 plus the verified S/M/L references. Never copy the token into the repository or logs. `PRINTFUL_AUTO_CONFIRM` must remain false until merchant billing and the complete paid-order path are verified.
 
+The protected pilot-market configuration is US-only with internal working values USD 24.99 unit price and USD 4.49 standard shipping. These values are configured behind the disabled checkout gate, not public launch claims. Readiness still requires the Stripe secret and signed webhook plus the independent tax, billing, sample, and support approvals.
+
 ## Success evidence
 
 Store a redacted record of paid order IDs, amount, currency, and payment date in `MEMORY.md`. Sum only paid, non-refunded orders. The target is met at USD 100.00 or more.
