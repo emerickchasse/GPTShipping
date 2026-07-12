@@ -25,6 +25,7 @@ Launch an English-language international dropshipping store and record verified 
 - GitHub Pages deployment succeeded from `main` on 2026-07-12. The public pre-launch preview is `https://emerickchasse.github.io/GPTShipping/`; Chrome QA confirmed it renders and reports "This preview does not accept payments." after checkout is selected. It is not a live commerce deployment and contributes no revenue.
 - 2026-07-12: add a non-root Node 24 container for `server.mjs`. It is buildable locally and can be handed to an HTTPS container host later; GitHub Pages remains static-only.
 - Container QA passed on 2026-07-12: `docker buildx build --check` reported no warnings, the `pawswipe:local` image built successfully, and a container ran as `node` with the protected readiness endpoint reporting 11 missing live-commerce settings. No credentials or payment data were used.
+- 2026-07-12: add a GitHub Actions workflow that publishes a Linux/amd64 checkout container to GitHub Container Registry with an immutable commit-SHA tag and `latest` alias. It receives only package-write permission and no commerce secrets.
 
 ## Verified revenue ledger
 

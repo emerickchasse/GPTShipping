@@ -1,0 +1,46 @@
+name: Publish checkout container
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-container.yml
+      - .dockerignore
+      - Dockerfile
+      - app.js
+      - index.html
+      - package.json
+      - server.mjs
+      - styles.css
+      - thank-you.html
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: container-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/gptshipping
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - name: Log in to GitHub Container Registry
+        run: echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and publish immutable image
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            --pull \
+            --push \
+            --tag "$IMAGE_NAME:${{ github.sha }}" \
+            --tag "$IMAGE_NAME:latest" \
+            .
