@@ -38,6 +38,7 @@ Launch an English-language international dropshipping store and record verified 
 - 2026-07-12: add manual IndexNow discovery support for the public homepage and care guide. The public key must be deployed and verified before submission; an accepted API response proves receipt only, not crawling, ranking, or indexing.
 - IndexNow deployment and submission QA passed on 2026-07-12: the public key URL returned the exact key with HTTP 200, all three GitHub workflows passed for commit `7c8e226`, and `npm run submit:indexnow` submitted the homepage and care guide to the global endpoint. IndexNow returned HTTP 202 (received; key validation pending). This is discovery evidence only and contributes no revenue.
 - 2026-07-12 conversion audit found a placeholder `hello@example.com` contact link and a passive waitlist message. Remove the fake contact route and replace the dead-end section with a real, no-signup path to the public care guide. Never publish placeholder support coordinates on a customer-facing preview.
+- Public conversion QA passed on 2026-07-12 for commit `83b93d4`: desktop and 375px mobile checks showed a visible care-guide CTA, no horizontal overflow, no browser errors, and no placeholder contact. CI, Pages, and GHCR publication passed, and the deployed HTML was checked directly for the new CTA and absence of `hello@example.com`. The Pages workflow emitted upstream Node 20 action deprecation warnings; investigate pinned action upgrades in a later reliability pass.
 
 ## Verified revenue ledger
 
