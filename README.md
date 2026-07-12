@@ -4,14 +4,14 @@ An English-language, responsive storefront for the PawSwipe pet-hair-remover con
 
 ## Run locally
 
-Serve this directory with any static HTTP server, for example:
+Run the built-in server, which keeps payment credentials server-side:
 
 ```powershell
-python -m http.server 8080
+npm start
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://localhost:8080`. Copy `.env.example` to a non-committed environment file only for local configuration; production secrets belong in the deployment host's encrypted settings.
 
 ## Launch status
 
-This is intentionally a pre-launch prototype: the cart works locally, but checkout does not collect payment. See [MEMORY.md](MEMORY.md) for the live launch gate and verified revenue ledger. Do not enable payment until supplier, fulfilment, customer support, legal policies, and payment-provider configuration have been verified.
+This is intentionally a pre-launch prototype. The cart works locally and the server can create a Stripe-hosted Checkout Session only after every required protected environment setting is verified. See [docs/COMMERCE_SETUP.md](docs/COMMERCE_SETUP.md) and [MEMORY.md](MEMORY.md) for the live launch gate and verified revenue ledger. Do not enable payment until supplier, fulfilment, customer support, legal policies, and payment-provider configuration have been verified.

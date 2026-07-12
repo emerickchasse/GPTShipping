@@ -13,6 +13,7 @@ Launch an English-language international dropshipping store and record verified 
 - Local storefront QA passed in Chrome at `http://127.0.0.1:8080`: desktop layout rendered, a selected quantity of two updated the cart to `$48.00 USD`, and the cart disclosed that checkout is not live. JavaScript syntax check and skill validation passed.
 - Supplier and payment provider remain the real launch blockers. Official Shopify guidance reviewed on 2026-07-12 confirms that the merchant remains responsible for product safety, accurate processing/shipping and import-cost disclosures, refunds, and market-specific legal compliance. Do not interpret “international” as “all countries”: enable only individually verified markets after supplier, tax, returns, and delivery evidence exist.
 - Project-skill lesson: keep `.codex/skills/dropshipping-launch/SKILL.md` ASCII-only because the local skill validator currently reads it using a legacy Windows encoding.
+- 2026-07-12: no local commerce/deployment credentials or existing Chrome merchant account were available. A server-side Stripe Checkout integration, a protected configuration template, a success page, and a refund-aware revenue verifier are now being added; live checkout remains disabled by configuration.
 
 ## Verified revenue ledger
 

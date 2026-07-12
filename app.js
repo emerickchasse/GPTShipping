@@ -34,21 +34,26 @@ cartButton.addEventListener('click', () => setCartOpen(true));
 document.querySelector('#close-cart').addEventListener('click', () => setCartOpen(false));
 overlay.addEventListener('click', () => setCartOpen(false));
 
-document.querySelector('#checkout').addEventListener('click', () => {
-  document.querySelector('#checkout').textContent = 'Checkout coming at launch';
-});
-
-document.querySelector('#email-form').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = document.querySelector('#email');
-  const message = document.querySelector('#form-message');
-  if (!email.validity.valid) {
-    message.textContent = 'Please enter a valid email address.';
-    email.focus();
-    return;
+document.querySelector('#checkout').addEventListener('click', async (event) => {
+  const checkout = event.currentTarget;
+  const message = document.querySelector('#checkout-message');
+  checkout.disabled = true;
+  checkout.textContent = 'Opening secure checkout…';
+  message.textContent = 'Checking live checkout availability…';
+  try {
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ quantity: cartQuantity })
+    });
+    const payload = await response.json();
+    if (!response.ok || !payload.checkoutUrl) throw new Error(payload.error || 'Checkout is unavailable.');
+    window.location.assign(payload.checkoutUrl);
+  } catch (error) {
+    message.textContent = error.message;
+    checkout.disabled = false;
+    checkout.textContent = 'Continue to secure checkout';
   }
-  message.textContent = 'Thanks — you are on the launch list.';
-  event.currentTarget.reset();
 });
 
 document.querySelector('#year').textContent = new Date().getFullYear();
