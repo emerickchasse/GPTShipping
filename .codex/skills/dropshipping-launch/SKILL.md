@@ -36,6 +36,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7c. Do not invent age, identity, or profile facts to create a social account. When authenticated publishing is unavailable, expose privacy-safe share-intent links without third-party SDKs. A share composer is capability evidence; only a visible published post or referral data proves distribution.
 7d. When adding a public page, update every explicit publication allowlist in the same change: Pages artifact assembly, runtime image/static server, both sitemap formats, and discovery submission. A green deployment that omitted the file is a failure; probe the exact public URL before claiming publication.
 7e. Attribute future orders without tracking visitors. Accept only a short allowlisted `utm_source`, normalize unknown or hostile input to `direct` again on the server, store only that label in Stripe metadata, and include it in the verified revenue report. Never persist full URLs, referrers, user identifiers, or browsing history for campaign attribution.
+7f. Treat Search Console reports as separate evidence surfaces. A sitemap fetch failure or zero discovered-page count does not override a successful URL Inspection result, and URL-level indexing does not prove impressions, clicks, or sales. Record each signal with its scope and timestamp.
 
 ## Recovery rule
 
