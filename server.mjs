@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { extname, resolve } from 'node:path';
 import { normalizeAttributionSource, normalizeCheckoutMode, shouldFulfillStripeSession } from './commerce-policy.mjs';
-import { submitPrintfulOrder } from './printful-fulfillment.mjs';
+import { shouldAutoConfirmPrintful, submitPrintfulOrder } from './printful-fulfillment.mjs';
 
 const root = resolve('.');
 const port = Number(process.env.PORT || 8080);
@@ -155,7 +155,10 @@ function checkoutReadiness() {
   };
 }
 
-function liveCheckoutConfig() {
+function liveCheckoutConfig({ requireLaunchReady = false } = {}) {
+  if (requireLaunchReady && !checkoutReadiness().ready) {
+    throw new Error('Checkout is not live yet.');
+  }
   if (process.env.LIVE_CHECKOUT_ENABLED !== 'true') {
     throw new Error('Checkout is not live yet.');
   }
@@ -189,7 +192,10 @@ function liveCheckoutConfig() {
     printful: {
       token: process.env.PRINTFUL_API_TOKEN,
       storeId: process.env.PRINTFUL_STORE_ID,
-      autoConfirm: process.env.PRINTFUL_AUTO_CONFIRM === 'true',
+      autoConfirm: shouldAutoConfirmPrintful(
+        process.env.PRINTFUL_AUTO_CONFIRM === 'true',
+        process.env.PAWSWIPE_SUPPLIER_BILLING_APPROVED === 'true'
+      ),
       externalVariants: {
         S: process.env.PRINTFUL_VARIANT_S,
         M: process.env.PRINTFUL_VARIANT_M,
@@ -213,7 +219,7 @@ async function stripeRequest(path, options, secretKey) {
 }
 
 async function createCheckoutSession(quantity, size, attributionSource) {
-  const config = liveCheckoutConfig();
+  const config = liveCheckoutConfig({ requireLaunchReady: true });
   if (!Number.isSafeInteger(config.shippingAmount) || config.shippingAmount < 0) {
     throw new Error('PAWSWIPE_SHIPPING_RATE_CENTS must be a non-negative integer.');
   }

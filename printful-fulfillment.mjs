@@ -56,6 +56,10 @@ export function printfulOrderPath(autoConfirm) {
   return `/orders?confirm=${autoConfirm === true}&update_existing=true`;
 }
 
+export function shouldAutoConfirmPrintful(autoConfirm, supplierBillingApproved) {
+  return autoConfirm === true && supplierBillingApproved === true;
+}
+
 export async function submitPrintfulOrder(order, config, fetchImpl = fetch) {
   const payload = buildPrintfulOrder(order, config.externalVariants);
   const response = await fetchImpl(`https://api.printful.com${printfulOrderPath(config.autoConfirm)}`, {

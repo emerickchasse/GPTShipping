@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 
 import {
   buildPrintfulOrder,
-  printfulOrderPath
+  printfulOrderPath,
+  shouldAutoConfirmPrintful
 } from '../printful-fulfillment.mjs';
 
 const paidOrder = (size = 'M') => ({
@@ -71,6 +72,13 @@ test('keeps Printful orders as drafts unless auto-confirm is explicitly true', (
   assert.equal(printfulOrderPath(false), '/orders?confirm=false&update_existing=true');
   assert.equal(printfulOrderPath('false'), '/orders?confirm=false&update_existing=true');
   assert.equal(printfulOrderPath(true), '/orders?confirm=true&update_existing=true');
+});
+
+test('supplier billing approval is required before Printful can charge', () => {
+  assert.equal(shouldAutoConfirmPrintful(true, false), false);
+  assert.equal(shouldAutoConfirmPrintful(true, undefined), false);
+  assert.equal(shouldAutoConfirmPrintful(false, true), false);
+  assert.equal(shouldAutoConfirmPrintful(true, true), true);
 });
 
 test('uses the product line amount instead of tax or shipping in the order total', () => {

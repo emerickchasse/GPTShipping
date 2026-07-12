@@ -104,6 +104,17 @@ test('technical credentials cannot bypass human launch approvals', async (t) => 
     customerPolicies: false,
     privateSupport: false
   });
+
+  const blockedCheckout = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
+    method: 'POST',
+    headers: {
+      Origin: technicalConfig.PUBLIC_STOREFRONT_ORIGIN,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ quantity: 1, size: 'M', source: 'direct' })
+  });
+  assert.equal(blockedCheckout.status, 503);
+  assert.deepEqual(await blockedCheckout.json(), { error: 'Checkout is not live yet.' });
   server.kill();
   await once(server, 'exit');
 
