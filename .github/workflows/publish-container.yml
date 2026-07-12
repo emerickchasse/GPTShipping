@@ -7,6 +7,7 @@ on:
       - .github/workflows/publish-container.yml
       - .dockerignore
       - Dockerfile
+      - 4a385d1729a145679725f7df42a21d91.txt
       - app.js
       - assets/**
       - care-guide.html

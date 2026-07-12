@@ -35,6 +35,7 @@ Launch an English-language international dropshipping store and record verified 
 - Public QA passed on 2026-07-12: `https://emerickchasse.github.io/GPTShipping/care-guide.html` renders the guide, editorial image, internal navigation, and explicit pre-launch note. The Pages, CI, and GHCR workflows all passed for commit `d9e4b1a`.
 - 2026-07-12: add a privacy-respecting visitor share flow to the care guide, plus reusable English pre-launch community copy. This enables organic sharing without collecting email addresses or implying that checkout is open.
 - Public sharing QA passed on 2026-07-12 after the GitHub Pages update propagated: the public care guide exposes the share buttons and shows an accessible fallback message when native sharing/clipboard access is unavailable. All CI, Pages and GHCR workflows passed for `cb365fe`.
+- 2026-07-12: add manual IndexNow discovery support for the public homepage and care guide. The public key must be deployed and verified before submission; an accepted API response proves receipt only, not crawling, ranking, or indexing.
 
 ## Verified revenue ledger
 

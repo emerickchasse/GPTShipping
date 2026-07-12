@@ -9,7 +9,7 @@ ENV NODE_ENV=production \
 WORKDIR /app
 
 COPY --chown=node:node package.json ./
-COPY --chown=node:node server.mjs app.js guide.js styles.css index.html care-guide.html thank-you.html robots.txt sitemap.xml ./
+COPY --chown=node:node server.mjs app.js guide.js styles.css index.html care-guide.html thank-you.html robots.txt sitemap.xml 4a385d1729a145679725f7df42a21d91.txt ./
 COPY --chown=node:node assets ./assets
 
 USER node
