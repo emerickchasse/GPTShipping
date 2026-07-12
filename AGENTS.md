@@ -36,6 +36,8 @@ All product-return links on decision guides must preserve one truthful source la
 
 The organic library includes a tying guide with the `tie_guide` attribution label plus a tie-on-versus-over-collar construction comparison. Bing returned no usable volume for the researched phrases, so these pages are intent-coverage experiments rather than demand claims.
 
+DataForSEO's 2026-07-12 US English snapshot reports `tie on dog bandana` at 720 monthly searches with transactional intent probability 0.771. Use the single comparison URL for that intent; do not create a competing landing page or present US keyword volume as international traffic.
+
 The homepage must expose the four product-decision guides (size, reference measurement, tying, and construction) in visible content that remains available when mobile navigation is hidden. Publication and sitemap presence are not substitutes for a visitor-reachable path from the offer.
 
 Treat the public Lighthouse report as external diagnostic evidence, not a traffic signal. Keep the closed cart inert as well as `aria-hidden`, maintain WCAG contrast for small card labels, and publish the project favicon through Pages, Render, and Docker allowlists.

@@ -54,9 +54,13 @@ test('the tie-on versus over-collar guide is published through every discovery s
   const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
   const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
 
-  assert.match(page, /Tie-on vs\. over-collar dog bandanas/i);
+  assert.match(page, /Tie-on dog bandana vs\. over-collar styles/i);
   assert.match(page, /Pet Parade is a tie-on square/i);
   assert.match(page, /does not replace a collar/i);
+  assert.match(page, /<title>Tie-on dog bandana vs\. over-collar/);
+  assert.match(page, /<h1>Tie-on dog bandana vs\. over-collar/);
+  assert.match(page, /"@type":"Article"/);
+  assert.match(page, /"mainEntityOfPage":"https:\/\/emerickchasse\.github\.io\/GPTShipping\/tie-on-vs-over-collar-dog-bandana\.html"/);
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
