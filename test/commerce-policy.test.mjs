@@ -34,6 +34,7 @@ test('normalizes attribution to a small privacy-safe allowlist', () => {
   assert.equal(commercePolicy.normalizeAttributionSource('google'), 'google');
   assert.equal(commercePolicy.normalizeAttributionSource(' SIZE_GUIDE '), 'size_guide');
   assert.equal(commercePolicy.normalizeAttributionSource('tie_guide'), 'tie_guide');
+  assert.equal(commercePolicy.normalizeAttributionSource('comparison_guide'), 'comparison_guide');
   assert.equal(commercePolicy.normalizeAttributionSource('https://tracker.example/user/42'), 'direct');
   assert.equal(commercePolicy.normalizeAttributionSource('unknown-campaign'), 'direct');
   assert.equal(commercePolicy.normalizeAttributionSource(null), 'direct');

@@ -30,6 +30,8 @@ GitHub Pages must talk to Render only through the exact configured `PUBLIC_STORE
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.
 
+All product-return links on decision guides must preserve one truthful source label end to end: `size_guide`, `measure_guide`, `tie_guide`, or `comparison_guide`. Do not reuse a nearby label for a different guide, and keep the server allowlist authoritative.
+
 The organic library includes a tying guide with the `tie_guide` attribution label plus a tie-on-versus-over-collar construction comparison. Bing returned no usable volume for the researched phrases, so these pages are intent-coverage experiments rather than demand claims.
 
 The homepage must expose the four product-decision guides (size, reference measurement, tying, and construction) in visible content that remains available when mobile navigation is hidden. Publication and sitemap presence are not substitutes for a visitor-reachable path from the offer.

@@ -105,3 +105,18 @@ test('the storefront exposes the decision-guide library without relying on deskt
     assert.match(storefront, new RegExp(`href="${guide.replaceAll('.', '\\.')}"`), guide);
   }
 });
+
+test('every product return from a decision guide preserves its distinct attribution', async () => {
+  const guideSources = new Map([
+    ['bandana-size-guide.html', 'size_guide'],
+    ['measure-pet-for-bandana.html', 'measure_guide'],
+    ['how-to-tie-dog-bandana.html', 'tie_guide'],
+    ['tie-on-vs-over-collar-dog-bandana.html', 'comparison_guide']
+  ]);
+
+  for (const [relativeUrl, source] of guideSources) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    assert.doesNotMatch(page, /href="index\.html#shop"/, relativeUrl);
+    assert.match(page, new RegExp(`href="index\\.html\\?utm_source=${source}#shop"`), relativeUrl);
+  }
+});
