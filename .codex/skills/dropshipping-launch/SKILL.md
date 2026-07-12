@@ -57,6 +57,7 @@ description: Build, launch, and improve the GPTShipping international dropshippi
 7j. In PowerShell publication probes, never use `$home` as a response variable because names are case-insensitive and `$HOME` is reserved. Use `$homepageResponse`, fail the probe on command errors, and do not record zero/false fields produced after a failed fetch.
 7k. When a public Lighthouse audit identifies a concrete node, fix the observed cause and rerun the same external audit after deployment. A drawer hidden with `aria-hidden` must also be inert while closed; ship referenced favicon assets through every explicit publication allowlist. Record scores as lab diagnostics, never visits or conversions.
 7l. When Search Console aggregate reports are still processing and valid sitemap formats retain the same fetch failure, do not invent a data-driven content change or resubmit the sitemaps. Inspect the single strongest already-measured commercial URL instead; request indexing only after its live test proves access and indexability, and record the priority-queue result separately from indexation or traffic.
+7m. A pre-launch notification list must be a narrow consent contract, not a disguised newsletter. Collect only a validated email plus required explicit consent, state the one-message purpose and deletion deadline on both form and storefront, enable private owner notifications, test with synthetic non-personal data, delete the test response, and keep real addresses/counts out of Git, logs, screenshots, analytics, and memory.
 
 ## Recovery rule
 

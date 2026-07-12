@@ -15,6 +15,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server
 const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'customer-policies.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
 const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
 const supportFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScMEoMJRpmnazzQjWGQABXdtaUhWpuh5AkWX_d8kHjVblNDTA/viewform';
+const launchFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfpOMdF9D2Sk7YYiIMDnnLD6Q-yQDkyrHnp2TqT5pi32NFzLg/viewform';
 
 test('the measurement guide is linked and discoverable in both sitemaps', () => {
   const relativeUrl = 'measure-pet-for-bandana.html';
@@ -194,6 +195,24 @@ test('private support uses the verified form without exposing the mailbox', asyn
     assert.match(page, /card number|card details/i, name);
     assert.doesNotMatch(page, /@gmail\.com|chasse\.emerick/i, name);
   }
+});
+
+test('launch notification is explicit, limited, and linked without exposing the mailbox', async () => {
+  const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
+  const policies = await readFile(new URL('../customer-policies.html', import.meta.url), 'utf8');
+  const dataMap = await readFile(new URL('../docs/PRIVACY_DATA_MAP.md', import.meta.url), 'utf8');
+
+  assert.match(storefront, new RegExp(`href="${launchFormUrl.replaceAll('.', '\\.')}"`));
+  assert.match(storefront, /one launch notice/i);
+  assert.match(storefront, /no newsletter, promotions, or tracking pixels/i);
+  assert.match(policies, /validated email and required consent/i);
+  assert.match(policies, /within 30 days after sending/i);
+  assert.match(policies, /July 12, 2027/);
+  assert.match(transparency, /one launch message/i);
+  assert.match(dataMap, /Launch notification/);
+  assert.match(dataMap, /no newsletter, promotion, profiling, advertising audience, or tracking pixel use/i);
+  for (const page of [storefront, transparency, policies]) assert.doesNotMatch(page, /@gmail\.com|chasse\.emerick/i);
 });
 
 test('the storefront exposes the decision-guide library without relying on desktop navigation', async () => {
