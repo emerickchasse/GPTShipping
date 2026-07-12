@@ -17,7 +17,7 @@ Last reviewed: 2026-07-12
 
 ## Other discovery
 
-IndexNow accepted the current eight-URL list with HTTP 200. This proves API receipt only. It does not prove crawl, indexation, impressions, clicks, or revenue.
+IndexNow accepted the current nine-URL list with HTTP 200. This proves API receipt only. It does not prove crawl, indexation, impressions, clicks, or revenue.
 
 The size guide exposes direct Pinterest, X, and email share links without loading third-party SDKs or pixels. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
 
