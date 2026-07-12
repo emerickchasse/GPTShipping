@@ -30,6 +30,10 @@ services:
         value: 6a53ef4031cc81
       - key: PRINTFUL_AUTO_CONFIRM
         value: "false"
+      - key: PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS
+        value: "9"
+      - key: PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS
+        value: "11"
       - key: PAWSWIPE_SAMPLE_APPROVED
         value: "false"
       - key: PAWSWIPE_SUPPLIER_BILLING_APPROVED

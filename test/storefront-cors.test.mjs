@@ -76,6 +76,8 @@ test('technical credentials cannot bypass human launch approvals', async (t) => 
     PAWSWIPE_SKU: 'PP-001',
     PAWSWIPE_UNIT_AMOUNT_CENTS: '2499',
     PAWSWIPE_SHIPPING_RATE_CENTS: '449',
+    PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS: '9',
+    PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS: '11',
     PAWSWIPE_ALLOWED_COUNTRIES: 'US',
     STRIPE_WEBHOOK_SECRET: 'whsec_fake',
     PRINTFUL_API_TOKEN: 'printful_fake',

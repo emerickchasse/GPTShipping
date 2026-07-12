@@ -19,6 +19,8 @@ const checkoutRequiredVariables = [
   'PAWSWIPE_SKU',
   'PAWSWIPE_UNIT_AMOUNT_CENTS',
   'PAWSWIPE_SHIPPING_RATE_CENTS',
+  'PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS',
+  'PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS',
   'PAWSWIPE_ALLOWED_COUNTRIES',
   'STRIPE_WEBHOOK_SECRET',
   'PRINTFUL_API_TOKEN',
@@ -177,6 +179,9 @@ function liveCheckoutConfig({ requireLaunchReady = false } = {}) {
     .filter((country) => /^[A-Z]{2}$/.test(country));
   if (!allowedCountries.length) throw new Error('PAWSWIPE_ALLOWED_COUNTRIES must contain ISO two-letter codes.');
   const checkoutMode = normalizeCheckoutMode(process.env.STRIPE_CHECKOUT_MODE);
+  const deliveryMinimum = asPositiveInteger(process.env.PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS, 'PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS');
+  const deliveryMaximum = asPositiveInteger(process.env.PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS, 'PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS');
+  if (deliveryMaximum < deliveryMinimum) throw new Error('Delivery maximum must be at least the delivery minimum.');
 
   return {
     baseUrl: baseUrl.origin,
@@ -187,6 +192,8 @@ function liveCheckoutConfig({ requireLaunchReady = false } = {}) {
     sku: process.env.PAWSWIPE_SKU,
     unitAmount: asPositiveInteger(process.env.PAWSWIPE_UNIT_AMOUNT_CENTS, 'PAWSWIPE_UNIT_AMOUNT_CENTS'),
     shippingAmount: Number(process.env.PAWSWIPE_SHIPPING_RATE_CENTS),
+    deliveryMinimum,
+    deliveryMaximum,
     allowedCountries,
     webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
     printful: {
@@ -236,9 +243,13 @@ async function createCheckoutSession(quantity, size, attributionSource) {
     'line_items[0][price_data][product_data][description]': config.productDescription,
     'line_items[0][price_data][unit_amount]': String(config.unitAmount),
     'line_items[0][quantity]': String(quantity),
-    'shipping_options[0][shipping_rate_data][display_name]': 'Verified shipping',
+    'shipping_options[0][shipping_rate_data][display_name]': 'Standard tracked shipping',
     'shipping_options[0][shipping_rate_data][fixed_amount][amount]': String(config.shippingAmount),
     'shipping_options[0][shipping_rate_data][fixed_amount][currency]': 'usd',
+    'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]': 'business_day',
+    'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][value]': String(config.deliveryMinimum),
+    'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]': 'business_day',
+    'shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]': String(config.deliveryMaximum),
     'metadata[store]': 'pawswipe',
     'metadata[sku]': `${config.sku}-${size.toLowerCase()}`,
     'metadata[size]': size,

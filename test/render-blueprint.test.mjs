@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const blueprint = await readFile(new URL('../render.yaml', import.meta.url), 'utf8');
 const environmentExample = await readFile(new URL('../.env.example', import.meta.url), 'utf8');
+const server = await readFile(new URL('../server.mjs', import.meta.url), 'utf8');
 test('the Render Blueprint preserves on-commit deployment recovery', () => {
   assert.match(blueprint, /^\s+autoDeployTrigger: commit$/m);
   assert.doesNotMatch(blueprint, /^\s+autoDeployTrigger: checksPass$/m);
@@ -29,4 +30,14 @@ test('the public environment template defaults every human approval closed', () 
   ]) {
     assert.match(environmentExample, new RegExp(`^${key}=false$`, 'm'));
   }
+});
+
+test('the verified US delivery range is displayed by Stripe Checkout', () => {
+  assert.match(blueprint, /- key: PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS\s+value: "9"/);
+  assert.match(blueprint, /- key: PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS\s+value: "11"/);
+  assert.match(environmentExample, /^PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS=$/m);
+  assert.match(environmentExample, /^PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS=$/m);
+  assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[delivery_estimate\]\[minimum\]\[unit\].*business_day/);
+  assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[delivery_estimate\]\[maximum\]\[unit\].*business_day/);
+  assert.match(server, /Delivery maximum must be at least the delivery minimum/);
 });
