@@ -13,7 +13,7 @@ services:
       - key: LIVE_CHECKOUT_ENABLED
         value: "false"
       - key: STRIPE_CHECKOUT_MODE
-        value: live
+        value: test
       - key: PUBLIC_BASE_URL
         value: https://pawswipe-checkout.onrender.com
       - key: PUBLIC_STOREFRONT_ORIGIN

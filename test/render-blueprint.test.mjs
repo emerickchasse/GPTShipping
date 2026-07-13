@@ -10,6 +10,12 @@ test('the Render Blueprint preserves on-commit deployment recovery', () => {
   assert.doesNotMatch(blueprint, /^\s+autoDeployTrigger: checksPass$/m);
 });
 
+test('pre-launch environments default to Stripe test mode', () => {
+  assert.match(blueprint, /- key: STRIPE_CHECKOUT_MODE\s+value: test/);
+  assert.match(environmentExample, /^STRIPE_CHECKOUT_MODE=test$/m);
+  assert.match(blueprint, /- key: LIVE_CHECKOUT_ENABLED\s+value: "false"/);
+});
+
 test('the Render Blueprint records only the evidenced private-support approval', () => {
   for (const key of [
     'PAWSWIPE_SAMPLE_APPROVED',
