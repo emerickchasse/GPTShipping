@@ -34,7 +34,7 @@ IndexNow accepted the current nine-URL list with HTTP 200. This proves API recei
 - Tie-on comparison URL Inspection: **Discovered but not crawled** since July 12, 2026, so it cannot yet appear on Bing. A separate priority request returned `Indexing requested`; this does not prove a crawl or indexation.
 - No Bing Search Performance or AI Performance metrics are attributed until the exact verified property reports them.
 
-The size guide exposes direct Pinterest, X, and email share links without loading third-party SDKs or pixels. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
+The size, reference-measurement, and cat guides expose direct Pinterest, X, and email share links without loading third-party SDKs, pixels, or cookies. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
 
 All five commercial decision guides now expose the verified one-message launch-notification form next to the explicit closed-order disclosure. This is a consent-bounded pre-launch conversion path only; a rendered link does not prove a subscriber, email delivery, order, or revenue.
 

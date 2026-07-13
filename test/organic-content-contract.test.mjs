@@ -245,6 +245,16 @@ test('every decision guide offers the consent-limited launch notice', async () =
   }
 });
 
+test('measured size, reference, and cat guides offer privacy-safe share intents', async () => {
+  for (const relativeUrl of ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'cat-bandana-guide.html']) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    assert.match(page, /https:\/\/www\.pinterest\.com\/pin\/create\/button\//, relativeUrl);
+    assert.match(page, /https:\/\/x\.com\/intent\/post\?/, relativeUrl);
+    assert.match(page, /href="mailto:\?subject=/, relativeUrl);
+    assert.match(page, /does not load social-media SDKs, pixels, or cookies/i, relativeUrl);
+  }
+});
+
 test('the storefront exposes the decision-guide library without relying on desktop navigation', async () => {
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const decisionGuides = [
