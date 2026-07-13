@@ -135,6 +135,8 @@ test('customer policies are public, sourced, and remain explicitly pre-launch', 
   assert.match(page, /does not sell this data/i);
   assert.match(storefront, new RegExp(`href="${relativeUrl}"`));
   assert.match(transparency, new RegExp(`href="${relativeUrl}"`));
+  assert.match(transparency, /test payment-to-draft process have been verified/i);
+  assert.doesNotMatch(transparency, /has not yet adopted a final customer return policy/i);
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));

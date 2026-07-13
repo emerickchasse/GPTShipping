@@ -10,7 +10,7 @@ Last reviewed: 2026-07-12
 - Test keys accidentally exposed by Stripe's accessible page representation were immediately renewed with zero delay and were never deployed. Replacement values were transferred directly without repository or log persistence.
 - A first private transfer extracted the full row rather than the copy control and appended the adjacent `Aucun` status to the token. Stripe correctly rejected it. The malformed value was replaced with the exact 107-character copy-control value; both the source and the protected Render value independently passed a harmless authenticated Stripe balance request before webhook retest.
 - Render is Blueprint-managed. Pre-launch `STRIPE_CHECKOUT_MODE` is therefore source-controlled as `test`; dashboard-only edits are not authoritative.
-- `LIVE_CHECKOUT_ENABLED`, automatic tax, sample approval, supplier billing approval, and customer-policy approval remain false. Live revenue still cannot be queried with test credentials.
+- `LIVE_CHECKOUT_ENABLED`, automatic tax, sample approval, and supplier billing approval remain false. Customer-policy and private-support approvals are true after their provider-backed drills. Live revenue still cannot be queried with test credentials.
 
 Email evidence proves that an account exists; it does not prove account activation, business verification, current tax registrations, dashboard access, API capability, or PawSwipe revenue.
 
@@ -30,6 +30,8 @@ The signed-event path deliberately does not require `LIVE_CHECKOUT_ENABLED` or S
 Provider-backed webhook evidence on July 12, 2026: Stripe Shell triggered `checkout.session.completed`; endpoint delivery to Render returned HTTP 200 after the signed-event recovery fix. The Stripe fixture lacks PawSwipe metadata, so the server stopped before Printful. This proves signature validation, test-key retrieval, event parsing, and safe rejection—not a paid PawSwipe sandbox checkout or fulfillment draft.
 
 Provider-backed checkout drill on July 12, 2026: a USD test Checkout Session displayed the size-M product at USD 24.99, standard tracked shipping at USD 4.49, and 9–11 business days before payment. Stripe's official test card completed the session with `livemode:false`, `payment_status:paid`, total USD 29.48, PawSwipe metadata, and a synthetic US recipient. The signed webhook created exactly one matching Printful `draft` with standard shipping and one item; auto-confirm and supplier billing remained false. This approves the customer-policy operating gate only. It is not live revenue, sample approval, supplier-billing approval, tax approval, or permission to open checkout.
+
+Authenticated account-boundary audit on July 12, 2026: Stripe's connected account is the pre-existing CAD account `SiteQC`, with a prior payout and an incomplete six-step profile guide. Its current guide is prefilled with the unrelated `siteqc.ca` website and asks for a business activity description. PawSwipe does not overwrite or submit those legal/profile fields without authoritative merchant facts. Printful's PawSwipe store has no billing method, every visible currency wallet has a zero balance, and automatic wallet funding is disabled. These facts keep supplier billing, auto-confirm, sample purchasing, live keys, tax, and checkout closed.
 
 ## Evidence required before counting revenue
 
