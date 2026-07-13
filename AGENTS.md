@@ -22,6 +22,8 @@ Four human approvals are executable readiness gates and default false: `PAWSWIPE
 
 Server enforcement must match the readiness surface: `/api/checkout` returns 503 before contacting Stripe unless complete readiness is true. Paid webhook recovery may still create an idempotent Printful draft, but `confirm=true` is impossible unless both `PRINTFUL_AUTO_CONFIRM=true` and `PAWSWIPE_SUPPLIER_BILLING_APPROVED=true`.
 
+Signed Stripe test-event recovery must work independently of new-checkout activation. `LIVE_CHECKOUT_ENABLED=false` and `STRIPE_AUTOMATIC_TAX_ENABLED=false` continue to block session creation, but they must not turn a valid test webhook into HTTP 500 before Stripe session verification. Keep this separation covered by the signed webhook regression.
+
 `customer-policies.html` is the public US-pilot operating draft. Keep the merchant's obligations separate from Printful reimbursement: supported defect and loss claims describe PawSwipe remedies, FTC shipping-delay rights remain intact, and supplier limitations never waive applicable customer rights. Publication is not policy approval; keep the gate false until private support, checkout disclosures, retention details, and the end-to-end remedy process are verified.
 
 `docs/PRIVACY_DATA_MAP.md` is the implementation contract for hosting, support, Stripe, and Printful data. Keep it synchronized with every collected field and public disclosure. Routine support records have a 24-month schedule; transaction and fulfillment records follow the CRA six-year rule. Provider-purpose retention is not a PawSwipe-controlled fixed promise. Privacy completeness alone does not approve customer policies while the pre-payment delivery estimate and remedy execution remain unverified.

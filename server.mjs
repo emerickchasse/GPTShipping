@@ -157,17 +157,17 @@ function checkoutReadiness() {
   };
 }
 
-function liveCheckoutConfig({ requireLaunchReady = false } = {}) {
+function liveCheckoutConfig({ requireLaunchReady = false, requireCheckoutEnabled = true } = {}) {
   if (requireLaunchReady && !checkoutReadiness().ready) {
     throw new Error('Checkout is not live yet.');
   }
-  if (process.env.LIVE_CHECKOUT_ENABLED !== 'true') {
+  if (requireCheckoutEnabled && process.env.LIVE_CHECKOUT_ENABLED !== 'true') {
     throw new Error('Checkout is not live yet.');
   }
 
   const missing = checkoutRequiredVariables.filter((key) => !process.env[key]);
   if (missing.length) throw new Error('Checkout configuration is incomplete.');
-  if (process.env.STRIPE_AUTOMATIC_TAX_ENABLED !== 'true') {
+  if (requireCheckoutEnabled && process.env.STRIPE_AUTOMATIC_TAX_ENABLED !== 'true') {
     throw new Error('Stripe Tax must be enabled before live checkout.');
   }
 
@@ -290,7 +290,7 @@ function hasValidStripeSignature(rawBody, signatureHeader, webhookSecret) {
 }
 
 async function forwardPaidOrder(event) {
-  const config = liveCheckoutConfig();
+  const config = liveCheckoutConfig({ requireCheckoutEnabled: false });
   const sessionId = event.data?.object?.id;
   if (!sessionId) throw new Error('Stripe webhook did not include a Checkout Session ID.');
   const session = await stripeRequest(`/v1/checkout/sessions/${sessionId}?expand[]=line_items`, { method: 'GET', headers: {} }, config.secretKey);
@@ -356,7 +356,7 @@ createServer(async (request, response) => {
   if (request.method === 'POST' && url.pathname === '/api/stripe-webhook') {
     try {
       const rawBody = await readBuffer(request, 1024 * 1024);
-      const config = liveCheckoutConfig();
+      const config = liveCheckoutConfig({ requireCheckoutEnabled: false });
       if (!hasValidStripeSignature(rawBody, request.headers['stripe-signature'], config.webhookSecret)) {
         sendJson(response, 400, { error: 'Invalid Stripe signature.' });
         return;

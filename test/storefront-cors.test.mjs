@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
+import { createHmac } from 'node:crypto';
 
 test('the checkout API allows only the configured storefront origin', async (t) => {
   const port = 8194;
@@ -137,4 +138,60 @@ test('technical credentials cannot bypass human launch approvals', async (t) => 
   await once(approvedServer.stdout, 'data');
   const approvedResponse = await fetch(`http://127.0.0.1:${port + 1}/api/checkout-readiness`);
   assert.equal((await approvedResponse.json()).ready, true);
+});
+
+test('a signed test webhook remains verifiable while new checkout is closed', async (t) => {
+  const port = 8197;
+  const webhookSecret = 'whsec_test_fixture';
+  const env = {
+    ...process.env,
+    PORT: String(port),
+    STRIPE_CHECKOUT_MODE: 'test',
+    STRIPE_SECRET_KEY: 'sk_test_fake',
+    PUBLIC_BASE_URL: 'https://checkout.example',
+    PUBLIC_STOREFRONT_ORIGIN: 'https://storefront.example',
+    PAWSWIPE_PRODUCT_NAME: 'Pet Parade',
+    PAWSWIPE_PRODUCT_DESCRIPTION: 'Test product',
+    PAWSWIPE_SKU: 'PP-001',
+    PAWSWIPE_UNIT_AMOUNT_CENTS: '2499',
+    PAWSWIPE_SHIPPING_RATE_CENTS: '449',
+    PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS: '9',
+    PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS: '11',
+    PAWSWIPE_ALLOWED_COUNTRIES: 'US',
+    STRIPE_WEBHOOK_SECRET: webhookSecret,
+    PRINTFUL_API_TOKEN: 'printful_fake',
+    PRINTFUL_STORE_ID: '18458606',
+    PRINTFUL_VARIANT_S: 's',
+    PRINTFUL_VARIANT_M: 'm',
+    PRINTFUL_VARIANT_L: 'l',
+    PRINTFUL_AUTO_CONFIRM: 'false',
+    LIVE_CHECKOUT_ENABLED: 'false',
+    STRIPE_AUTOMATIC_TAX_ENABLED: 'false',
+    PAWSWIPE_SAMPLE_APPROVED: 'false',
+    PAWSWIPE_SUPPLIER_BILLING_APPROVED: 'false',
+    PAWSWIPE_CUSTOMER_POLICIES_APPROVED: 'false',
+    PAWSWIPE_PRIVATE_SUPPORT_APPROVED: 'true'
+  };
+  const server = spawn(process.execPath, ['server.mjs'], {
+    cwd: new URL('..', import.meta.url),
+    env,
+    stdio: ['ignore', 'pipe', 'pipe']
+  });
+  t.after(() => server.kill());
+  await once(server.stdout, 'data');
+
+  const rawBody = JSON.stringify({ id: 'evt_test', type: 'ping', data: { object: {} } });
+  const timestamp = Math.floor(Date.now() / 1000);
+  const signature = createHmac('sha256', webhookSecret).update(`${timestamp}.${rawBody}`).digest('hex');
+  const response = await fetch(`http://127.0.0.1:${port}/api/stripe-webhook`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Stripe-Signature': `t=${timestamp},v1=${signature}`
+    },
+    body: rawBody
+  });
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { received: true });
 });

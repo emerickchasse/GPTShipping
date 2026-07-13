@@ -24,6 +24,8 @@ Email evidence proves that an account exists; it does not prove account activati
 7. Configure and verify applicable Stripe Tax registrations before setting `STRIPE_AUTOMATIC_TAX_ENABLED=true`.
 8. Only after every human gate is evidenced, install live credentials directly in protected configuration, verify `livemode:true`, and then evaluate `LIVE_CHECKOUT_ENABLED=true`.
 
+The signed-event path deliberately does not require `LIVE_CHECKOUT_ENABLED` or Stripe Tax to be true. Those settings gate creation of a new Checkout Session; they do not gate authentication and recovery of a provider event that has already reached the server. Test-mode recovery still requires every configuration variable to exist, matching `livemode:false`, PawSwipe metadata, and unconfirmed Printful fulfillment.
+
 ## Evidence required before counting revenue
 
 - live Stripe dashboard or API access;
