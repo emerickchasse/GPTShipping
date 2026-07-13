@@ -82,7 +82,7 @@ Treat the public Lighthouse report as external diagnostic evidence, not a traffi
 
 The homepage FAQ must keep its visible answers and FAQPage structured data aligned. It may answer only verified product, sizing, launch-status, and safety facts; structured markup is not evidence of a search rich result or traffic.
 
-The homepage Product structured data may describe only the verified PawSwipe brand, category, digital mockup, pattern, tie-on construction, S/M/L square measurements, and internal product-family SKU. Keep `offers`, ratings, and reviews absent while checkout, public price, sample, and customer evidence remain unavailable. Valid markup is semantic capability, not a rich result, impression, visit, or sale.
+Do not publish a homepage Product JSON-LD entity while checkout, public offer, sample, and customer evidence remain unavailable. Google requires at least `offers`, `review`, or `aggregateRating` for Product snippets; omitting all three produces a critical invalid item, while inventing any of them would be worse. Keep the factual product copy visible in HTML until eligible commerce evidence exists.
 
 Every indexable page must expose an exact canonical Open Graph URL, a factual title/description, the deployed Pet Parade mockup, and a large-image card declaration. Preview metadata improves link presentation but does not prove a post, impression, click, or sale.
 

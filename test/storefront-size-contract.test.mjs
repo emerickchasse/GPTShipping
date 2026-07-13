@@ -36,14 +36,8 @@ test('the product visual identifies the digital mockup without implying sample e
   assert.match(html, /Digital preview — physical sample not yet inspected\./);
 });
 
-test('the product structured data is factual and does not invent a live offer', () => {
-  assert.match(html, /"@type":"Product","name":"PawSwipe Pet Parade All-Over Print Bandana"/);
-  assert.match(html, /"brand":\{"@type":"Brand","name":"PawSwipe"\}/);
-  assert.match(html, /"sku":"PP-BANDANA"/);
-  assert.match(html, /"category":"Pet bandanas"/);
-  assert.match(html, /"pattern":"Original cat-and-dog pattern"/);
-  assert.match(html, /"size":\["S — 44 cm square","M — 54 cm square","L — 64 cm square"\]/);
-  assert.match(html, /assets\/printful\/pet-parade-digital-mockup-v1\.jpg/);
+test('the pre-launch storefront does not publish an ineligible Product rich-result entity', () => {
+  assert.doesNotMatch(html, /"@type":"Product"/);
   assert.doesNotMatch(html, /"offers":|"aggregateRating":|"review":/);
 });
 
