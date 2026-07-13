@@ -32,6 +32,7 @@ test('live mode accepts only paid PawSwipe live sessions', () => {
 test('normalizes attribution to a small privacy-safe allowlist', () => {
   assert.equal(typeof commercePolicy.normalizeAttributionSource, 'function');
   assert.equal(commercePolicy.normalizeAttributionSource('google'), 'google');
+  assert.equal(commercePolicy.normalizeAttributionSource('github'), 'github');
   assert.equal(commercePolicy.normalizeAttributionSource(' SIZE_GUIDE '), 'size_guide');
   assert.equal(commercePolicy.normalizeAttributionSource('tie_guide'), 'tie_guide');
   assert.equal(commercePolicy.normalizeAttributionSource('comparison_guide'), 'comparison_guide');

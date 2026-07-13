@@ -47,6 +47,13 @@ test('the storefront answers verified purchase objections in visible FAQ content
   assert.match(html, /transparency\.html/);
 });
 
+test('the storefront exposes the public community with privacy boundaries', () => {
+  assert.match(html, /href="https:\/\/github\.com\/emerickchasse\/GPTShipping\/discussions\/4" target="_blank" rel="noopener noreferrer"/);
+  assert.match(html, /Posting requires a GitHub account/);
+  assert.match(html, /Do not share personal, address, payment, order, credential, identification, or private support information/);
+  assert.match(html, /Community and privacy details/);
+});
+
 test('the closed cart removes its controls from keyboard focus', () => {
   assert.match(html, /<aside id="cart"[^>]+aria-hidden="true"[^>]+inert/);
   assert.match(script, /cart\.inert = !open/);

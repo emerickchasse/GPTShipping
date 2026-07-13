@@ -38,6 +38,8 @@ All five commercial decision guides expose direct Pinterest, X, and email share 
 
 The project repository now identifies the live storefront as its homepage, carries a factual PawSwipe description, and has GitHub Discussions enabled. Announcement discussion `#4` is the public English-language welcome and feedback route. It links the storefront and five decision guides, keeps orders explicitly closed, and prohibits personal, payment, order, credential, and private-support data. Anonymous HTTP returned 200 with the title and public-data warning. This is a published community surface, not evidence of a reader, member, reply, visit, or sale.
 
+The Discussion's direct storefront link uses only the allowlisted `github` attribution label; it does not add a referrer, user ID, or tracking parameter. The homepage guide library visibly links back to Discussion `#4` with the public-posting and prohibited-data disclosure. This closes the visitor navigation loop while keeping any future paid-session attribution privacy-bounded.
+
 All five commercial decision guides now expose the verified one-message launch-notification form next to the explicit closed-order disclosure. This is a consent-bounded pre-launch conversion path only; a rendered link does not prove a subscriber, email delivery, order, or revenue.
 
 ## Evidence rules
