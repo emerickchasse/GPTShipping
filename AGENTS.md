@@ -100,7 +100,7 @@ Do not publish a homepage Product JSON-LD entity while checkout, public offer, s
 
 Every indexable page must expose an exact canonical Open Graph URL, a factual title/description, the deployed Pet Parade mockup, and a large-image card declaration. Preview metadata improves link presentation but does not prove a post, impression, click, or sale.
 
-Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, and `transparency.html` were unknown to Google and have confirmed priority-crawl requests after live 200/self-canonical checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
+Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, `transparency.html`, and `dog-bandana-material-guide.html` were unknown to Google and have confirmed priority-crawl requests after clean live indexability checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, public `site:` results, impressions, clicks, and sales as separate evidence.
 
 `cat-bandana-guide.html` passed Google's live URL test and entered the priority crawl queue on 2026-07-12, but it was not indexed at inspection time. Pinterest, X, and Reddit were simultaneously signed out; never create identities or claim social distribution from those surfaces.
 
