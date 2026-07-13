@@ -100,6 +100,8 @@ The homepage must expose the four product-decision guides (size, reference measu
 
 Treat the public Lighthouse report as external diagnostic evidence, not a traffic signal. Keep the closed cart inert as well as `aria-hidden`, maintain WCAG contrast for small card labels, and publish the project favicon through Pages, Render, and Docker allowlists.
 
+The current public mobile Lighthouse baseline is 96 performance and 100 for accessibility, best practices, and SEO, with 2.6 s LCP, zero CLS, and zero TBT. The main opportunity is GitHub Pages' 10-minute cache TTL, not an application defect. Preserve the current visual fidelity and rerun the same public audit only after a measured change; do not trade product comprehension for a speculative perfect score.
+
 The homepage FAQ must keep its visible answers and FAQPage structured data aligned. It may answer only verified product, sizing, launch-status, and safety facts; structured markup is not evidence of a search rich result or traffic.
 
 Do not publish a homepage Product JSON-LD entity while checkout, public offer, sample, and customer evidence remain unavailable. Google requires at least `offers`, `review`, or `aggregateRating` for Product snippets; omitting all three produces a critical invalid item, while inventing any of them would be worse. Keep the factual product copy visible in HTML until eligible commerce evidence exists.
