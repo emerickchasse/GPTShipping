@@ -186,9 +186,11 @@ test('the Atom guide feed is validly linked and published through every runtime'
   assert.match(feed, /rel="self" type="application\/atom\+xml"/);
   assert.equal((feed.match(/<entry>/g) || []).length, 6);
   assert.match(storefront, /<link rel="alternate" type="application\/atom\+xml"[^>]+href="feed\.xml"/);
+  assert.match(storefront, /href="feed\.xml" type="application\/atom\+xml">Follow the guide feed without sharing an email<\/a>/);
   for (const relativeUrl of guidePages) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
     assert.match(page, /<link rel="alternate" type="application\/atom\+xml"[^>]+href="feed\.xml"/, relativeUrl);
+    assert.match(page, /href="feed\.xml" type="application\/atom\+xml">Follow the guide feed<\/a>/, relativeUrl);
     assert.match(feed, new RegExp(`<id>https://emerickchasse\\.github\\.io/GPTShipping/${relativeUrl.replaceAll('.', '\\.')}<\\/id>`), relativeUrl);
   }
   assert.match(pagesWorkflow, /\bfeed\.xml\b/);
