@@ -106,7 +106,7 @@ Google URL Inspection currently confirms the homepage, `bandana-size-guide.html`
 
 `cat-bandana-guide.html` passed Google's live URL test and entered the priority crawl queue on 2026-07-12, then was confirmed indexed on 2026-07-13. Pinterest, X, and Reddit were simultaneously signed out; never create identities or claim social distribution from those surfaces.
 
-Bing Webmaster Tools now verifies the exact PawSwipe GitHub Pages property through its property-specific `BingSiteAuth.xml`, tracked through Pages, Render, and Docker publication contracts. The XML sitemap is submitted and processing; all nine public URLs have URL Submission receipts. Keep ownership, submission, crawl, indexation, performance, AI citations, clicks, and sales as separate evidence, and never copy metrics from another property.
+Bing Webmaster Tools now verifies the exact PawSwipe GitHub Pages property through its property-specific `BingSiteAuth.xml`, tracked through Pages, Render, and Docker publication contracts. The XML sitemap is submitted and processing; all public URLs have discovery-submission receipts. Bing URL Inspection still called the cat and material guides discovered but not crawled on 2026-07-12, then accepted individual indexing requests for both. Keep ownership, submission, crawl, indexation, performance, AI citations, clicks, and sales as separate evidence, and never copy metrics from another property.
 
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
