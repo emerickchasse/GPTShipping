@@ -76,6 +76,8 @@ Use `dog-bandana-material-guide.html` as the sole target for `dog bandana materi
 
 Topic-specific public discussions must link back to the exact canonical guide, preserve closed-order language and prohibited-data boundaries, and have a reciprocal guide link so the community route is not orphaned.
 
+`llms.txt` is the proposed agent-readable map for the exact Pages subpath. Keep it concise, factual, and synchronized with the canonical root, every indexable public page, Atom feed, and public discussions. It must state that orders are closed and images are digital previews. Never call publication a crawler permission, ranking signal, citation, visit, or sale.
+
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.

@@ -46,6 +46,8 @@ DataForSEO's US English keyword snapshot on July 12, 2026 reports `dog bandana m
 
 Public Q&A discussion `#5`, `What dog bandana material facts do you compare?`, is the topic-specific community route. It links the exact material guide and the `github`-attributed storefront, keeps orders closed, asks one bounded comparison question, and prohibits sensitive or private-support data.
 
+`llms.txt` is a concise CommonMark map following the llmstxt.org proposal. It lists the canonical storefront, all factual guides/policies, Atom feed, and public community routes with the same closed-order and digital-preview limits. It is discovery capability only; it does not grant crawler access or prove parsing, citation, referral, traffic, or revenue.
+
 ## Evidence rules
 
 - Count a page as indexed only when Search Console reports it indexed or a live Google result confirms it.

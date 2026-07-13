@@ -228,6 +228,27 @@ test('the Atom guide feed is validly linked and published through every runtime'
   assert.match(indexNowScript, /new URL\(['"]feed\.xml['"], site\)/);
 });
 
+test('the proposed llms.txt map is factual and published through every runtime', async () => {
+  const llms = await readFile(new URL('../llms.txt', import.meta.url), 'utf8');
+  const relativeUrl = 'llms.txt';
+  const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+  assert.match(llms, /^# PawSwipe$/m);
+  assert.match(llms, /^> PawSwipe is an English-language pre-launch storefront/m);
+  assert.match(llms, /Orders and payments are not open/);
+  assert.match(llms, /digital previews, not physical sample or quality evidence/);
+  assert.match(llms, /https:\/\/emerickchasse\.github\.io\/GPTShipping\//);
+  for (const page of publicPages.filter((page) => page !== 'index.html')) {
+    assert.match(llms, new RegExp(`https://emerickchasse\\.github\\.io/GPTShipping/${page.replaceAll('.', '\\.')}`), page);
+  }
+  assert.match(textSitemap, new RegExp(`^${canonicalUrl.replaceAll('.', '\\.')}$$`, 'm'));
+  assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl.replaceAll('.', '\\.')}</loc>`));
+  assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl.replaceAll('.', '\\.')}\\b`));
+  assert.match(containerWorkflow, new RegExp(`^\\s+- ${relativeUrl.replaceAll('.', '\\.')}$$`, 'm'));
+  assert.match(indexNowScript, new RegExp(`['"]${relativeUrl.replaceAll('.', '\\.')}['"]`));
+  assert.match(server, new RegExp(`['"]${relativeUrl.replaceAll('.', '\\.')}['"]`));
+  assert.match(dockerfile, new RegExp(`\\b${relativeUrl.replaceAll('.', '\\.')}\\b`));
+});
+
 test('every indexable public page has a complete, canonical social preview', async () => {
   for (const relativeUrl of publicPages) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');

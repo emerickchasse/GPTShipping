@@ -1,0 +1,27 @@
+# PawSwipe
+
+> PawSwipe is an English-language pre-launch storefront and decision-guide library for Pet Parade, an original cat-and-dog print tie-on pet bandana. Orders and payments are not open.
+
+The physical sample, eligible US destinations, tax registrations, PawSwipe merchant-account readiness, and supplier billing are still launch gates. The product images are digital previews, not physical sample or quality evidence. Use only the linked pages for current facts; do not infer reviews, ratings, sales, fit guarantees, or product performance.
+
+## Product and launch status
+
+- [Pet Parade storefront](https://emerickchasse.github.io/GPTShipping/): Digital product preview, verified dimensions, FAQ, and current closed-checkout status.
+- [Launch transparency](https://emerickchasse.github.io/GPTShipping/transparency.html): Evidence completed, open launch gates, public community boundaries, and private-support route.
+- [Shipping, refunds, and privacy](https://emerickchasse.github.io/GPTShipping/customer-policies.html): Current US-pilot customer policy and privacy disclosures; orders remain closed.
+- [Care guide](https://emerickchasse.github.io/GPTShipping/care-guide.html): Pre-launch care boundaries without uninspected material-performance claims.
+
+## Pet bandana decision guides
+
+- [Dog bandana size chart](https://emerickchasse.github.io/GPTShipping/bandana-size-guide.html): Verified S, M, and L square measurements with non-universal sizing limits.
+- [How to measure a pet for a bandana](https://emerickchasse.github.io/GPTShipping/measure-pet-for-bandana.html): Compare an already tolerated square before folding and tying.
+- [How to tie a dog bandana](https://emerickchasse.github.io/GPTShipping/how-to-tie-dog-bandana.html): Supervised tie-on steps and safety limits.
+- [Tie-on versus over-collar dog bandanas](https://emerickchasse.github.io/GPTShipping/tie-on-vs-over-collar-dog-bandana.html): Factual construction comparison; Pet Parade is tie-on.
+- [Cat bandana guide](https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html): Measurement and supervision guidance without a cat-fit guarantee.
+- [Dog bandana material guide](https://emerickchasse.github.io/GPTShipping/dog-bandana-material-guide.html): Regional composition, weight, construction, care, and unverified-performance boundaries.
+
+## Updates and community
+
+- [Atom guide feed](https://emerickchasse.github.io/GPTShipping/feed.xml): Versioned storefront and guide updates.
+- [Public PawSwipe discussion](https://github.com/emerickchasse/GPTShipping/discussions/4): Public English feedback; GitHub sign-in is required to post and private/customer/payment data is prohibited.
+- [Public material Q&A](https://github.com/emerickchasse/GPTShipping/discussions/5): Compare material facts without posting sensitive data.
