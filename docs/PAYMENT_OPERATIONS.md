@@ -8,6 +8,7 @@ Last reviewed: 2026-07-12
 - The owner completed authentication directly on July 12, 2026. The authenticated `SiteQC` account is accessible, operates in CAD, and has prior live payout evidence; Stripe's setup guide still shows email, business-information, and profile confirmation work, so live PawSwipe activation is not approved.
 - A test secret and a test webhook signing secret are stored only in protected Render configuration. The active test webhook destination is `PawSwipe Render test checkout` at `https://pawswipe-checkout.onrender.com/api/stripe-webhook`, listening only for `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
 - Test keys accidentally exposed by Stripe's accessible page representation were immediately renewed with zero delay and were never deployed. Replacement values were transferred directly without repository or log persistence.
+- A first private transfer extracted the full row rather than the copy control and appended the adjacent `Aucun` status to the token. Stripe correctly rejected it. The malformed value was replaced with the exact 107-character copy-control value; both the source and the protected Render value independently passed a harmless authenticated Stripe balance request before webhook retest.
 - Render is Blueprint-managed. Pre-launch `STRIPE_CHECKOUT_MODE` is therefore source-controlled as `test`; dashboard-only edits are not authoritative.
 - `LIVE_CHECKOUT_ENABLED`, automatic tax, sample approval, supplier billing approval, and customer-policy approval remain false. Live revenue still cannot be queried with test credentials.
 
@@ -25,6 +26,8 @@ Email evidence proves that an account exists; it does not prove account activati
 8. Only after every human gate is evidenced, install live credentials directly in protected configuration, verify `livemode:true`, and then evaluate `LIVE_CHECKOUT_ENABLED=true`.
 
 The signed-event path deliberately does not require `LIVE_CHECKOUT_ENABLED` or Stripe Tax to be true. Those settings gate creation of a new Checkout Session; they do not gate authentication and recovery of a provider event that has already reached the server. Test-mode recovery still requires every configuration variable to exist, matching `livemode:false`, PawSwipe metadata, and unconfirmed Printful fulfillment.
+
+Provider-backed webhook evidence on July 12, 2026: Stripe Shell triggered `checkout.session.completed`; endpoint delivery to Render returned HTTP 200 after the signed-event recovery fix. The Stripe fixture lacks PawSwipe metadata, so the server stopped before Printful. This proves signature validation, test-key retrieval, event parsing, and safe rejection—not a paid PawSwipe sandbox checkout or fulfillment draft.
 
 ## Evidence required before counting revenue
 
