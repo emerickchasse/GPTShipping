@@ -33,7 +33,9 @@ const checkoutRequiredVariables = [
   'PAWSWIPE_SAMPLE_APPROVED',
   'PAWSWIPE_SUPPLIER_BILLING_APPROVED',
   'PAWSWIPE_CUSTOMER_POLICIES_APPROVED',
-  'PAWSWIPE_PRIVATE_SUPPORT_APPROVED'
+  'PAWSWIPE_PRIVATE_SUPPORT_APPROVED',
+  'PAWSWIPE_TAX_APPROVED',
+  'PAWSWIPE_MERCHANT_ACCOUNT_APPROVED'
 ];
 const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -134,7 +136,9 @@ function checkoutReadiness() {
     sample: process.env.PAWSWIPE_SAMPLE_APPROVED === 'true',
     supplierBilling: process.env.PAWSWIPE_SUPPLIER_BILLING_APPROVED === 'true',
     customerPolicies: process.env.PAWSWIPE_CUSTOMER_POLICIES_APPROVED === 'true',
-    privateSupport: process.env.PAWSWIPE_PRIVATE_SUPPORT_APPROVED === 'true'
+    privateSupport: process.env.PAWSWIPE_PRIVATE_SUPPORT_APPROVED === 'true',
+    tax: process.env.PAWSWIPE_TAX_APPROVED === 'true',
+    merchantAccount: process.env.PAWSWIPE_MERCHANT_ACCOUNT_APPROVED === 'true'
   };
   const launchApprovalsComplete = Object.values(launchApprovals).every(Boolean);
   try {

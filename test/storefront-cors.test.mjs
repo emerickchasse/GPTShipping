@@ -106,7 +106,9 @@ test('technical credentials cannot bypass human launch approvals', async (t) => 
     sample: false,
     supplierBilling: false,
     customerPolicies: false,
-    privateSupport: false
+    privateSupport: false,
+    tax: false,
+    merchantAccount: false
   });
 
   const blockedCheckout = await fetch(`http://127.0.0.1:${port}/api/checkout`, {
@@ -138,7 +140,29 @@ test('technical credentials cannot bypass human launch approvals', async (t) => 
   t.after(() => approvedServer.kill());
   await once(approvedServer.stdout, 'data');
   const approvedResponse = await fetch(`http://127.0.0.1:${port + 1}/api/checkout-readiness`);
-  assert.equal((await approvedResponse.json()).ready, true);
+  assert.equal((await approvedResponse.json()).ready, false);
+  approvedServer.kill();
+  await once(approvedServer, 'exit');
+
+  const fullyApprovedServer = spawn(process.execPath, ['server.mjs'], {
+    cwd: new URL('..', import.meta.url),
+    env: {
+      ...process.env,
+      ...technicalConfig,
+      PORT: String(port + 2),
+      PAWSWIPE_SAMPLE_APPROVED: 'true',
+      PAWSWIPE_SUPPLIER_BILLING_APPROVED: 'true',
+      PAWSWIPE_CUSTOMER_POLICIES_APPROVED: 'true',
+      PAWSWIPE_PRIVATE_SUPPORT_APPROVED: 'true',
+      PAWSWIPE_TAX_APPROVED: 'true',
+      PAWSWIPE_MERCHANT_ACCOUNT_APPROVED: 'true'
+    },
+    stdio: ['ignore', 'pipe', 'pipe']
+  });
+  t.after(() => fullyApprovedServer.kill());
+  await once(fullyApprovedServer.stdout, 'data');
+  const fullyApprovedResponse = await fetch(`http://127.0.0.1:${port + 2}/api/checkout-readiness`);
+  assert.equal((await fullyApprovedResponse.json()).ready, true);
 });
 
 test('a signed test webhook remains verifiable while new checkout is closed', async (t) => {
@@ -172,7 +196,9 @@ test('a signed test webhook remains verifiable while new checkout is closed', as
     PAWSWIPE_SAMPLE_APPROVED: 'false',
     PAWSWIPE_SUPPLIER_BILLING_APPROVED: 'false',
     PAWSWIPE_CUSTOMER_POLICIES_APPROVED: 'false',
-    PAWSWIPE_PRIVATE_SUPPORT_APPROVED: 'true'
+    PAWSWIPE_PRIVATE_SUPPORT_APPROVED: 'true',
+    PAWSWIPE_TAX_APPROVED: 'false',
+    PAWSWIPE_MERCHANT_ACCOUNT_APPROVED: 'false'
   };
   const server = spawn(process.execPath, ['server.mjs'], {
     cwd: new URL('..', import.meta.url),

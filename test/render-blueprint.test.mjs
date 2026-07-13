@@ -19,7 +19,9 @@ test('pre-launch environments default to Stripe test mode', () => {
 test('the Render Blueprint records only evidenced launch approvals', () => {
   for (const key of [
     'PAWSWIPE_SAMPLE_APPROVED',
-    'PAWSWIPE_SUPPLIER_BILLING_APPROVED'
+    'PAWSWIPE_SUPPLIER_BILLING_APPROVED',
+    'PAWSWIPE_TAX_APPROVED',
+    'PAWSWIPE_MERCHANT_ACCOUNT_APPROVED'
   ]) {
     assert.match(blueprint, new RegExp(`- key: ${key}\\s+value: "false"`));
   }
@@ -32,7 +34,9 @@ test('the public environment template defaults every human approval closed', () 
     'PAWSWIPE_SAMPLE_APPROVED',
     'PAWSWIPE_SUPPLIER_BILLING_APPROVED',
     'PAWSWIPE_CUSTOMER_POLICIES_APPROVED',
-    'PAWSWIPE_PRIVATE_SUPPORT_APPROVED'
+    'PAWSWIPE_PRIVATE_SUPPORT_APPROVED',
+    'PAWSWIPE_TAX_APPROVED',
+    'PAWSWIPE_MERCHANT_ACCOUNT_APPROVED'
   ]) {
     assert.match(environmentExample, new RegExp(`^${key}=false$`, 'm'));
   }

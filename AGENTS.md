@@ -66,6 +66,8 @@ The protected pilot-market configuration is US-only with a USD 24.99 product pri
 
 The connected SiteQC Stripe account has an unrelated default tax category for personal-use SaaS. PawSwipe must never inherit it. `PAWSWIPE_PRODUCT_TAX_CODE` is required and currently fixed to `txcd_99999999` (General - Tangible Goods) on the physical bandana line item. Keep `STRIPE_AUTOMATIC_TAX_ENABLED=false` until authoritative registrations and merchant facts exist; an active Stripe Tax screen or automatically calculated amount is not registration/remittance evidence.
 
+Tax registration and merchant-account ownership are separate human approvals: `PAWSWIPE_TAX_APPROVED` and `PAWSWIPE_MERCHANT_ACCOUNT_APPROVED`. Both default false and are required by server readiness. Never infer either from automatic-tax configuration, test/live credentials, the pre-existing SiteQC payout, or a technically complete environment.
+
 The homepage is the sole target for the measured `pet bandana` category (DataForSEO US English: 1,000 monthly searches; transactional probability 0.476 on 2026-07-12). Keep the category wording paired with the factual cat-and-dog print and explicit closed-order status; do not turn a category estimate into an international-demand claim.
 
 Use `cat-bandana-guide.html` for the measured `cat bandana` intent (DataForSEO US English: 1,900 monthly searches on 2026-07-12) without converting it into a second product page. Keep its advice limited to the verified square dimensions, comparison against an already tolerated accessory, supervision, and the fact that S is not a cat-specific fit guarantee. Preserve `cat_guide` attribution on every product return.
