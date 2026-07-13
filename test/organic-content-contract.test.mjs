@@ -124,6 +124,8 @@ test('the dog bandana material guide is factual and published through every disc
   assert.match(page, /does not by itself prove softness, breathability, or comfort/i);
   assert.match(page, /digital mockup is not material or quality evidence/i);
   assert.match(page, /utm_source=material_guide/);
+  assert.match(page, /https:\/\/github\.com\/emerickchasse\/GPTShipping\/discussions\/5/);
+  assert.match(page, /material Q&amp;A is public and requires a GitHub account to reply/);
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));

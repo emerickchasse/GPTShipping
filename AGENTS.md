@@ -66,6 +66,8 @@ Use `cat-bandana-guide.html` for the measured `cat bandana` intent (DataForSEO U
 
 Use `dog-bandana-material-guide.html` as the sole target for `dog bandana material` (DataForSEO US English: 720 monthly searches, transactional intent, checked 2026-07-12). Keep composition and weight separated by US/Mexico versus EU/Latvia, cite Printful product code 655, disclose microfibre release and single-sided/double-folded construction, and never convert supplier specifications into sample quality, comfort, durability, or performance claims. Preserve `material_guide` attribution.
 
+Topic-specific public discussions must link back to the exact canonical guide, preserve closed-order language and prohibited-data boundaries, and have a reciprocal guide link so the community route is not orphaned.
+
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.
 
 Campaign attribution is limited to the allowlisted `utm_source` label stored with a paid Stripe session. Unknown input becomes `direct`; never add third-party analytics, cookies, full referrers, URLs, or personal identifiers merely to measure acquisition.

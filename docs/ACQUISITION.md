@@ -44,6 +44,8 @@ All six commercial decision guides now expose the verified one-message launch-no
 
 DataForSEO's US English keyword snapshot on July 12, 2026 reports `dog bandana material` at 720 monthly searches with transactional intent. It is distinct from sizing, tying, construction, and cat-fit intents. `dog-bandana-material-guide.html` is the sole target and uses only Printful's official regional composition/weight/construction facts plus explicit sample-evidence limits.
 
+Public Q&A discussion `#5`, `What dog bandana material facts do you compare?`, is the topic-specific community route. It links the exact material guide and the `github`-attributed storefront, keeps orders closed, asks one bounded comparison question, and prohibits sensitive or private-support data.
+
 ## Evidence rules
 
 - Count a page as indexed only when Search Console reports it indexed or a live Google result confirms it.

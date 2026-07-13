@@ -19,6 +19,8 @@ Digital preview only — the physical sample is still awaiting inspection and or
 
 Public feedback on guide clarity and missing decision questions belongs in [PawSwipe Discussion #4](https://github.com/emerickchasse/GPTShipping/discussions/4). GitHub posts are public and require an account; never post personal, address, payment, order, credential, identification, or private support information there.
 
+Material comparison Q&A: [What dog bandana material facts do you compare?](https://github.com/emerickchasse/GPTShipping/discussions/5). The thread links the sourced material guide and keeps orders explicitly closed.
+
 ## Run locally
 
 Run the built-in server, which keeps payment credentials server-side:
