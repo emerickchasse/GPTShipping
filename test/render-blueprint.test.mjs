@@ -48,3 +48,10 @@ test('the verified US delivery range is displayed by Stripe Checkout', () => {
   assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[type\].*fixed_amount/);
   assert.match(server, /Delivery maximum must be at least the delivery minimum/);
 });
+
+test('the physical product never inherits an unrelated Stripe account tax category', () => {
+  assert.match(blueprint, /- key: PAWSWIPE_PRODUCT_TAX_CODE\s+value: txcd_99999999/);
+  assert.match(environmentExample, /^PAWSWIPE_PRODUCT_TAX_CODE=$/m);
+  assert.match(server, /'PAWSWIPE_PRODUCT_TAX_CODE'/);
+  assert.match(server, /product_data\]\[tax_code\].*config\.productTaxCode/);
+});

@@ -20,6 +20,8 @@ services:
         value: https://emerickchasse.github.io
       - key: STRIPE_AUTOMATIC_TAX_ENABLED
         value: "false"
+      - key: PAWSWIPE_PRODUCT_TAX_CODE
+        value: txcd_99999999
       - key: PRINTFUL_STORE_ID
         value: "18458606"
       - key: PRINTFUL_VARIANT_S

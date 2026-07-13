@@ -11,6 +11,7 @@ Last reviewed: 2026-07-12
 - A first private transfer extracted the full row rather than the copy control and appended the adjacent `Aucun` status to the token. Stripe correctly rejected it. The malformed value was replaced with the exact 107-character copy-control value; both the source and the protected Render value independently passed a harmless authenticated Stripe balance request before webhook retest.
 - Render is Blueprint-managed. Pre-launch `STRIPE_CHECKOUT_MODE` is therefore source-controlled as `test`; dashboard-only edits are not authoritative.
 - `LIVE_CHECKOUT_ENABLED`, automatic tax, sample approval, and supplier billing approval remain false. Customer-policy and private-support approvals are true after their provider-backed drills. Live revenue still cannot be queried with test credentials.
+- Stripe Tax's authenticated overview says Tax is active for one pre-existing Payment Link, but its territories view says initial transaction data is still updating and shows no verified PawSwipe registration. The account-wide default category is unrelated SaaS for personal use. PawSwipe therefore sends explicit physical-goods tax code `txcd_99999999` on its own line item and keeps automatic tax/live checkout false until registrations and merchant facts are authoritative.
 
 Email evidence proves that an account exists; it does not prove account activation, business verification, current tax registrations, dashboard access, API capability, or PawSwipe revenue.
 

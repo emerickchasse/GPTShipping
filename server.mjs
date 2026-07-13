@@ -16,6 +16,7 @@ const checkoutRequiredVariables = [
   'PUBLIC_STOREFRONT_ORIGIN',
   'PAWSWIPE_PRODUCT_NAME',
   'PAWSWIPE_PRODUCT_DESCRIPTION',
+  'PAWSWIPE_PRODUCT_TAX_CODE',
   'PAWSWIPE_SKU',
   'PAWSWIPE_UNIT_AMOUNT_CENTS',
   'PAWSWIPE_SHIPPING_RATE_CENTS',
@@ -182,6 +183,8 @@ function liveCheckoutConfig({ requireLaunchReady = false, requireCheckoutEnabled
   const deliveryMinimum = asPositiveInteger(process.env.PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS, 'PAWSWIPE_DELIVERY_MIN_BUSINESS_DAYS');
   const deliveryMaximum = asPositiveInteger(process.env.PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS, 'PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS');
   if (deliveryMaximum < deliveryMinimum) throw new Error('Delivery maximum must be at least the delivery minimum.');
+  const productTaxCode = process.env.PAWSWIPE_PRODUCT_TAX_CODE.trim();
+  if (!/^txcd_\d{8}$/.test(productTaxCode)) throw new Error('PAWSWIPE_PRODUCT_TAX_CODE must be a Stripe tax code.');
 
   return {
     baseUrl: baseUrl.origin,
@@ -189,6 +192,7 @@ function liveCheckoutConfig({ requireLaunchReady = false, requireCheckoutEnabled
     checkoutMode,
     productName: process.env.PAWSWIPE_PRODUCT_NAME,
     productDescription: process.env.PAWSWIPE_PRODUCT_DESCRIPTION,
+    productTaxCode,
     sku: process.env.PAWSWIPE_SKU,
     unitAmount: asPositiveInteger(process.env.PAWSWIPE_UNIT_AMOUNT_CENTS, 'PAWSWIPE_UNIT_AMOUNT_CENTS'),
     shippingAmount: Number(process.env.PAWSWIPE_SHIPPING_RATE_CENTS),
@@ -241,6 +245,7 @@ async function createCheckoutSession(quantity, size, attributionSource) {
     'line_items[0][price_data][currency]': 'usd',
     'line_items[0][price_data][product_data][name]': config.productName,
     'line_items[0][price_data][product_data][description]': config.productDescription,
+    'line_items[0][price_data][product_data][tax_code]': config.productTaxCode,
     'line_items[0][price_data][unit_amount]': String(config.unitAmount),
     'line_items[0][quantity]': String(quantity),
     'shipping_options[0][shipping_rate_data][display_name]': 'Standard tracked shipping',

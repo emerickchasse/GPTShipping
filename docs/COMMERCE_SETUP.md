@@ -19,7 +19,7 @@ The storefront has no live waitlist or checkout until configuration is complete.
 2. Verify the supplier's exact product, landed unit cost, quality, stock, destination countries, transit times, tracking, return address, and fulfilment route.
 3. Use only the supplier-verified product copy, SKU, price and shipping amount in the protected host environment. Do not commit them.
 4. Deploy the server on an HTTPS host and set `PUBLIC_BASE_URL` to its final origin.
-5. Configure Stripe Tax accurately. This server refuses live checkout if `STRIPE_AUTOMATIC_TAX_ENABLED` is not true.
+5. Configure Stripe Tax accurately. Set `PAWSWIPE_PRODUCT_TAX_CODE` to an explicitly verified Stripe product tax code; the US pilot currently uses `txcd_99999999` (General - Tangible Goods) so its physical bandana can never inherit the connected SiteQC account's unrelated SaaS default. This server refuses live checkout if the code is absent/malformed or `STRIPE_AUTOMATIC_TAX_ENABLED` is not true. A product code and automatic calculation do not prove registrations or remittance readiness.
 6. Configure Stripe to deliver `checkout.session.completed` and `checkout.session.async_payment_succeeded` events to `POST /api/stripe-webhook`. Set `STRIPE_WEBHOOK_SECRET` from that endpoint.
 7. Create a store-scoped Printful token with the minimum Orders permission and set `PRINTFUL_API_TOKEN`, `PRINTFUL_STORE_ID`, and the three verified external variant references. Never commit or log the token.
 8. The server retrieves the paid session directly from Stripe, hashes the long Checkout Session ID into a stable Printful-compatible external order ID, and uses `update_existing=true` so webhook retries update rather than duplicate an order.
