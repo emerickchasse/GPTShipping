@@ -16,6 +16,7 @@ on:
       - cat-bandana-guide.html
       - commerce-policy.mjs
       - customer-policies.html
+      - feed.xml
       - transparency.html
       - guide.js
       - how-to-tie-dog-bandana.html

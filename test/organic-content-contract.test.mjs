@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
-const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, indexNowScript, server, dockerfile] = await Promise.all([
+const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, containerWorkflow, indexNowScript, server, dockerfile] = await Promise.all([
   readFile(new URL('../bandana-size-guide.html', import.meta.url), 'utf8'),
   readFile(new URL('../sitemap.xml', import.meta.url), 'utf8'),
   readFile(new URL('../sitemap.txt', import.meta.url), 'utf8'),
   readFile(new URL('../.github/workflows/deploy-preview.yml', import.meta.url), 'utf8'),
+  readFile(new URL('../.github/workflows/publish-container.yml', import.meta.url), 'utf8'),
   readFile(new URL('../scripts/submit-indexnow.mjs', import.meta.url), 'utf8'),
   readFile(new URL('../server.mjs', import.meta.url), 'utf8'),
   readFile(new URL('../Dockerfile', import.meta.url), 'utf8')
@@ -194,6 +195,7 @@ test('the Atom guide feed is validly linked and published through every runtime'
     assert.match(feed, new RegExp(`<id>https://emerickchasse\\.github\\.io/GPTShipping/${relativeUrl.replaceAll('.', '\\.')}<\\/id>`), relativeUrl);
   }
   assert.match(pagesWorkflow, /\bfeed\.xml\b/);
+  assert.match(containerWorkflow, /^\s+- feed\.xml$/m);
   assert.match(server, /['"]feed\.xml['"]/);
   assert.match(dockerfile, /\bfeed\.xml\b/);
   assert.match(indexNowScript, /new URL\(['"]feed\.xml['"], site\)/);
