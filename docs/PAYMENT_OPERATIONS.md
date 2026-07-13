@@ -29,6 +29,8 @@ The signed-event path deliberately does not require `LIVE_CHECKOUT_ENABLED` or S
 
 Provider-backed webhook evidence on July 12, 2026: Stripe Shell triggered `checkout.session.completed`; endpoint delivery to Render returned HTTP 200 after the signed-event recovery fix. The Stripe fixture lacks PawSwipe metadata, so the server stopped before Printful. This proves signature validation, test-key retrieval, event parsing, and safe rejection—not a paid PawSwipe sandbox checkout or fulfillment draft.
 
+Provider-backed checkout drill on July 12, 2026: a USD test Checkout Session displayed the size-M product at USD 24.99, standard tracked shipping at USD 4.49, and 9–11 business days before payment. Stripe's official test card completed the session with `livemode:false`, `payment_status:paid`, total USD 29.48, PawSwipe metadata, and a synthetic US recipient. The signed webhook created exactly one matching Printful `draft` with standard shipping and one item; auto-confirm and supplier billing remained false. This approves the customer-policy operating gate only. It is not live revenue, sample approval, supplier-billing approval, tax approval, or permission to open checkout.
+
 ## Evidence required before counting revenue
 
 - live Stripe dashboard or API access;

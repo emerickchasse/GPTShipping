@@ -16,14 +16,14 @@ test('pre-launch environments default to Stripe test mode', () => {
   assert.match(blueprint, /- key: LIVE_CHECKOUT_ENABLED\s+value: "false"/);
 });
 
-test('the Render Blueprint records only the evidenced private-support approval', () => {
+test('the Render Blueprint records only evidenced launch approvals', () => {
   for (const key of [
     'PAWSWIPE_SAMPLE_APPROVED',
-    'PAWSWIPE_SUPPLIER_BILLING_APPROVED',
-    'PAWSWIPE_CUSTOMER_POLICIES_APPROVED'
+    'PAWSWIPE_SUPPLIER_BILLING_APPROVED'
   ]) {
     assert.match(blueprint, new RegExp(`- key: ${key}\\s+value: "false"`));
   }
+  assert.match(blueprint, /- key: PAWSWIPE_CUSTOMER_POLICIES_APPROVED\s+value: "true"/);
   assert.match(blueprint, /- key: PAWSWIPE_PRIVATE_SUPPORT_APPROVED\s+value: "true"/);
 });
 
@@ -45,5 +45,6 @@ test('the verified US delivery range is displayed by Stripe Checkout', () => {
   assert.match(environmentExample, /^PAWSWIPE_DELIVERY_MAX_BUSINESS_DAYS=$/m);
   assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[delivery_estimate\]\[minimum\]\[unit\].*business_day/);
   assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[delivery_estimate\]\[maximum\]\[unit\].*business_day/);
+  assert.match(server, /shipping_options\[0\]\[shipping_rate_data\]\[type\].*fixed_amount/);
   assert.match(server, /Delivery maximum must be at least the delivery minimum/);
 });

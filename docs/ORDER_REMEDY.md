@@ -25,5 +25,4 @@ No route automatically refunds, cancels, replaces, contacts a customer, or chang
 
 `test/fixtures/remedy-delay.json` intentionally includes fake email, phone, address, and raw session fields. The complete CLI drill correlated the derived payment/fulfillment reference and returned `offer_delay_consent_or_full_refund`; an executable check confirmed that none of those raw/private values appeared in output. The test suite also covers mismatches, defects with/without photos, transit-loss windows, delay, and cancellation.
 
-This proves deterministic redaction and routing against synthetic records. It does not prove access to a real Stripe session, a real Printful order, an issued refund, a replacement, a cancellation, or a customer outcome. Keep `PAWSWIPE_CUSTOMER_POLICIES_APPROVED=false` until a non-chargeable provider-backed test completes those remaining checks.
-
+This proves deterministic redaction and routing against synthetic records. A later non-chargeable provider-backed drill also proved retrieval of one paid Stripe test session, its matching Printful draft, the visible 9–11-business-day shipping disclosure, and privacy-safe operator correlation. That evidence approved `PAWSWIPE_CUSTOMER_POLICIES_APPROVED=true`; it is not evidence of an issued refund, replacement, cancellation, delivered order, or customer outcome.

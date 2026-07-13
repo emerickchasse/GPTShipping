@@ -121,6 +121,8 @@ test('customer policies are public, sourced, and remain explicitly pre-launch', 
   assert.match(page, /consent to the delay/i);
   assert.match(page, /9–11 business days/);
   assert.match(page, /Stripe shipping option will display that range before payment/);
+  assert.match(page, /test payment-to-fulfilment-draft process have been verified/i);
+  assert.doesNotMatch(page, /policy approval gate remains closed/i);
   assert.match(page, /full refund/i);
   assert.match(page, /within 30 days of delivery/i);
   assert.match(page, /within 30 days of the estimated delivery date/i);

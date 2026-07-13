@@ -244,6 +244,7 @@ async function createCheckoutSession(quantity, size, attributionSource) {
     'line_items[0][price_data][unit_amount]': String(config.unitAmount),
     'line_items[0][quantity]': String(quantity),
     'shipping_options[0][shipping_rate_data][display_name]': 'Standard tracked shipping',
+    'shipping_options[0][shipping_rate_data][type]': 'fixed_amount',
     'shipping_options[0][shipping_rate_data][fixed_amount][amount]': String(config.shippingAmount),
     'shipping_options[0][shipping_rate_data][fixed_amount][currency]': 'usd',
     'shipping_options[0][shipping_rate_data][delivery_estimate][minimum][unit]': 'business_day',
