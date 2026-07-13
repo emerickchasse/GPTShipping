@@ -314,7 +314,11 @@ test('launch notification is explicit, limited, and linked without exposing the 
   const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
   const policies = await readFile(new URL('../customer-policies.html', import.meta.url), 'utf8');
   const dataMap = await readFile(new URL('../docs/PRIVACY_DATA_MAP.md', import.meta.url), 'utf8');
+  const hero = storefront.match(/<section class="hero shell">[\s\S]*?<\/section>/)?.[0] ?? '';
 
+  assert.match(hero, new RegExp(`class="button button-primary" href="${launchFormUrl.replaceAll('.', '\\.')}"`));
+  assert.match(hero, /Get one launch email/);
+  assert.match(hero, /href="#shop"[^>]*>Meet Pet Parade/);
   assert.match(storefront, new RegExp(`href="${launchFormUrl.replaceAll('.', '\\.')}"`));
   assert.match(storefront, /one launch notice/i);
   assert.match(storefront, /no newsletter, promotions, or tracking pixels/i);

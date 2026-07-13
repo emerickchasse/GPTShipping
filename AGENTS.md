@@ -38,6 +38,8 @@ The optional pre-launch list follows `docs/LAUNCH_NOTIFICATIONS.md`. It collects
 
 Every decision guide must offer that same consent-limited launch notice near its product return. Keep the closed-order disclosure adjacent, link directly to the verified form, and do not substitute a newsletter, promotion list, embedded tracker, or implied checkout. This gives pre-launch organic visitors one safe conversion path while payments remain closed.
 
+While checkout is closed, the homepage hero's primary action is the verified one-message launch notice and `Meet Pet Parade` is secondary. Keep the exact consent form, safe external-link attributes, responsive wrapping, and the later full consent explanation. When checkout truly opens, reassess the hierarchy from live readiness and conversion evidence rather than leaving stale pre-launch copy.
+
 Every commercial decision guide also exposes direct Pinterest, X, and email share intents. Keep each canonical guide URL and factual topic-specific copy paired correctly, use no social SDK/pixel/cookie, and preserve `noopener noreferrer` on external composers. A composer is capability only; do not record it as distribution, traffic, or revenue.
 
 GitHub Discussion `#4` is PawSwipe's public English feedback surface. Keep it distinct from private support: reading is public, posting requires GitHub, and the public copy must prohibit personal, payment, order, credential, identification, and support-case data. The repository description and homepage must continue to identify the live PawSwipe preview truthfully. A published discussion is community capability, not a reader, reply, visit, or sale.
