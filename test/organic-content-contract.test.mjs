@@ -76,6 +76,7 @@ test('the tie-on versus over-collar guide is published through every discovery s
 
   assert.match(page, /Tie-on dog bandana vs\. over-collar styles/i);
   assert.match(page, /Pet Parade is a tie-on square/i);
+  assert.match(page, /href="dog-bandana-material-guide\.html"/);
   assert.match(page, /does not replace a collar/i);
   assert.match(page, /<title>Tie-on dog bandana vs\. over-collar/);
   assert.match(page, /<h1>Tie-on dog bandana vs\. over-collar/);
@@ -100,6 +101,7 @@ test('the cat bandana guide is factual and published through every discovery sur
   assert.match(page, /not a collar or restraint/i);
   assert.match(page, /supervis/i);
   assert.match(page, /href="index\.html\?utm_source=cat_guide#shop"/);
+  assert.match(page, /href="dog-bandana-material-guide\.html"/);
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));

@@ -74,6 +74,8 @@ Use `cat-bandana-guide.html` for the measured `cat bandana` intent (DataForSEO U
 
 Use `dog-bandana-material-guide.html` as the sole target for `dog bandana material` (DataForSEO US English: 720 monthly searches, transactional intent, checked 2026-07-12). Keep composition and weight separated by US/Mexico versus EU/Latvia, cite Printful product code 655, disclose microfibre release and single-sided/double-folded construction, and never convert supplier specifications into sample quality, comfort, durability, or performance claims. Preserve `material_guide` attribution.
 
+Google currently reports the material guide as crawled but not indexed, with no detected source page despite its valid public canonical, sitemap entry, robots declaration, and homepage link. Preserve contextual discovery links from the indexed cat guide and tie-on comparison; do not repeat indexing requests without a new live defect or meaningful content change.
+
 Topic-specific public discussions must link back to the exact canonical guide, preserve closed-order language and prohibited-data boundaries, and have a reciprocal guide link so the community route is not orphaned.
 
 `llms.txt` is the proposed agent-readable map for the exact Pages subpath. Keep it concise, factual, and synchronized with the canonical root, every indexable public page, Atom feed, and public discussions. It must state that orders are closed and images are digital previews. Never call publication a crawler permission, ranking signal, citation, visit, or sale.
