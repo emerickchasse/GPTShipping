@@ -78,6 +78,8 @@ Google currently reports the material guide as crawled but not indexed, with no 
 
 Topic-specific public discussions must link back to the exact canonical guide, preserve closed-order language and prohibited-data boundaries, and have a reciprocal guide link so the community route is not orphaned.
 
+Discussion `#6` is the public cat-sizing Q&A for the indexed cat guide. Preserve the verified square measurements, no-fit-guarantee language, supervised-accessory limits, `github` return attribution, and reciprocal guide link. It is not a reader, response, subscriber, or sale without separate evidence.
+
 `llms.txt` is the proposed agent-readable map for the exact Pages subpath. Keep it concise, factual, and synchronized with the canonical root, every indexable public page, Atom feed, and public discussions. It must state that orders are closed and images are digital previews. Never call publication a crawler permission, ranking signal, citation, visit, or sale.
 
 GitHub Pages must talk to Render only through the exact configured `PUBLIC_STOREFRONT_ORIGIN`. The public price and checkout button may switch from pending/disabled only after Render returns `ready:true`; CORS reachability or a reduced missing-settings count is never sufficient.

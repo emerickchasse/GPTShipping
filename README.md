@@ -22,6 +22,8 @@ Public feedback on guide clarity and missing decision questions belongs in [PawS
 
 Material comparison Q&A: [What dog bandana material facts do you compare?](https://github.com/emerickchasse/GPTShipping/discussions/5). The thread links the sourced material guide and keeps orders explicitly closed.
 
+Cat sizing Q&A: [How do you compare a cat bandana size safely?](https://github.com/emerickchasse/GPTShipping/discussions/6). The public thread links the measured cat guide and repeats the no-private-data boundary.
+
 ## Run locally
 
 Run the built-in server, which keeps payment credentials server-side:

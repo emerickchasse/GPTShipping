@@ -25,3 +25,4 @@ The physical sample, eligible US destinations, tax registrations, PawSwipe merch
 - [Atom guide feed](https://emerickchasse.github.io/GPTShipping/feed.xml): Versioned storefront and guide updates.
 - [Public PawSwipe discussion](https://github.com/emerickchasse/GPTShipping/discussions/4): Public English feedback; GitHub sign-in is required to post and private/customer/payment data is prohibited.
 - [Public material Q&A](https://github.com/emerickchasse/GPTShipping/discussions/5): Compare material facts without posting sensitive data.
+- [Public cat sizing Q&A](https://github.com/emerickchasse/GPTShipping/discussions/6): Compare measured square sizing and supervised accessory use without posting sensitive data.

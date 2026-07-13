@@ -102,6 +102,8 @@ test('the cat bandana guide is factual and published through every discovery sur
   assert.match(page, /supervis/i);
   assert.match(page, /href="index\.html\?utm_source=cat_guide#shop"/);
   assert.match(page, /href="dog-bandana-material-guide\.html"/);
+  assert.match(page, /https:\/\/github\.com\/emerickchasse\/GPTShipping\/discussions\/6/);
+  assert.match(page, /cat sizing Q&amp;A is public and requires a GitHub account to reply/i);
   assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
   assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
   assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
@@ -239,6 +241,7 @@ test('the proposed llms.txt map is factual and published through every runtime',
   assert.match(llms, /Orders and payments are not open/);
   assert.match(llms, /digital previews, not physical sample or quality evidence/);
   assert.match(llms, /https:\/\/emerickchasse\.github\.io\/GPTShipping\//);
+  assert.match(llms, /https:\/\/github\.com\/emerickchasse\/GPTShipping\/discussions\/6/);
   for (const page of publicPages.filter((page) => page !== 'index.html')) {
     assert.match(llms, new RegExp(`https://emerickchasse\\.github\\.io/GPTShipping/${page.replaceAll('.', '\\.')}`), page);
   }
@@ -302,6 +305,7 @@ test('the repository landing page exposes the complete public acquisition path',
   for (const relativeUrl of guidePaths) assert.match(readme, new RegExp(relativeUrl.replaceAll('.', '\\.')), relativeUrl);
   assert.match(readme, /GPTShipping\/feed\.xml/);
   assert.match(readme, /GPTShipping\/discussions\/4/);
+  assert.match(readme, /GPTShipping\/discussions\/6/);
   assert.match(readme, /GitHub posts are public and require an account/);
 });
 
