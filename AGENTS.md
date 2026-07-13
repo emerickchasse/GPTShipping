@@ -110,6 +110,8 @@ Google URL Inspection currently confirms the homepage, `bandana-size-guide.html`
 
 Bing Webmaster Tools now verifies the exact PawSwipe GitHub Pages property through its property-specific `BingSiteAuth.xml`, tracked through Pages, Render, and Docker publication contracts. The XML sitemap is submitted and processing; all public URLs have discovery-submission receipts. Bing URL Inspection still called the cat and material guides discovered but not crawled on 2026-07-12, then accepted individual indexing requests for both. Keep ownership, submission, crawl, indexation, performance, AI citations, clicks, and sales as separate evidence, and never copy metrics from another property.
 
+Bing's live material-guide test confirms indexability, no SEO/GEO issues, and two recognized markup types while the index view still says discovered but not crawled. Search data is in a 48-hour preparation window and AI Performance is zero. Do not repeat the accepted submissions or edit the healthy page until Bing exposes a new defect or processing evidence.
+
 The browser checkout endpoint requires the exact GitHub Pages Origin or the API's own host before it parses the body or contacts Stripe. Do not weaken this to CORS headers alone, and do not apply the browser-origin rule to Stripe's separately signed webhook.
 
 Render service `srv-d99md86cjfls738fdp70` uses on-commit deployment as the current fallback. Keep `render.yaml` aligned to `autoDeployTrigger: commit`. The deploy-hook experiment was removed after newly regenerated hooks returned HTTP 404; do not restore it without first proving a fresh hook directly and never expose hook values through full-page accessibility snapshots.
