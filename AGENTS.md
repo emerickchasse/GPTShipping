@@ -74,7 +74,7 @@ Use `cat-bandana-guide.html` for the measured `cat bandana` intent (DataForSEO U
 
 Use `dog-bandana-material-guide.html` as the sole target for `dog bandana material` (DataForSEO US English: 720 monthly searches, transactional intent, checked 2026-07-12). Keep composition and weight separated by US/Mexico versus EU/Latvia, cite Printful product code 655, disclose microfibre release and single-sided/double-folded construction, and never convert supplier specifications into sample quality, comfort, durability, or performance claims. Preserve `material_guide` attribution.
 
-Google currently reports the material guide as crawled but not indexed, with no detected source page despite its valid public canonical, sitemap entry, robots declaration, and homepage link. Preserve contextual discovery links from the indexed cat guide and tie-on comparison; do not repeat indexing requests without a new live defect or meaningful content change.
+Google now indexes the material guide after contextual discovery links were added from the indexed cat guide and tie-on comparison. Preserve those links; indexation is evidence that the URL entered Google's index, not that it earned an impression, click, visit, or sale.
 
 Topic-specific public discussions must link back to the exact canonical guide, preserve closed-order language and prohibited-data boundaries, and have a reciprocal guide link so the community route is not orphaned.
 
@@ -104,7 +104,7 @@ Do not publish a homepage Product JSON-LD entity while checkout, public offer, s
 
 Every indexable page must expose an exact canonical Open Graph URL, a factual title/description, the deployed Pet Parade mockup, and a large-image card declaration. Preview metadata improves link presentation but does not prove a post, impression, click, or sale.
 
-Google URL Inspection currently confirms the homepage, `bandana-size-guide.html`, `cat-bandana-guide.html`, and `tie-on-vs-over-collar-dog-bandana.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, `transparency.html`, and `dog-bandana-material-guide.html` were unknown to Google and have confirmed priority-crawl requests after clean live indexability checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, public `site:` results, impressions, clicks, and sales as separate evidence.
+Google URL Inspection currently confirms the homepage, `bandana-size-guide.html`, `cat-bandana-guide.html`, `tie-on-vs-over-collar-dog-bandana.html`, and `dog-bandana-material-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, `transparency.html`, and `how-to-tie-dog-bandana.html` have confirmed priority-crawl requests after clean live indexability checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, public `site:` results, impressions, clicks, and sales as separate evidence.
 
 `cat-bandana-guide.html` passed Google's live URL test and entered the priority crawl queue on 2026-07-12, then was confirmed indexed on 2026-07-13. Pinterest, X, and Reddit were simultaneously signed out; never create identities or claim social distribution from those surfaces.
 
