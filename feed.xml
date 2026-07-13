@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>PawSwipe pet bandana guides</title>
+  <subtitle>Practical, measurement-led pet bandana guides and PawSwipe launch updates.</subtitle>
+  <id>https://emerickchasse.github.io/GPTShipping/feed.xml</id>
+  <link href="https://emerickchasse.github.io/GPTShipping/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://emerickchasse.github.io/GPTShipping/" rel="alternate" type="text/html" />
+  <updated>2026-07-12T21:30:00-04:00</updated>
+  <author><name>PawSwipe</name></author>
+  <entry>
+    <title>Cat bandana guide: size, safety, and supervised use</title>
+    <id>https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Compare the verified 44, 54, and 64 cm squares and review supervised accessory use for cats.</summary>
+  </entry>
+  <entry>
+    <title>Tie-on dog bandana vs. over-collar styles</title>
+    <id>https://emerickchasse.github.io/GPTShipping/tie-on-vs-over-collar-dog-bandana.html</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/tie-on-vs-over-collar-dog-bandana.html" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Understand how tie-on squares and over-collar bandanas differ before choosing.</summary>
+  </entry>
+  <entry>
+    <title>How to tie a dog bandana</title>
+    <id>https://emerickchasse.github.io/GPTShipping/how-to-tie-dog-bandana.html</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/how-to-tie-dog-bandana.html" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Fold, tie, check two-finger space, and keep supervised accessory use separate from restraint.</summary>
+  </entry>
+  <entry>
+    <title>How to measure a pet for a bandana</title>
+    <id>https://emerickchasse.github.io/GPTShipping/measure-pet-for-bandana.html</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/measure-pet-for-bandana.html" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Compare a comfortable square your pet already wears instead of trusting a non-universal size label.</summary>
+  </entry>
+  <entry>
+    <title>Dog bandana size chart: S, M, or L?</title>
+    <id>https://emerickchasse.github.io/GPTShipping/bandana-size-guide.html</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/bandana-size-guide.html" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Compare verified S, M, and L square measurements in inches and centimetres.</summary>
+  </entry>
+  <entry>
+    <title>Pet bandana with original cat-and-dog print</title>
+    <id>https://emerickchasse.github.io/GPTShipping/</id>
+    <link href="https://emerickchasse.github.io/GPTShipping/" />
+    <updated>2026-07-12T21:30:00-04:00</updated>
+    <summary>Meet the pre-launch PawSwipe Pet Parade bandana and review verified product details before ordering opens.</summary>
+  </entry>
+</feed>

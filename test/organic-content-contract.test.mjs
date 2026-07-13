@@ -176,6 +176,27 @@ test('every indexable public page declares its exact canonical URL', async () =>
   }
 });
 
+test('the Atom guide feed is validly linked and published through every runtime', async () => {
+  const feed = await readFile(new URL('../feed.xml', import.meta.url), 'utf8');
+  const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const guidePages = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+
+  assert.match(feed, /^<\?xml version="1\.0" encoding="utf-8"\?>/);
+  assert.match(feed, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
+  assert.match(feed, /rel="self" type="application\/atom\+xml"/);
+  assert.equal((feed.match(/<entry>/g) || []).length, 6);
+  assert.match(storefront, /<link rel="alternate" type="application\/atom\+xml"[^>]+href="feed\.xml"/);
+  for (const relativeUrl of guidePages) {
+    const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+    assert.match(page, /<link rel="alternate" type="application\/atom\+xml"[^>]+href="feed\.xml"/, relativeUrl);
+    assert.match(feed, new RegExp(`<id>https://emerickchasse\\.github\\.io/GPTShipping/${relativeUrl.replaceAll('.', '\\.')}<\\/id>`), relativeUrl);
+  }
+  assert.match(pagesWorkflow, /\bfeed\.xml\b/);
+  assert.match(server, /['"]feed\.xml['"]/);
+  assert.match(dockerfile, /\bfeed\.xml\b/);
+  assert.match(indexNowScript, /new URL\(['"]feed\.xml['"], site\)/);
+});
+
 test('every indexable public page has a complete, canonical social preview', async () => {
   for (const relativeUrl of publicPages) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
