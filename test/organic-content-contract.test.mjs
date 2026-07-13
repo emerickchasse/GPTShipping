@@ -245,8 +245,8 @@ test('every decision guide offers the consent-limited launch notice', async () =
   }
 });
 
-test('measured size, reference, and cat guides offer privacy-safe share intents', async () => {
-  for (const relativeUrl of ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'cat-bandana-guide.html']) {
+test('every commercial decision guide offers privacy-safe share intents', async () => {
+  for (const relativeUrl of ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html']) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
     assert.match(page, /https:\/\/www\.pinterest\.com\/pin\/create\/button\//, relativeUrl);
     assert.match(page, /https:\/\/x\.com\/intent\/post\?/, relativeUrl);
