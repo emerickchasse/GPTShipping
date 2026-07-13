@@ -31,6 +31,12 @@ test('the storefront names the measured transactional pet-bandana category', () 
   assert.match(html, /Orders are not open yet/);
 });
 
+test('the storefront exposes the measured dog-bandana-material guide', () => {
+  assert.match(html, /Six practical guides before Pet Parade launches/);
+  assert.match(html, /href="dog-bandana-material-guide\.html"/);
+  assert.match(html, /Dog bandana material guide/);
+});
+
 test('the product visual identifies the digital mockup without implying sample evidence', () => {
   assert.match(html, /assets\/printful\/pet-parade-digital-mockup-v1\.jpg/);
   assert.match(html, /Digital preview — physical sample not yet inspected\./);

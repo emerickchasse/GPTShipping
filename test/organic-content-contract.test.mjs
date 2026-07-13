@@ -13,7 +13,7 @@ const [sizeGuide, xmlSitemap, textSitemap, pagesWorkflow, containerWorkflow, ind
   readFile(new URL('../Dockerfile', import.meta.url), 'utf8')
 ]);
 
-const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'customer-policies.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+const publicPages = ['index.html', 'care-guide.html', 'transparency.html', 'customer-policies.html', 'bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html', 'dog-bandana-material-guide.html'];
 const socialImageUrl = 'https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg';
 const supportFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScMEoMJRpmnazzQjWGQABXdtaUhWpuh5AkWX_d8kHjVblNDTA/viewform';
 const launchFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfpOMdF9D2Sk7YYiIMDnnLD6Q-yQDkyrHnp2TqT5pi32NFzLg/viewform';
@@ -108,6 +108,31 @@ test('the cat bandana guide is factual and published through every discovery sur
   assert.match(dockerfile, new RegExp(`\\b${relativeUrl}\\b`));
 });
 
+test('the dog bandana material guide is factual and published through every discovery surface', async () => {
+  const relativeUrl = 'dog-bandana-material-guide.html';
+  const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
+  const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
+  assert.match(page, /<title>Dog bandana material guide: what to compare/);
+  assert.match(page, /<h1>Dog bandana material guide: what to compare\.<\/h1>/);
+  assert.match(page, /100% recycled polyester/);
+  assert.match(page, /65% recycled polyester, 35% polyester/);
+  assert.match(page, /110 g\/m²/);
+  assert.match(page, /100 g\/m²/);
+  assert.match(page, /single-sided all-over print/i);
+  assert.match(page, /double-folded edges/i);
+  assert.match(page, /releases plastic microfibres during washing/i);
+  assert.match(page, /does not by itself prove softness, breathability, or comfort/i);
+  assert.match(page, /digital mockup is not material or quality evidence/i);
+  assert.match(page, /utm_source=material_guide/);
+  assert.match(xmlSitemap, new RegExp(`<loc>${canonicalUrl}</loc>`));
+  assert.match(textSitemap, new RegExp(`^${canonicalUrl}$`, 'm'));
+  assert.match(pagesWorkflow, new RegExp(`\\b${relativeUrl}\\b`));
+  assert.match(containerWorkflow, new RegExp(`^\\s+- ${relativeUrl.replaceAll('.', '\\.')}$$`, 'm'));
+  assert.match(indexNowScript, new RegExp(`['"]${relativeUrl.replaceAll('.', '\\.')}['"]`));
+  assert.match(server, new RegExp(`['"]${relativeUrl.replaceAll('.', '\\.')}['"]`));
+  assert.match(dockerfile, new RegExp(`\\b${relativeUrl.replaceAll('.', '\\.')}\\b`));
+});
+
 test('customer policies are public, sourced, and remain explicitly pre-launch', async () => {
   const relativeUrl = 'customer-policies.html';
   const canonicalUrl = `https://emerickchasse.github.io/GPTShipping/${relativeUrl}`;
@@ -180,12 +205,12 @@ test('every indexable public page declares its exact canonical URL', async () =>
 test('the Atom guide feed is validly linked and published through every runtime', async () => {
   const feed = await readFile(new URL('../feed.xml', import.meta.url), 'utf8');
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-  const guidePages = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+  const guidePages = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html', 'dog-bandana-material-guide.html'];
 
   assert.match(feed, /^<\?xml version="1\.0" encoding="utf-8"\?>/);
   assert.match(feed, /<feed xmlns="http:\/\/www\.w3\.org\/2005\/Atom">/);
   assert.match(feed, /rel="self" type="application\/atom\+xml"/);
-  assert.equal((feed.match(/<entry>/g) || []).length, 6);
+  assert.equal((feed.match(/<entry>/g) || []).length, 7);
   assert.match(storefront, /<link rel="alternate" type="application\/atom\+xml"[^>]+href="feed\.xml"/);
   assert.match(storefront, /href="feed\.xml" type="application\/atom\+xml">Follow the guide feed without sharing an email<\/a>/);
   for (const relativeUrl of guidePages) {
@@ -245,7 +270,7 @@ test('the public GitHub community route is disclosed as public, not support', as
 
 test('the repository landing page exposes the complete public acquisition path', async () => {
   const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
-  const guidePaths = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+  const guidePaths = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html', 'dog-bandana-material-guide.html'];
   assert.match(readme, /Pet Parade made-to-order pet bandana/);
   assert.match(readme, /Digital preview only — the physical sample is still awaiting inspection and orders are not open/);
   assert.match(readme, /GPTShipping\/\?utm_source=github/);
@@ -279,7 +304,8 @@ test('every decision guide offers the consent-limited launch notice', async () =
     'measure-pet-for-bandana.html',
     'how-to-tie-dog-bandana.html',
     'tie-on-vs-over-collar-dog-bandana.html',
-    'cat-bandana-guide.html'
+    'cat-bandana-guide.html',
+    'dog-bandana-material-guide.html'
   ];
 
   for (const relativeUrl of decisionGuides) {
@@ -291,7 +317,7 @@ test('every decision guide offers the consent-limited launch notice', async () =
 });
 
 test('every commercial decision guide offers privacy-safe share intents', async () => {
-  for (const relativeUrl of ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html']) {
+  for (const relativeUrl of ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html', 'dog-bandana-material-guide.html']) {
     const page = await readFile(new URL(`../${relativeUrl}`, import.meta.url), 'utf8');
     assert.match(page, /https:\/\/www\.pinterest\.com\/pin\/create\/button\//, relativeUrl);
     assert.match(page, /https:\/\/x\.com\/intent\/post\?/, relativeUrl);
@@ -307,7 +333,8 @@ test('the storefront exposes the decision-guide library without relying on deskt
     'measure-pet-for-bandana.html',
     'how-to-tie-dog-bandana.html',
     'tie-on-vs-over-collar-dog-bandana.html',
-    'cat-bandana-guide.html'
+    'cat-bandana-guide.html',
+    'dog-bandana-material-guide.html'
   ];
 
   assert.match(storefront, /<section[^>]+id="guides"/);
@@ -322,7 +349,8 @@ test('every product return from a decision guide preserves its distinct attribut
     ['measure-pet-for-bandana.html', 'measure_guide'],
     ['how-to-tie-dog-bandana.html', 'tie_guide'],
     ['tie-on-vs-over-collar-dog-bandana.html', 'comparison_guide'],
-    ['cat-bandana-guide.html', 'cat_guide']
+    ['cat-bandana-guide.html', 'cat_guide'],
+    ['dog-bandana-material-guide.html', 'material_guide']
   ]);
 
   for (const [relativeUrl, source] of guideSources) {

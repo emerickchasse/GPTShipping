@@ -14,6 +14,7 @@ Digital preview only — the physical sample is still awaiting inspection and or
 - [Learn how to tie a square dog bandana](https://emerickchasse.github.io/GPTShipping/how-to-tie-dog-bandana.html)
 - [Compare tie-on and over-collar constructions](https://emerickchasse.github.io/GPTShipping/tie-on-vs-over-collar-dog-bandana.html)
 - [Review size and supervised accessory use for cats](https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html)
+- [Compare dog bandana material, weight, construction, and region](https://emerickchasse.github.io/GPTShipping/dog-bandana-material-guide.html)
 - [Follow the email-free Atom guide feed](https://emerickchasse.github.io/GPTShipping/feed.xml)
 
 Public feedback on guide clarity and missing decision questions belongs in [PawSwipe Discussion #4](https://github.com/emerickchasse/GPTShipping/discussions/4). GitHub posts are public and require an account; never post personal, address, payment, order, credential, identification, or private support information there.
