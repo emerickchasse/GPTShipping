@@ -36,6 +36,8 @@ IndexNow accepted the current nine-URL list with HTTP 200. This proves API recei
 
 All five commercial decision guides expose direct Pinterest, X, and email share links without loading third-party SDKs, pixels, or cookies. Pinterest, X, and Reddit were checked in authenticated Chrome on 2026-07-12 and all presented signed-out surfaces, so no post was created and no account identity was invented. A rendered share composer is distribution capability; only a visible published post or referral data proves distribution or traffic.
 
+The project repository now identifies the live storefront as its homepage, carries a factual PawSwipe description, and has GitHub Discussions enabled. Announcement discussion `#4` is the public English-language welcome and feedback route. It links the storefront and five decision guides, keeps orders explicitly closed, and prohibits personal, payment, order, credential, and private-support data. Anonymous HTTP returned 200 with the title and public-data warning. This is a published community surface, not evidence of a reader, member, reply, visit, or sale.
+
 All five commercial decision guides now expose the verified one-message launch-notification form next to the explicit closed-order disclosure. This is a consent-bounded pre-launch conversion path only; a rendered link does not prove a subscriber, email delivery, order, or revenue.
 
 ## Evidence rules

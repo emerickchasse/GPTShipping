@@ -233,6 +233,14 @@ test('private support uses the verified form without exposing the mailbox', asyn
   }
 });
 
+test('the public GitHub community route is disclosed as public, not support', async () => {
+  const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
+  assert.match(transparency, /href="https:\/\/github\.com\/emerickchasse\/GPTShipping\/discussions\/4" target="_blank" rel="noopener noreferrer"/);
+  assert.match(transparency, /Reading is public; posting requires a GitHub account/);
+  assert.match(transparency, /Never post an email, shipping address, payment or order data/);
+  assert.match(transparency, /Use the private support form for a private request/);
+});
+
 test('launch notification is explicit, limited, and linked without exposing the mailbox', async () => {
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');
