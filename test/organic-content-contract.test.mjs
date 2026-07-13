@@ -241,6 +241,18 @@ test('the public GitHub community route is disclosed as public, not support', as
   assert.match(transparency, /Use the private support form for a private request/);
 });
 
+test('the repository landing page exposes the complete public acquisition path', async () => {
+  const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+  const guidePaths = ['bandana-size-guide.html', 'measure-pet-for-bandana.html', 'how-to-tie-dog-bandana.html', 'tie-on-vs-over-collar-dog-bandana.html', 'cat-bandana-guide.html'];
+  assert.match(readme, /Pet Parade made-to-order pet bandana/);
+  assert.match(readme, /Digital preview only — the physical sample is still awaiting inspection and orders are not open/);
+  assert.match(readme, /GPTShipping\/\?utm_source=github/);
+  for (const relativeUrl of guidePaths) assert.match(readme, new RegExp(relativeUrl.replaceAll('.', '\\.')), relativeUrl);
+  assert.match(readme, /GPTShipping\/feed\.xml/);
+  assert.match(readme, /GPTShipping\/discussions\/4/);
+  assert.match(readme, /GitHub posts are public and require an account/);
+});
+
 test('launch notification is explicit, limited, and linked without exposing the mailbox', async () => {
   const storefront = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const transparency = await readFile(new URL('../transparency.html', import.meta.url), 'utf8');

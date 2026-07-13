@@ -1,6 +1,22 @@
 # PawSwipe Pet Parade storefront
 
-An English-language, responsive storefront preparing the original PawSwipe Pet Parade made-to-order bandana for a verified launch.
+An English-language, responsive storefront preparing the original PawSwipe Pet Parade made-to-order pet bandana for a verified launch.
+
+[![Digital preview of the PawSwipe Pet Parade cat-and-dog print on a bandana](https://emerickchasse.github.io/GPTShipping/assets/printful/pet-parade-digital-mockup-v1.jpg)](https://emerickchasse.github.io/GPTShipping/)
+
+Digital preview only — the physical sample is still awaiting inspection and orders are not open.
+
+## Start with a pet bandana question
+
+- [Visit the PawSwipe Pet Parade preview](https://emerickchasse.github.io/GPTShipping/?utm_source=github)
+- [Compare the verified S, M, and L bandana size chart](https://emerickchasse.github.io/GPTShipping/bandana-size-guide.html)
+- [Measure a pet by comparing a comfortable square](https://emerickchasse.github.io/GPTShipping/measure-pet-for-bandana.html)
+- [Learn how to tie a square dog bandana](https://emerickchasse.github.io/GPTShipping/how-to-tie-dog-bandana.html)
+- [Compare tie-on and over-collar constructions](https://emerickchasse.github.io/GPTShipping/tie-on-vs-over-collar-dog-bandana.html)
+- [Review size and supervised accessory use for cats](https://emerickchasse.github.io/GPTShipping/cat-bandana-guide.html)
+- [Follow the email-free Atom guide feed](https://emerickchasse.github.io/GPTShipping/feed.xml)
+
+Public feedback on guide clarity and missing decision questions belongs in [PawSwipe Discussion #4](https://github.com/emerickchasse/GPTShipping/discussions/4). GitHub posts are public and require an account; never post personal, address, payment, order, credential, identification, or private support information there.
 
 ## Run locally
 
@@ -20,7 +36,7 @@ This is intentionally a pre-launch prototype. The cart works locally and the ser
 
 The GitHub Pages workflow publishes a static pre-launch preview only. It cannot collect payments or customer email addresses; use an HTTPS host running `server.mjs` for the real checkout after the launch gate has been met.
 
-Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickchasse.github.io/GPTShipping/)
+Current preview: [https://emerickchasse.github.io/GPTShipping/](https://emerickchasse.github.io/GPTShipping/?utm_source=github)
 
 Search discovery and indexing evidence is tracked separately in [docs/ACQUISITION.md](docs/ACQUISITION.md); submitted URLs are never reported as indexed until Google confirms them.
 
