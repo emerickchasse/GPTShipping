@@ -82,6 +82,8 @@ Treat the public Lighthouse report as external diagnostic evidence, not a traffi
 
 The homepage FAQ must keep its visible answers and FAQPage structured data aligned. It may answer only verified product, sizing, launch-status, and safety facts; structured markup is not evidence of a search rich result or traffic.
 
+The homepage Product structured data may describe only the verified PawSwipe brand, category, digital mockup, pattern, tie-on construction, S/M/L square measurements, and internal product-family SKU. Keep `offers`, ratings, and reviews absent while checkout, public price, sample, and customer evidence remain unavailable. Valid markup is semantic capability, not a rich result, impression, visit, or sale.
+
 Every indexable page must expose an exact canonical Open Graph URL, a factual title/description, the deployed Pet Parade mockup, and a large-image card declaration. Preview metadata improves link presentation but does not prove a post, impression, click, or sale.
 
 Google URL Inspection currently confirms the homepage and `bandana-size-guide.html` are indexed. `care-guide.html`, `measure-pet-for-bandana.html`, and `transparency.html` were unknown to Google and have confirmed priority-crawl requests after live 200/self-canonical checks. Search Console performance and indexing summaries are still processing, while both submitted sitemaps still show fetch failure and zero discovered pages. Keep URL-level indexing, crawl requests, sitemap status, impressions, clicks, and sales as separate evidence.
